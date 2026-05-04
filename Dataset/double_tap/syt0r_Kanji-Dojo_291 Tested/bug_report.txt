@@ -1,0 +1,42 @@
+Double-tapping back arrow while transitioning from vocab info to practice skips finish-practice dialog
+
+App: syt0r/Kanji-Dojo
+Version: 2.1.9
+Issue: https://github.com/syt0r/Kanji-Dojo/issues/291
+APK: https://github.com/syt0r/Kanji-Dojo/releases/download/v2.1.9/app-fdroid-release.apk
+APK Tag: v2.1.9
+Gestures: double-tap, tap
+
+Steps to Reproduce:
+  1. Start a new practice session and reveal the answer to the letter/vocab card.
+  2. Navigate to the vocab info screen (e.g. by selecting one of the vocab examples in letter practice, or tapping the diagonal arrow ( ↗ ) in vocab practice).
+  3. Tap the back arrow in the top app bar. Before the animation finishes, tap the back arrow a second time.
+
+Expected Behavior:
+  (see full report below)
+
+Actual Behavior:
+  (see full report below)
+
+--- Full Issue Body ---
+App version: 2.1.9
+Platforms tested: Android 16
+
+**Summary**
+While in a practice session, navigating back from the Vocab Info screen by double-tapping the back arrow in the toolbar before the exit animation finishes quits the session without confirmation.
+
+**Steps to reproduce**
+1. Start a new practice session and reveal the answer to the letter/vocab card. 
+2. Navigate to the vocab info screen (e.g. by selecting one of the vocab examples in letter practice, or tapping the diagonal arrow ( ↗ ) in vocab practice).
+3. Tap the back arrow in the top app bar. Before the animation finishes, tap the back arrow a second time.
+
+**Actual behavior**
+The practice session ends without confirmation and the screen shows the letter/vocab dashboard.
+
+**Expected behavior**
+The "Finish practice?" dialog should be shown whenever the user tries to leave a review screen.
+
+**Notes**
+- I suspect this issue might be caused by the second tap still being handled by the old InfoScreen composable during the exit animation (the UI hasn't yet switched back to practice), and `mainNavigationState.navigateBack()` getting called twice in succession. The practice screen's own back-handler / `tryNavigateBack` guard never gets a chance to run, so the "Finish practice?" dialog is skipped and the app jumps straight to the dashboard.
+- I'm unable to reproduce this behavior in the Windows app or when using the system back button (three button navigation) on Android.
+- This is a relatively minor UX flaw, but it breaks the intended flow and allows the user to accidentally quit a practice session.

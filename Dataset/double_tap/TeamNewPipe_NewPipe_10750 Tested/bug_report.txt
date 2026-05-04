@@ -1,0 +1,134 @@
+Video playback randomly "closed/crashed", and content loaded but stuck buffering
+
+App: TeamNewPipe/NewPipe
+Version: 0.26.1
+Issue: https://github.com/TeamNewPipe/NewPipe/issues/10750
+APK: https://github.com/TeamNewPipe/NewPipe/releases/download/v0.26.1/NewPipe_v0.26.1.apk
+APK Tag: v0.26.1
+Gestures: double tap, orientation, seek, tap, click
+
+Steps to Reproduce:
+  1. 26.1 ### Steps to reproduce the bug
+  2. Play couple videos.
+  3. At any moment, the video player might stuck buffering for couple seconds before it crash/close
+  4. Replay the video, now it stuck buffering, but the frames and stuff is loaded (can be checked by seeking (double tap on one side), it will show different frames instead of static frames, indicating that the frame is loaded, also you cant force it to play in this stuck buffering case), and step 4 repeats. ### Expected behavior At least be able to play the video, even with force stop and clear cache ### Actual behavior The video player randomly "closed/crashed", and stuck buffering, EVEN With force stop and cleared cache, i checked it can only play 3 short videos (2m48s of 720p@30fps), and when the step 2 happened, the cache is at 17.51MB ### Screenshots/Screen recordings https://github.com/TeamNewPipe/NewPipe/assets/68391650/9172b7d0-911f-4400-8fb4-87f54bb03479 Sorry if the video quality is really bad, i forgot to change my screen recorder default orientation. in the recording, i loaded a playlist containing 7 short videos, at 00:13, i reached the end of 3rd video, and 4th video is buffering a bit then crashed, retried again, but now stuck buffering as you can see in the video ### Logs ## Exception * __User Action:__ play stream * __Request:__ Player error[type=ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT] occurred while playing https://www.youtube.com/watch?v=omw4pzwJlKg * __Content Country:__ ID * __Content Language:__ in- * __App Language:__ in * __Service:__ YouTube * __Version:__ 0.26.1 * __OS:__ Linux samsung/a6ltedx/a6lte:10/QP1A.190711.020/A600GDXU9CUB1:user/release-keys 10 - 29 <details><summary><b>Crash log </b></summary><p> ``` com.google.android.exoplayer2.ExoPlaybackException: Source error at com.google.android.exoplayer2.ExoPlayerImplInternal.handleIoException(ExoPlayerImplInternal.java:644) at com.google.android.exoplayer2.ExoPlayerImplInternal.handleMessage(ExoPlayerImplInternal.java:616) at android.os.Handler.dispatchMessage(Handler.java:103) at android.os.Looper.loop(Looper.java:237) at android.os.HandlerThread.run(HandlerThread.java:67) Caused by: com.google.android.exoplayer2.upstream.HttpDataSource$HttpDataSourceException: java.net.SocketTimeoutException: timeout at org.schabi.newpipe.player.datasource.YoutubeHttpDataSource.open(YoutubeHttpDataSource.java:389) at com.google.android.exoplayer2.upstream.DefaultDataSource.open(DefaultDataSource.java:263) at com.google.android.exoplayer2.upstream.TeeDataSource.open(TeeDataSource.java:52) at com.google.android.exoplayer2.upstream.cache.CacheDataSource.openNextSource(CacheDataSource.java:796) at com.google.android.exoplayer2.upstream.cache.CacheDataSource.open(CacheDataSource.java:609) at com.google.android.exoplayer2.upstream.StatsDataSource.open(StatsDataSource.java:84) at com.google.android.exoplayer2.source.chunk.ContainerMediaChunk.load(ContainerMediaChunk.java:124) at com.google.android.exoplayer2.upstream.Loader$LoadTask.run(Loader.java:412) at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167) at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641) at java.lang.Thread.run(Thread.java:919) Caused by: java.net.SocketTimeoutException: timeout at com.android.okhttp.okio.Okio$3.newTimeoutException(Okio.java:225) at com.android.okhttp.okio.AsyncTimeout.exit(AsyncTimeout.java:263) at com.android.okhttp.okio.AsyncTimeout$2.read(AsyncTimeout.java:217) at com.android.okhttp.okio.RealBufferedSource.indexOf(RealBufferedSource.java:317) at com.android.okhttp.okio.RealBufferedSource.indexOf(RealBufferedSource.java:311) at com.android.okhttp.okio.RealBufferedSource.readUtf8LineStrict(RealBufferedSource.java:207) at com.android.okhttp.internal.http.Http1xStream.readResponse(Http1xStream.java:395) at com.android.okhttp.internal.http.Http1xStream.readResponseHeaders(Http1xStream.java:146) at com.android.okhttp.internal.http.HttpEngine.readNetworkResponse(HttpEngine.java:900) at com.android.okhttp.internal.http.HttpEngine.readResponse(HttpEngine.java:772) at com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:493) at com.android.okhttp.internal.huc.HttpURLConnectionImpl.getResponse(HttpURLConnectionImpl.java:429) at com.android.okhttp.internal.huc.HttpURLConnectionImpl.getResponseCode(HttpURLConnectionImpl.java:560) at com.android.okhttp.internal.huc.DelegatingHttpsURLConnection.getResponseCode(DelegatingHttpsURLConnection.java:106) at com.android.okhttp.internal.huc.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:30) at org.schabi.newpipe.player.datasource.YoutubeHttpDataSource.open(YoutubeHttpDataSource.java:385) ... 10 more Caused by: java.net.SocketException: socket is closed at com.android.org.conscrypt.ConscryptFileDescriptorSocket$SSLInputStream.read(ConscryptFileDescriptorSocket.java:588) at com.android.okhttp.okio.Okio$2.read(Okio.java:145) at com.android.okhttp.okio.AsyncTimeout$2.read(AsyncTimeout.java:213) ... 23 more ``` </details> <hr> ### Affected Android/Custom ROM version Android 10, OneUi 2.0 ### Affected device model Samsung Galaxy A6, Samsung Galaxy J5 Prime ### Additional information This happens since couple weeks ago before 2024 I have a good internet connection, so there is absolutely no way this is even related to that at all, if it was, it usually buffers a little bit then it continues playing, heck i can play 720p60 in yt web mobile (but i don't want to do that). I tried clearing caches, force stop, and not using thumbnail, it still happens. This issue affects all types of videos, and video/audio quality, even as basic as 144p or audio mode still experienced the same exact thing (but for audio there is no way to tell, except if you got fast internet, and couple seconds later player "closed"), and it happens so frequently that it annoys me so bad every time it happens
+
+Expected Behavior:
+  At least be able to play the video, even with force stop and clear cache
+
+Actual Behavior:
+  The video player randomly "closed/crashed", and stuck buffering, EVEN With force stop and cleared cache, i checked it can only play 3 short videos (2m48s of 720p@30fps), and when the step 2 happened, the cache is at 17.51MB
+
+--- Full Issue Body ---
+### Checklist
+
+- [X] I am able to reproduce the bug with the latest version given here: [CLICK THIS LINK](https://github.com/TeamNewPipe/NewPipe/releases/latest).
+- [X] I made sure that there are *no existing issues* - [open](https://github.com/TeamNewPipe/NewPipe/issues) or [closed](https://github.com/TeamNewPipe/NewPipe/issues?q=is%3Aissue+is%3Aclosed) - which I could contribute my information to.
+- [X] I have read the [FAQ](https://newpipe.net/FAQ/) and my problem isn't listed.
+- [X] I have taken the time to fill in all the required details. I understand that the bug report will be dismissed otherwise.
+- [X] This issue contains only one bug.
+- [X] I have read and understood the [contribution guidelines](https://github.com/TeamNewPipe/NewPipe/blob/dev/.github/CONTRIBUTING.md).
+
+### Affected version
+
+0.26.1
+
+### Steps to reproduce the bug
+
+1. Play couple videos.
+2. At any moment, the video player might stuck buffering for couple seconds before it crash/close
+3. Replay the video, now it stuck buffering, but the frames and stuff is loaded (can be checked by seeking (double tap on one side), it will show different frames instead of static frames, indicating that the frame is loaded, also you cant force it to play in this stuck buffering case), and step 4 repeats.
+
+### Expected behavior
+
+At least be able to play the video, even with force stop and clear cache
+
+### Actual behavior
+
+The video player randomly "closed/crashed", and stuck buffering, EVEN With force stop and cleared cache, i checked it can only play 3 short videos (2m48s of 720p@30fps), and when the step 2 happened, the cache is at 17.51MB
+
+### Screenshots/Screen recordings
+
+https://github.com/TeamNewPipe/NewPipe/assets/68391650/9172b7d0-911f-4400-8fb4-87f54bb03479
+
+Sorry if the video quality is really bad, i forgot to change my screen recorder default orientation. in the recording, i loaded a playlist containing 7 short videos, at 00:13, i reached the end of 3rd video, and 4th video is buffering a bit then crashed, retried again, but now stuck buffering as you can see in the video
+
+
+### Logs
+
+## Exception
+* __User Action:__ play stream
+* __Request:__ Player error[type=ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT] occurred while playing https://www.youtube.com/watch?v=omw4pzwJlKg
+* __Content Country:__ ID
+* __Content Language:__ in-
+* __App Language:__ in
+* __Service:__ YouTube
+* __Version:__ 0.26.1
+* __OS:__ Linux samsung/a6ltedx/a6lte:10/QP1A.190711.020/A600GDXU9CUB1:user/release-keys 10 - 29
+<details><summary><b>Crash log </b></summary><p>
+
+```
+com.google.android.exoplayer2.ExoPlaybackException: Source error
+	at com.google.android.exoplayer2.ExoPlayerImplInternal.handleIoException(ExoPlayerImplInternal.java:644)
+	at com.google.android.exoplayer2.ExoPlayerImplInternal.handleMessage(ExoPlayerImplInternal.java:616)
+	at android.os.Handler.dispatchMessage(Handler.java:103)
+	at android.os.Looper.loop(Looper.java:237)
+	at android.os.HandlerThread.run(HandlerThread.java:67)
+Caused by: com.google.android.exoplayer2.upstream.HttpDataSource$HttpDataSourceException: java.net.SocketTimeoutException: timeout
+	at org.schabi.newpipe.player.datasource.YoutubeHttpDataSource.open(YoutubeHttpDataSource.java:389)
+	at com.google.android.exoplayer2.upstream.DefaultDataSource.open(DefaultDataSource.java:263)
+	at com.google.android.exoplayer2.upstream.TeeDataSource.open(TeeDataSource.java:52)
+	at com.google.android.exoplayer2.upstream.cache.CacheDataSource.openNextSource(CacheDataSource.java:796)
+	at com.google.android.exoplayer2.upstream.cache.CacheDataSource.open(CacheDataSource.java:609)
+	at com.google.android.exoplayer2.upstream.StatsDataSource.open(StatsDataSource.java:84)
+	at com.google.android.exoplayer2.source.chunk.ContainerMediaChunk.load(ContainerMediaChunk.java:124)
+	at com.google.android.exoplayer2.upstream.Loader$LoadTask.run(Loader.java:412)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+	at java.lang.Thread.run(Thread.java:919)
+Caused by: java.net.SocketTimeoutException: timeout
+	at com.android.okhttp.okio.Okio$3.newTimeoutException(Okio.java:225)
+	at com.android.okhttp.okio.AsyncTimeout.exit(AsyncTimeout.java:263)
+	at com.android.okhttp.okio.AsyncTimeout$2.read(AsyncTimeout.java:217)
+	at com.android.okhttp.okio.RealBufferedSource.indexOf(RealBufferedSource.java:317)
+	at com.android.okhttp.okio.RealBufferedSource.indexOf(RealBufferedSource.java:311)
+	at com.android.okhttp.okio.RealBufferedSource.readUtf8LineStrict(RealBufferedSource.java:207)
+	at com.android.okhttp.internal.http.Http1xStream.readResponse(Http1xStream.java:395)
+	at com.android.okhttp.internal.http.Http1xStream.readResponseHeaders(Http1xStream.java:146)
+	at com.android.okhttp.internal.http.HttpEngine.readNetworkResponse(HttpEngine.java:900)
+	at com.android.okhttp.internal.http.HttpEngine.readResponse(HttpEngine.java:772)
+	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.execute(HttpURLConnectionImpl.java:493)
+	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.getResponse(HttpURLConnectionImpl.java:429)
+	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.getResponseCode(HttpURLConnectionImpl.java:560)
+	at com.android.okhttp.internal.huc.DelegatingHttpsURLConnection.getResponseCode(DelegatingHttpsURLConnection.java:106)
+	at com.android.okhttp.internal.huc.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:30)
+	at org.schabi.newpipe.player.datasource.YoutubeHttpDataSource.open(YoutubeHttpDataSource.java:385)
+	... 10 more
+Caused by: java.net.SocketException: socket is closed
+	at com.android.org.conscrypt.ConscryptFileDescriptorSocket$SSLInputStream.read(ConscryptFileDescriptorSocket.java:588)
+	at com.android.okhttp.okio.Okio$2.read(Okio.java:145)
+	at com.android.okhttp.okio.AsyncTimeout$2.read(AsyncTimeout.java:213)
+	... 23 more
+
+```
+</details>
+<hr>
+
+
+### Affected Android/Custom ROM version
+
+Android 10, OneUi 2.0
+
+### Affected device model
+
+Samsung Galaxy A6, Samsung Galaxy J5 Prime
+
+### Additional information
+
+This happens since couple weeks ago before 2024
+
+I have a good internet connection, so there is absolutely no way this is even related to that at all, if it was, it usually buffers a little bit then it continues playing, heck i can play 720p60 in yt web mobile (but i don't want to do that).
+
+I tried clearing caches, force stop, and not using thumbnail, it still happens.
+
+This issue affects all types of videos, and video/audio quality, even as basic as 144p or audio mode still experienced the same exact thing (but for audio there is no way to tell, except if you got fast internet, and couple seconds later player "closed"), and it happens so frequently that it annoys me so bad every time it happens

@@ -1,0 +1,68 @@
+[Bug]: Some accessibility issues
+
+App: Pool-Of-Tears/GreenStash
+Version: 3.9.2
+Issue: https://github.com/Pool-Of-Tears/GreenStash/issues/170
+APK: https://github.com/Pool-Of-Tears/GreenStash/releases/download/v3.9.2/GreenStash-v3.9.2.apk
+APK Tag: v3.9.2
+Gestures: double tap, swipe right
+Primary Gesture: double_tap
+
+Steps to Reproduce:
+  1. The red boxes in the image below indicate all the UI elements that can be accessed by visually impaired users using screen readers. The components are quite fragmented, requiring blind users to swipe right multiple times to obtain information sequentially. If each setting item could be grouped into a single accessibility unit, it would be greatly helpful.
+  2. The "Back" button is missing ContentDescriptions. Without content descriptions, users with visual impairments may have difficulty understanding the purpose of these buttons when using screen readers.
+  3. Adding an `onClickLabel` to the Button might also be a good practice. An example of how this can be implemented is provided in the code snippet below. For instance, when focusing a Button, a screen reader might announce "Double tap to **activate**" before a label is added. After adding an appropriate label, it would instead say "Double tap to **Edit**", which can make the button's function more intuitive and clear to users. ``` modifiler = Modifier.semantics { onClick(label = "Edit") { } } ```
+
+Expected Behavior:
+  A potential approach would be using Compose's semantic APIs to group the components together, as demonstrated in Compose's official accessibility [documentation](https://developer.android.com/develop/ui/compose/accessibility/merging-clearing).   Specifically, adding `Modifier.semantics(mergeDescendants = true)` to the Row component in the `SettingsItem` function may be helpful.
+
+Actual Behavior:
+  Already mentioned in the “Steps to reproduce” section.
+
+--- Full Issue Body ---
+### Steps to reproduce
+
+Hi there! I really love the GreenStash app — it's clear that a lot of thought and care has gone into its UI. Thank you for your hard work on this great open source project. However, I noticed a few areas where accessibility could be improved.
+
+1. The red boxes in the image below indicate all the UI elements that can be accessed by visually impaired users using screen readers. The components are quite fragmented, requiring blind users to swipe right multiple times to obtain information sequentially. If each setting item could be grouped into a single accessibility unit, it would be greatly helpful. 
+
+[screenshot]
+
+2.  The "Back" button is missing ContentDescriptions. Without content descriptions, users with visual impairments may have difficulty understanding the purpose of these buttons when using screen readers.
+
+[screenshot]
+
+3. Adding an `onClickLabel` to the Button might also be a good practice. An example of how this can be implemented is provided in the code snippet below. For instance, when focusing a Button, a screen reader might announce "Double tap to **activate**" before a label is added. After adding an appropriate label, it would instead say "Double tap to **Edit**", which can make the button's function more intuitive and clear to users. 
+```
+modifiler = Modifier.semantics {  
+   onClick(label = "Edit") { }
+}
+```
+
+### Expected behaviour
+
+A potential approach would be using Compose's semantic APIs to group the components together, as demonstrated in Compose's official accessibility [documentation](https://developer.android.com/develop/ui/compose/accessibility/merging-clearing).   Specifically, adding `Modifier.semantics(mergeDescendants = true)` to the Row component in the `SettingsItem` function may be helpful.
+
+### Actual behaviour
+
+Already mentioned in the “Steps to reproduce” section.
+
+### Device name
+
+_No response_
+
+### Android version
+
+Android 12
+
+### GreenStash version
+
+3.9.2
+
+### Device logs
+
+_No response_
+
+### Additional information
+
+_No response_

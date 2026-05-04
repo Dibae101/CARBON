@@ -1,0 +1,24 @@
+Resuming doesn't work properly — video stops immediately on tap
+
+App: anilbeesetti/nextplayer
+Version: 0.14.0
+Issue: https://github.com/anilbeesetti/nextplayer/issues/1389
+APK: https://github.com/anilbeesetti/nextplayer/releases/download/v0.16.3/nextplayer-v0.16.3-arm64-v8a-release.apk
+APK Tag: v0.16.3
+Gestures: tap, quick tap
+
+Steps to Reproduce:
+  1. Set "Resume" to "Yes" in settings
+  2. Turn off "Autoplay"
+  3. Play or fast-forward a video to the end
+  4. Resume by tapping the video played last time or the floating button
+
+Expected Behavior:
+  The player should resume from the beginning of the video, since it will do so if tapping other videos finished before the last played one.
+
+Actual Behavior:
+  The video will stop immediately when trying to resume by tapping the video or the floating button. The tap triggers a stop instead of a play action due to a race condition in the resume logic.
+
+--- Full Issue Body ---
+If I set the player to resume playing videos from the point where I stopped, turn off autoplay, and play or fast-forward a video to the end, the video will stop immediately when I try resuming by tapping the video or the floating button.
+

@@ -1,0 +1,130 @@
+Image preview UX gaps and instability when using Select Text on image blocks
+
+App: espresso3389/methings
+Version: 0.2.13
+Issue: https://github.com/espresso3389/methings/issues/34
+APK: https://github.com/espresso3389/methings/releases/download/v0.2.13/app-release.apk
+APK Tag: v0.2.13
+Gestures: long-press, swipe, swipe left, swipe gesture, tap, press
+
+Steps to Reproduce:
+  1. Capture multiple images in a single chat message.
+  2. Tap one of the images to enter preview mode.
+  3. Swipe left or right to browse images.
+  4. Long-press an image and use the available menu options.
+
+Expected Behavior:
+  - Preview mode should optionally display timestamps.
+- Preview mode should display an image index indicator (e.g., `1/3`).
+- Selection mode should not cause UI instability.
+- Referencing an image should include a visual thumbnail rather than only a file path.
+
+Actual Behavior:
+  (see full report below)
+
+--- Full Issue Body ---
+## Classification
+Bug, UX
+
+## Summary
+Multi-image capture and preview behavior works well and closely matches LINE-style interaction. Multiple images can be attached in a single chat block and browsed with swipe gestures.
+
+However, several UX gaps and one critical instability were observed during testing.
+
+## Environment
+Only the minimum needed to reproduce or evaluate:
+
+- me.things version: v0.2.13+
+
+## Goal
+Capture multiple photos in a chat block and review them using the built-in preview system.
+
+## Steps to Reproduce
+
+1. Capture multiple images in a single chat message.
+2. Tap one of the images to enter preview mode.
+3. Swipe left or right to browse images.
+4. Long-press an image and use the available menu options.
+
+## Observed Behavior
+
+### Multi-image preview (working well)
+
+The following behavior works correctly and closely matches LINE UX:
+
+- Multiple photos can be attached within one chat block.
+- Tapping an image opens preview mode.
+- Swiping left/right browses images in the same set.
+- Swiping beyond the set moves to images in adjacent chat blocks.
+
+### Preview screen UX gaps
+
+Compared to typical messaging UI:
+
+- No timestamp is shown in preview (e.g., `YYYY.MM.DD HH:MM`)
+- No position indicator such as `1/3`, `2/3` for the current image
+
+### Long-press menu behavior
+
+When long-pressing an image inside a chat block, the following menu appears:
+
+- Copy All
+- Select Text
+- Reference
+
+#### Copy All
+
+Result example:
+
+```
+Here's the photo I captured.
+rel-path: captures/photo1.jpg
+rel-path: captures/photo2.jpg
+rel-path: captures/photo3.jpg
+```
+
+This behavior may be acceptable for advanced users but differs from typical messaging UX where Copy All is not shown for image blocks.
+
+#### Select Text (critical issue)
+
+Selecting **Select Text** on an image-containing chat block causes:
+
+- the entire chat block to turn black
+- the UI to become unstable
+- recovery often requires restarting the app
+
+#### Reference
+
+Using **Reference** results in:
+
+```
+Here's the photo I captured.
+rel-path: captures/photo2.jpg
+```
+
+The referenced image is represented only by its relative path rather than a visual thumbnail.
+
+## Expected Behavior
+
+- Preview mode should optionally display timestamps.
+- Preview mode should display an image index indicator (e.g., `1/3`).
+- Selection mode should not cause UI instability.
+- Referencing an image should include a visual thumbnail rather than only a file path.
+
+## Success Criteria
+
+- Image preview displays optional timestamp and position indicators.
+- Selecting **Select Text** on image blocks does not cause UI instability.
+- Referenced images appear with visual context rather than only text paths.
+
+## Impact
+
+Selection mode instability affects usability and can interrupt normal chat interaction.
+
+## Additional Observations
+
+The current multi-image preview interaction is already well designed and close to a polished UX. Addressing the remaining issues would significantly improve the overall experience.
+
+## Notes
+
+The image preview system itself is already strong; the primary concern is the instability triggered by text selection in image-containing blocks.

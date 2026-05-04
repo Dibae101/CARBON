@@ -1,0 +1,18 @@
+## check available emulator
+~/Library/Android/sdk/emulator/emulator -list-avds
+
+## start Emulator:
+~/Library/Android/sdk/emulator/emulator -avd Pixel &
+
+~/Library/Android/sdk/emulator/emulator -avd Pixel_4 &
+
+## Install APK to Emulator
+
+# Check if emulator is connected (should show emulator-5554):
+~/Library/Android/sdk/platform-tools/adb devices
+
+# Uninstall old version (if exists):
+~/Library/Android/sdk/platform-tools/adb -s emulator-5554 uninstall org.osmdroid
+
+# Install the APK:
+~/Library/Android/sdk/platform-tools/adb -s emulator-5554 install Automation/APKs/apk.apk

@@ -1,0 +1,98 @@
+Random crashes when closing applications
+
+App: iamrasel/lunar-launcher
+Version: 2.7.1
+Issue: https://github.com/iamrasel/lunar-launcher/issues/82
+APK: https://github.com/iamrasel/lunar-launcher/releases/download/2.7.1/rasel.lunar.launcher_v2.7.1-signed.apk
+APK Tag: 2.7.1
+Gestures: swipe up, home screen
+Primary Gesture: swipe
+
+Steps to Reproduce:
+  1. Have application open and being used
+  2. Swipe up to put current application in background
+  3. Lunar crashes
+  4. Occurrences are irregular and happen with various apps
+
+Expected Behavior:
+  On swipe up expected behavior is going to Lunar home screen.
+
+Actual Behavior:
+  (see full report below)
+
+--- Full Issue Body ---
+### Checklist
+
+- [X] I made sure that there are **no existing issues** - [open](https://github.com/iamrasel/lunar-launcher/issues) or [closed](https://github.com/iamrasel/lunar-launcher/issues?q=is%3Aissue+is%3Aclosed) - which I could contribute my information to.
+- [X] I have taken the time to fill in all the required details. I understand that the bug report will be dismissed otherwise.
+- [X] This issue contains only one bug.
+
+### App version
+
+2.7.1
+
+### Android version
+
+Android 13 (GrapheneOS) on Pixel 6a
+
+### Steps to reproduce the bug
+
+1. Have application open and being used
+2. Swipe up to put current application in background
+3. Lunar crashes
+4. Occurrences are irregular and happen with various apps
+
+### Expected behavior
+
+On swipe up expected behavior is going to Lunar home screen.
+
+### Screenshots/Screen recordings
+
+_No response_
+
+### Logs
+
+```
+type: crash
+osVersion: google/bluejay/bluejay:13/TQ3A.230605.010/2023062800:user/release-keys
+package: rasel.lunar.launcher:33
+process: rasel.lunar.launcher
+processUptime: 51 + 200 ms
+
+java.lang.ExceptionInInitializerError
+	at java.lang.reflect.Constructor.newInstance0(Native Method)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+	at androidx.fragment.app.i0.a(Unknown Source:29)
+	at androidx.fragment.app.t0.<init>(SourceFile:3)
+	at androidx.fragment.app.o0.V(Unknown Source:113)
+	at androidx.fragment.app.v.a(Unknown Source:42)
+	at androidx.activity.k.onCreate(Unknown Source:27)
+	at androidx.fragment.app.x.onCreate(Unknown Source:0)
+	at rasel.lunar.launcher.LauncherActivity.onCreate(Unknown Source:0)
+	at android.app.Activity.performCreate(Activity.java:8389)
+	at android.app.Activity.performCreate(Activity.java:8368)
+	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1422)
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3633)
+	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3789)
+	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:101)
+	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:138)
+	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2314)
+	at android.os.Handler.dispatchMessage(Handler.java:106)
+	at android.os.Looper.loopOnce(Looper.java:201)
+	at android.os.Looper.loop(Looper.java:288)
+	at android.app.ActivityThread.main(ActivityThread.java:7937)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+	at com.android.internal.os.ExecInit.main(ExecInit.java:49)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:355)
+Caused by: java.lang.NullPointerException
+	at m3.d.<clinit>(Unknown Source:2)
+	... 27 more
+
+```
+
+### Additional information
+
+_No response_

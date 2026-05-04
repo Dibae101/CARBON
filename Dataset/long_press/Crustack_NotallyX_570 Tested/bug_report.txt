@@ -1,0 +1,92 @@
+App crash when note is selected, search filter changed and another note is selected
+
+App: Crustack/NotallyX
+Version: 7.4.0
+Issue: https://github.com/Crustack/NotallyX/issues/570
+APK: https://github.com/Crustack/NotallyX/releases/download/v7.4.0/NotallyX-7.4.0.apk
+APK Tag: v7.4.0
+Gestures: long-press, click, press
+
+Steps to Reproduce:
+  1. Add at least two notes.
+  2. Long-press to select one note (Note A).
+  3. Use the search function so that Note A disappears from the filtered list.
+  4. Long-press on another visible note in the filtered list.
+
+Expected Behavior:
+  (see full report below)
+
+Actual Behavior:
+  (see full report below)
+
+--- Full Issue Body ---
+### What happened?
+
+**Bug Description**
+The app crashes when long-pressing to select a note after filtering the note list if the previously selected note is no longer visible due to a search.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+
+1. Add at least two notes.
+2. Long-press to select one note (Note A).
+3. Use the search function so that Note A disappears from the filtered list.
+4. Long-press on another visible note in the filtered list.
+
+**Expected Behavior**
+Long-pressing a note should always succeed, even if previous selections are invalidated by list filtering. No crash should occur.
+
+**Screen Recording**
+https://github.com/user-attachments/assets/0012db28-add1-43dd-8d3b-f85de0a41962
+
+**Smartphone:**
+
+* Device: generic\_x86\_64 (Android Studio x86 emulator)
+* OS: Android 9.0 (Default Android System Image)
+* Version: 7.4.0
+
+### App Version
+
+7.4.0
+
+### Android Version (API Level)
+
+Android 9.0 (API 28)
+
+### (Optional) Relevant log output
+
+```shell
+FATAL EXCEPTION: main  (AndroidRuntime)
+Process: com.philkes.notallyx, PID: 27403  (AndroidRuntime)
+java.lang.IndexOutOfBoundsException: Asked to get item at -1 but size is 9  (AndroidRuntime)
+at androidx.recyclerview.widget.SortedList.get(SourceFile:46)  (AndroidRuntime)
+at com.philkes.notallyx.presentation.activity.main.fragment.NotallyFragment.onLongClick(SourceFile:59)  (AndroidRuntime)
+at com.philkes.notallyx.presentation.UiExtensionsKt$$ExternalSyntheticLambda20.onLongClick(SourceFile:121)  (AndroidRuntime)
+at android.view.View.performLongClickInternal(View.java:6677)  (AndroidRuntime)
+at android.view.View.performLongClick(View.java:6635)  (AndroidRuntime)
+at android.view.View.performLongClick(View.java:6653)  (AndroidRuntime)
+at android.view.View$CheckForLongPress.run(View.java:25850)  (AndroidRuntime)
+at android.os.Handler.handleCallback(Handler.java:873)  (AndroidRuntime)
+at android.os.Handler.dispatchMessage(Handler.java:99)  (AndroidRuntime)
+at android.os.Looper.loop(Looper.java:193)  (AndroidRuntime)
+at android.app.ActivityThread.main(ActivityThread.java:6669)  (AndroidRuntime)
+at java.lang.reflect.Method.invoke(Native Method)  (AndroidRuntime)
+at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:493)  (AndroidRuntime)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:858)  (AndroidRuntime)
+App has crashed, executing CustomActivityOnCrash's UncaughtExceptionHandler  (CustomActivityOnCrash)
+java.lang.IndexOutOfBoundsException: Asked to get item at -1 but size is 9  (CustomActivityOnCrash)
+at androidx.recyclerview.widget.SortedList.get(SourceFile:46)  (CustomActivityOnCrash)
+at com.philkes.notallyx.presentation.activity.main.fragment.NotallyFragment.onLongClick(SourceFile:59)  (CustomActivityOnCrash)
+at com.philkes.notallyx.presentation.UiExtensionsKt$$ExternalSyntheticLambda20.onLongClick(SourceFile:121)  (CustomActivityOnCrash)
+at android.view.View.performLongClickInternal(View.java:6677)  (CustomActivityOnCrash)
+at android.view.View.performLongClick(View.java:6635)  (CustomActivityOnCrash)
+at android.view.View.performLongClick(View.java:6653)  (CustomActivityOnCrash)
+at android.view.View$CheckForLongPress.run(View.java:25850)  (CustomActivityOnCrash)
+at android.os.Handler.handleCallback(Handler.java:873)  (CustomActivityOnCrash)
+at android.os.Handler.dispatchMessage(Handler.java:99)  (CustomActivityOnCrash)
+at android.os.Looper.loop(Looper.java:193)  (CustomActivityOnCrash)
+at android.app.ActivityThread.main(ActivityThread.java:6669)  (CustomActivityOnCrash)
+at java.lang.reflect.Method.invoke(Native Method)  (CustomActivityOnCrash)
+at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:493)  (CustomActivityOnCrash)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:858)  (CustomActivityOnCrash)
+```

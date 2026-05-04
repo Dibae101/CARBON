@@ -1,0 +1,81 @@
+The current selected day, month, week, year is not preserved after rotating
+
+App: FossifyOrg/Calendar
+Version: 1.10.2
+Issue: https://github.com/FossifyOrg/Calendar/issues/1042
+APK: https://github.com/FossifyOrg/Calendar/releases/download/1.10.2/calendar-19-foss-release.apk
+APK Tag: 1.10.2
+Gestures: rotate
+Primary Gesture: orientation
+
+Steps to Reproduce:
+  1. Go to the day view
+  2. Swipe or tap to the next day
+  3. Rotate the device
+
+Expected Behavior:
+  I expect to see the same day I saw before rotating
+
+Actual Behavior:
+  The day which was used to load the view is shown instead.
+
+--- Full Issue Body ---
+### Checklist
+
+- [x] I can reproduce the bug with the latest version given [here](https://github.com/FossifyOrg/Calendar/releases/latest).
+- [x] I made sure that there are **no existing issues** - [open](https://github.com/FossifyOrg/Calendar/issues) or [closed](https://github.com/FossifyOrg/Calendar/issues?q=is%3Aissue+is%3Aclosed) - to which I could contribute my information.
+- [x] I made sure that there are **no existing discussions** - [open](https://github.com/orgs/FossifyOrg/discussions?discussions_q=is:open+label:calendar) or [closed](https://github.com/orgs/FossifyOrg/discussions?discussions_q=is:closed+label:calendar) - to which I could contribute my information.
+- [x] I have read the FAQs inside the app (Menu -> About -> FAQs) and my problem isn't listed.
+- [x] **I have taken the time to fill in all the required details. I understand that the bug report will be dismissed otherwise.**
+- [x] This issue contains only one bug.
+- [x] I have read and understood the [contribution guidelines](https://github.com/FossifyOrg/Calendar/blob/master/CONTRIBUTING.md).
+
+### Affected app version
+
+1.10.2
+
+### Affected Android/Custom ROM version
+
+Android 16
+
+### Affected device model
+
+Google Pixel Pro 10
+
+### How did you install the app?
+
+GitHub releases
+
+### Which calendar service or provider do you use, if any?
+
+Google Calendar, Microsoft Outlook, webcal
+
+### Which sync adapter app do you use for calendar synchronization, if any?
+
+DAVx5, ICSx5
+
+### Steps to reproduce the bug
+
+1. Go to the day view
+2. Swipe or tap to the next day
+3. Rotate the device
+
+### Expected behavior
+
+I expect to see the same day I saw before rotating
+
+### Actual behavior
+
+The day which was used to load the view is shown instead.
+
+### Screenshots/Screen recordings
+
+_No response_
+
+### Additional information
+
+This issue is present in all the different views: day, week, month, month + day, year and list.
+
+Also, when navigating deeper, i.e. selecting a month when on a year view also has this problem. I think this is logical, because the same fragments are used when navigating deeper.
+
+I already know how to fix it for all the views except the list view and I'm working on a PR.

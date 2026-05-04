@@ -1,0 +1,66 @@
+[BUG] Gesture nav: swiping up to go home when already in Lawnchair creates a "ghost app" in the Recents menu
+
+App: LawnchairLauncher/lawnchair
+Version: 12.1.0
+Issue: https://github.com/LawnchairLauncher/lawnchair/issues/4708
+APK: https://github.com/LawnchairLauncher/lawnchair/releases/download/v12.1.0-alpha.4/Lawnchair.12.1.0.Alpha.4.apk
+APK Tag: v12.1.0-alpha.4
+Gestures: gesture navigation, swipe up
+Primary Gesture: edge_swipe
+
+Steps to Reproduce:
+  1. Ensure gesture navigation is enabled
+  2. Ensure Lawnchair is set as the default launcher app
+  3. Go to the homescreen
+  4. Swipe up on the home bar and let go, without activating the recents menu
+  5. Open the recents menu and observe a strange "ghost app"
+  6. Enter a different app, then return to recents
+  7. Notice the "ghost app" is gone
+
+Expected Behavior:
+  When performing the swipe up gesture and then immediately opening Recents, there should be no strange "ghost app" present - only the apps I've opened.
+
+Actual Behavior:
+  (see full report below)
+
+--- Full Issue Body ---
+### Describe the bug
+
+When using Android's gesture navigation system, activating the "swipe up to go home" gesture when already on the homescreen takes the user back to their first page of apps. This is a convention in the stock Pixel Launcher app, and Lawnchair appears to follow it.
+
+However, performing this gesture also causes a strange side effect in Lawnchair: if the user opens the app switcher immediately after, a completely blank "app" appears in the Recents picker. This app doesn't do anything and disappears if the user interacts with any other app in the Recents menu.
+
+It would appear that the swipe up gesture somehow causes Lawnchair to spawn this mystery "ghost app", which can be annoying and isn't consistent with other launchers.
+
+### Steps to reproduce
+
+Steps to reproduce the behavior:
+1. Ensure gesture navigation is enabled
+2. Ensure Lawnchair is set as the default launcher app
+3. Go to the homescreen
+4. Swipe up on the home bar and let go, without activating the recents menu
+5. Open the recents menu and observe a strange "ghost app"
+6. Enter a different app, then return to recents
+7. Notice the "ghost app" is gone
+
+### Expected behavior
+
+When performing the swipe up gesture and then immediately opening Recents, there should be no strange "ghost app" present - only the apps I've opened.
+
+### Screenshots
+
+Here, I open an app in Recents and go home a few times to demonstrate normal behavior. Then, I perform the problematic swipe up gesture - notice that when I open recents, there's a transparent app in Recents. It disappears once I enter a different app.
+
+
+https://github.com/user-attachments/assets/069113fe-7cc8-4e0d-b4b2-40f7c14b0a28
+
+
+### Device information
+
+- Device: Google Pixel 8 Pro
+- OS: Stock ROM, Android 14 QPR3
+- App version: 12.1.0 Beta 3
+
+### Additional context
+
+_No response_

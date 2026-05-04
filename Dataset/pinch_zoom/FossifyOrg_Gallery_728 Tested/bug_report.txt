@@ -1,0 +1,82 @@
+(Deep zooming) Can not pan after releasing only one finger after pinch zooming
+
+App: FossifyOrg/Gallery
+Version: 1.8.0
+Issue: https://github.com/FossifyOrg/Gallery/issues/728
+APK: https://github.com/FossifyOrg/Gallery/releases/download/1.8.0/gallery-20-foss-release.apk
+APK Tag: 1.8.0
+Gestures: pinch, pinch to zoom, pinch zoom, zoom in, zoom, two finger, touch
+Limitation: Cat A: Pointer count transition (2->1->2). Cannot lift one finger while keeping another down within a single touch session. uiautomator2 atomic touch sessions. SELinux blocks raw sendevent.
+
+Steps to Reproduce:
+  1. "Allow deep zooming images" must be enabled
+  2. Open a picture
+  3. With two fingers, (un)pinch to zoom in
+  4. Release only one finger and try to pan with the other
+  5. Place the finger back and try to zoom in/out or pan
+
+Expected Behavior:
+  According to touch input:
+At step 4, the image should be panned.
+At step 5, the image should be zoomed or panned.
+
+Actual Behavior:
+  After step 3, when one finger is released, no further pan/zoom happens despite user input:
+At step 4, the image is not panned at all.
+At step 5, the image is not zoomed nor panned at all.
+
+--- Full Issue Body ---
+### Checklist
+
+- [x] I can reproduce the bug with the latest version given [here](https://github.com/FossifyOrg/Gallery/releases/latest).
+- [x] I made sure that there are **no existing issues** - [open](https://github.com/FossifyOrg/Gallery/issues) or [closed](https://github.com/FossifyOrg/Gallery/issues?q=is%3Aissue+is%3Aclosed) - to which I could contribute my information.
+- [x] I made sure that there are **no existing discussions** - [open](https://github.com/orgs/FossifyOrg/discussions?discussions_q=is:open+label:gallery) or [closed](https://github.com/orgs/FossifyOrg/discussions?discussions_q=is:closed+label:gallery) - to which I could contribute my information.
+- [x] I have read the FAQs inside the app (Menu -> About -> FAQs) and my problem isn't listed.
+- [x] **I have taken the time to fill in all the required details. I understand that the bug report will be dismissed otherwise.**
+- [x] This issue contains only one bug.
+- [x] I have read and understood the [contribution guidelines](https://github.com/FossifyOrg/Gallery/blob/master/CONTRIBUTING.md).
+
+### Affected app version
+
+1.8.0
+
+### Affected Android/Custom ROM version
+
+Android 15 / crDroid 11.9
+
+### Affected device model
+
+LG V30
+
+### How did you install the app?
+
+F-Droid / IzzyOnDroid
+
+### Steps to reproduce the bug
+
+1. "Allow deep zooming images" must be enabled
+2. Open a picture
+3. With two fingers, (un)pinch to zoom in
+4. Release only one finger and try to pan with the other 
+5. Place the finger back and try to zoom in/out or pan
+
+### Expected behavior
+
+According to touch input:
+At step 4, the image should be panned.
+At step 5, the image should be zoomed or panned.
+
+### Actual behavior
+
+After step 3, when one finger is released, no further pan/zoom happens despite user input:
+At step 4, the image is not panned at all.
+At step 5, the image is not zoomed nor panned at all.
+
+### Screenshots/Screen recordings
+
+https://github.com/user-attachments/assets/9769d716-7097-4836-9976-a467c246e653
+
+### Additional information
+
+With deep zooming disabled the sequence works as expected.
+I toggled every setting in the deep zooming category but they do not seem to influence the bug.

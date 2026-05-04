@@ -1,0 +1,59 @@
+[BUG] several dialogs disappear on screen rotation
+
+App: Waboodoo/HTTP-Shortcuts
+Version: 2.12.0
+Issue: https://github.com/Waboodoo/HTTP-Shortcuts/issues/262
+APK: https://github.com/Waboodoo/HTTP-Shortcuts/releases/download/v2.12.0/app-universal-release.apk
+APK Tag: v2.12.0
+Gestures: rotation, landscape, portrait, screen rotation
+Primary Gesture: orientation
+
+Steps to Reproduce:
+  1. Go to the Main activity
+  2. Tap in add (plus in the right bottom)
+  3. A fragment similar to this will appear: <img src="https://user-images.githubusercontent.com/3637419/156907758-3767c839-cd8c-46a7-b0a9-468f5c79f3ba.png" width=30% height=30%>
+  4. Force the pause from the activity and then return to the activity (double rotation). Note that the fragment disappears. Note: the pause from activity can be performed in several ways. We suggest using a double rotation (starts in portrait, goes to landscape, and back to portrait) with this function previously enabled in the smartphone. **Expected behavior** The expected behavior is the return to the previous state with the fragments of the previous image. **Actual behavior** However, the fragment disappears. <img src="https://user-images.githubusercontent.com/3637419/156907761-ab3caabc-1157-4015-81e7-8e63c579f9a1.png" width=30% height=30%> This bug occurs in activities: - AboutActivity - BasicRequestSettingsActivity - CategoriesActivity - ExecutionSettingsActivity - ImportExportActivity - MainActivity - ResponseActivity - ScriptingActivity - SettingsActivity - ShortcutEditorActivity - VariablesActivity Device: - Device: Moto G30 with OS: Android 11 - Version: 2.12.0 - Device language: English
+
+Expected Behavior:
+  (see full report below)
+
+Actual Behavior:
+  (see full report below)
+
+--- Full Issue Body ---
+When I perform these sequences of events, the dialog disappears on-screen rotation:
+**Steps To Reproduce**
+1. Go to the Main activity
+2. Tap in add (plus in the right bottom)
+3. A fragment similar to this will appear:
+
+<img src="https://user-images.githubusercontent.com/3637419/156907758-3767c839-cd8c-46a7-b0a9-468f5c79f3ba.png" width=30% height=30%>
+
+
+4. Force the pause from the activity and then return to the activity (double rotation). Note that the fragment disappears. Note: the pause from activity can be performed in several ways. We suggest using a double rotation (starts in portrait, goes to landscape, and back to portrait) with this function previously enabled in the smartphone.
+
+**Expected behavior**
+The expected behavior is the return to the previous state with the fragments of the previous image.
+
+**Actual behavior**
+However, the fragment disappears.
+
+<img src="https://user-images.githubusercontent.com/3637419/156907761-ab3caabc-1157-4015-81e7-8e63c579f9a1.png" width=30% height=30%>
+
+This bug occurs in activities:
+- AboutActivity
+- BasicRequestSettingsActivity
+- CategoriesActivity
+- ExecutionSettingsActivity
+- ImportExportActivity
+- MainActivity
+- ResponseActivity
+- ScriptingActivity
+- SettingsActivity
+- ShortcutEditorActivity
+- VariablesActivity
+
+Device:
+- Device: Moto G30 with OS: Android 11
+- Version: 2.12.0
+- Device language: English

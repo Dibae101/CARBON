@@ -1,0 +1,131 @@
+<mxfile host="65bd71144e">
+    <diagram id="rebl-pipeline" name="ReBL+ Pipeline">
+        <mxGraphModel dx="891" dy="579" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="4250" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+
+                <!-- Title -->
+                <mxCell id="title" value="&lt;font style=&quot;font-size:20px;&quot;&gt;&lt;b&gt;ReBL+ Architecture&lt;/b&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fillColor=none;fontColor=#000000;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="20" width="230" height="40" as="geometry"/>
+                </mxCell>
+
+                <!-- Android Emulator -->
+                <mxCell id="DEV" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Android Emulator&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;strokeWidth=2;fontColor=#FFFFFF;fontSize=15;fontStyle=1;arcSize=20;" parent="1" vertex="1">
+                    <mxGeometry x="420" y="80" width="220" height="50" as="geometry"/>
+                </mxCell>
+
+                <!-- uiautomator2 bridge -->
+                <mxCell id="UA2" value="&lt;b&gt;uiautomator2&lt;/b&gt;&lt;br&gt;Python ↔ Android bridge" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=13;arcSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="390" y="160" width="280" height="45" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_dev_ua2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="DEV" target="UA2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- Raw Screenshot -->
+                <mxCell id="SS" value="&lt;b&gt;Raw Screenshot&lt;/b&gt;&lt;br&gt;Full-resolution PNG&lt;br&gt;of the current screen" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=12;arcSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="270" width="230" height="65" as="geometry"/>
+                </mxCell>
+
+                <!-- UI Hierarchy XML -->
+                <mxCell id="XML" value="&lt;b&gt;UI Hierarchy XML&lt;/b&gt;&lt;br&gt;Every widget with its name,&lt;br&gt;text, position, and properties" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=12;arcSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="640" y="270" width="250" height="65" as="geometry"/>
+                </mxCell>
+
+                <!-- Edges from UA2 to Screenshot and XML -->
+                <mxCell id="e1" value="screenshot()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=10;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="UA2" target="SS" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" value="dump_hierarchy()" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=10;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="UA2" target="XML" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- Parse XML into Element List -->
+                <mxCell id="ELEMS" value="&lt;b&gt;Parse XML → Element List&lt;/b&gt;&lt;br&gt;For each element: type (clickable, scrollable,&lt;br&gt;editable, checkable, text), pixel bounds, text, id" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=12;arcSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="390" width="360" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;" parent="1" source="XML" target="ELEMS" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- Annotated Screenshot -->
+                <mxCell id="ANN" value="&lt;b&gt;Annotated Screenshot&lt;/b&gt;&lt;br&gt;&lt;br&gt;PIL draws colored bounding boxes&lt;br&gt;on the raw screenshot:&lt;br&gt;&lt;font color=&quot;#00AA00&quot;&gt;Green&lt;/font&gt; = clickable, &lt;font color=&quot;#FF8800&quot;&gt;Orange&lt;/font&gt; = scrollable&lt;br&gt;&lt;font color=&quot;#0066FF&quot;&gt;Blue&lt;/font&gt; = editable, &lt;font color=&quot;#9900CC&quot;&gt;Purple&lt;/font&gt; = checkable&lt;br&gt;Each box gets a number badge" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=11;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="510" width="300" height="130" as="geometry"/>
+                </mxCell>
+
+                <!-- Element Map -->
+                <mxCell id="MAP" value="&lt;b&gt;Element Map (text)&lt;/b&gt;&lt;br&gt;&lt;br&gt;Numbered list pairing each box&lt;br&gt;to its details:&lt;br&gt;&lt;font face=&quot;Courier&quot;&gt;#0 [CLICKABLE] Button text=OK&lt;br&gt;   bounds=[50,200][200,260]&lt;br&gt;#5 [SCROLLABLE] ListView&lt;br&gt;   bounds=[0,210][1080,1794]&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=11;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="540" y="510" width="300" height="130" as="geometry"/>
+                </mxCell>
+
+                <!-- Edges to Annotated Screenshot and Element Map -->
+                <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;" parent="1" source="SS" target="ANN" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;dashed=1;dashPattern=4 4;" parent="1" source="ELEMS" target="ANN" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;" parent="1" source="ELEMS" target="MAP" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- Bug Report -->
+                <mxCell id="BR" value="&lt;b&gt;Bug Report&lt;/b&gt;&lt;br&gt;Steps to reproduce" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=12;arcSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="740" width="160" height="55" as="geometry"/>
+                </mxCell>
+
+                <!-- Gemini Pro LLM -->
+                <mxCell id="GEM" value="&lt;b&gt;&lt;font color=&quot;#ffffff&quot;&gt;Gemini 2.5 Pro&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#cccccc&quot;&gt;Receives annotated screenshot (image)&lt;br&gt;+ element map + bug report (text)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#FFFFFF;strokeWidth=2;fontColor=#FFFFFF;fontSize=13;arcSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="720" width="370" height="80" as="geometry"/>
+                </mxCell>
+
+                <!-- Edges to Gemini -->
+                <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;" parent="1" source="ANN" target="GEM" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;" parent="1" source="MAP" target="GEM" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e_br" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;" edge="1" parent="1" source="BR" target="GEM">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- LLM Chooses Action -->
+                <mxCell id="ACT" value="&lt;b&gt;LLM Chooses an Action&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;font face=&quot;Courier&quot;&gt;click, long_click, set_text&lt;br&gt;pinch, double_tap_screen&lt;br&gt;swipe_region, edge_swipe&lt;br&gt;tap_screen, drag_and_drop&lt;br&gt;media_gesture, scroll, back&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0E0E0;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=11;arcSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="860" width="310" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;" parent="1" source="GEM" target="ACT" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- Execute on Device -->
+                <mxCell id="EXEC" value="&lt;b&gt;Execute on Device&lt;/b&gt;&lt;br&gt;&lt;i&gt;via uiautomator2&lt;/i&gt;&lt;br&gt;&lt;br&gt;Gesture actions (pinch, double-tap,&lt;br&gt;edge-swipe, media gestures) are&lt;br&gt;&lt;b&gt;new in ReBL+&lt;/b&gt; — old ReBL only&lt;br&gt;had click, long_click, swipe, scroll" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=12;arcSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="350" y="1040" width="310" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;" parent="1" source="ACT" target="EXEC" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- Check Logcat -->
+                <mxCell id="LOG" value="&lt;b&gt;Check Logcat&lt;/b&gt;&lt;br&gt;for crashes or&lt;br&gt;exceptions" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="435" y="1210" width="140" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=2;" parent="1" source="EXEC" target="LOG" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+
+                <!-- Repeat loop -->
+                <mxCell id="e14" value="&lt;b&gt;Repeat&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;strokeWidth=3;fontColor=#000000;fontSize=12;fontStyle=1;dashed=1;dashPattern=8 4;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="LOG" target="DEV" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="20" y="1270"/>
+                            <mxPoint x="20" y="105"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

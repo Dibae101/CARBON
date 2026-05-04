@@ -1,0 +1,76 @@
+[BUG] Unable to add any widget
+
+App: LawnchairLauncher/lawnchair
+Version: 14.0
+Issue: https://github.com/LawnchairLauncher/lawnchair/issues/4320
+APK: https://github.com/LawnchairLauncher/lawnchair/releases/download/v14.0.0-beta3/Lawnchair.14.0.0.Beta.3.apk
+APK Tag: v14.0.0-beta3
+Primary Gesture: drag_and_drop
+
+Steps to Reproduce:
+  1. Open "widgets" tab
+  2. Select any widget
+  3. Drag and drop it to the home screen
+  4. Try to add it ### Expected behavior No crash, obviously, and a working widget. ### Screenshots https://github.com/LawnchairLauncher/lawnchair/assets/28765699/c3f92576-6319-4b52-8a35-6d0a3efa5c74 ### Device information - Device: Samsung Galaxy A54 - OS: Android 14 (One UI 6) - App version: 14.0 Dev `#774` ### Additional context The main culprit seems to be `com.android.launcher3.CellLayout.getUnusedHorizontalSpace()` Here is the log: ``` FATAL EXCEPTION: main Process: app.lawnchair.debug, PID: 14419 java.lang.NullPointerException: Attempt to invoke virtual method 'int com.android.launcher3.CellLayout.getUnusedHorizontalSpace()' on a null object reference at com.android.launcher3.Workspace.getFinalPositionForDropAnimation(Workspace.java:3137) at com.android.launcher3.Workspace.animateWidgetDrop(Workspace.java:3164) at com.android.launcher3.Launcher.completeTwoStageWidgetDrop(Launcher.java:1086) at com.android.launcher3.Launcher$3.run(Launcher.java:999) at com.android.launcher3.Workspace.removeExtraEmptyScreenDelayed(Workspace.java:952) at com.android.launcher3.Workspace.lambda$removeExtraEmptyScreenDelayed$3(Workspace.java:922) at com.android.launcher3.Workspace.$r8$lambda$qJmEWteEMIDxIhPN0xohUE9-Gbo(Unknown Source:0) at com.android.launcher3.Workspace$$ExternalSyntheticLambda13.run(D8$$SyntheticClass:0) at android.os.Handler.handleCallback(Handler.java:958) at android.os.Handler.dispatchMessage(Handler.java:99) at android.os.Looper.loopOnce(Looper.java:230) at android.os.Looper.loop(Looper.java:319) at android.app.ActivityThread.main(ActivityThread.java:8893) at java.lang.reflect.Method.invoke(Native Method) at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:608) at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1103) ```
+
+Expected Behavior:
+  No crash, obviously, and a working widget.
+
+Actual Behavior:
+  (see full report below)
+
+--- Full Issue Body ---
+### Describe the bug
+
+Any attemp to add any widget results in a LawnChair crash, and no widget added.
+
+### Steps to reproduce
+
+Steps to reproduce the behavior:
+1. Open "widgets" tab
+2. Select any widget
+3. Drag and drop it to the home screen
+4. Try to add it
+
+### Expected behavior
+
+No crash, obviously, and a working widget.
+
+### Screenshots
+
+https://github.com/LawnchairLauncher/lawnchair/assets/28765699/c3f92576-6319-4b52-8a35-6d0a3efa5c74
+
+### Device information
+
+- Device: Samsung Galaxy A54
+- OS: Android 14 (One UI 6)
+- App version: 14.0 Dev `#774`
+
+
+### Additional context
+
+The main culprit seems to be `com.android.launcher3.CellLayout.getUnusedHorizontalSpace()`
+
+Here is the log:
+
+```
+FATAL EXCEPTION: main
+Process: app.lawnchair.debug, PID: 14419
+java.lang.NullPointerException: Attempt to invoke virtual method 'int com.android.launcher3.CellLayout.getUnusedHorizontalSpace()' on a null object reference
+	at com.android.launcher3.Workspace.getFinalPositionForDropAnimation(Workspace.java:3137)
+	at com.android.launcher3.Workspace.animateWidgetDrop(Workspace.java:3164)
+	at com.android.launcher3.Launcher.completeTwoStageWidgetDrop(Launcher.java:1086)
+	at com.android.launcher3.Launcher$3.run(Launcher.java:999)
+	at com.android.launcher3.Workspace.removeExtraEmptyScreenDelayed(Workspace.java:952)
+	at com.android.launcher3.Workspace.lambda$removeExtraEmptyScreenDelayed$3(Workspace.java:922)
+	at com.android.launcher3.Workspace.$r8$lambda$qJmEWteEMIDxIhPN0xohUE9-Gbo(Unknown Source:0)
+	at com.android.launcher3.Workspace$$ExternalSyntheticLambda13.run(D8$$SyntheticClass:0)
+	at android.os.Handler.handleCallback(Handler.java:958)
+	at android.os.Handler.dispatchMessage(Handler.java:99)
+	at android.os.Looper.loopOnce(Looper.java:230)
+	at android.os.Looper.loop(Looper.java:319)
+	at android.app.ActivityThread.main(ActivityThread.java:8893)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:608)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1103)
+```

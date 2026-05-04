@@ -1,0 +1,56 @@
+[BUG] Gesture navigation gets locked in one orientation until a launcher restart happens [A10]
+
+App: LawnchairLauncher/lawnchair
+Version: 14.0.0
+Issue: https://github.com/LawnchairLauncher/lawnchair/issues/4642
+APK: https://github.com/LawnchairLauncher/lawnchair/releases/download/v14.0.0-beta3/Lawnchair.14.0.0.Beta.3.apk
+APK Tag: v14.0.0-beta3
+Gestures: gesture navigation, orientation, landscape
+Primary Gesture: edge_swipe
+
+Steps to Reproduce:
+  1. Start launchair
+  2. Switch orientation
+  3. Notice the recents screen won't open
+  4. Restart launchair while staying at the new orientation
+  5. It now works but you'll have to do the same everytime you change orientation
+
+Expected Behavior:
+  Works without restart
+
+Actual Behavior:
+  (see full report below)
+
+--- Full Issue Body ---
+### Describe the bug
+
+After further testing my previous statement which includes that gesture nav doesn't work in landscape was false and it appears that gesture nav works fine in both orientations however it seems that its fixed to the orientation of when the launcher starts so if you change the orientation and restart the launcher it will work in the new orientation but you'll still have to restart it if you change the orientation again
+
+It probably needs an event listener on when the orientation changes to adjust the recents screen
+
+### Steps to reproduce
+
+Steps to reproduce the behavior:
+1. Start launchair
+2. Switch orientation 
+3. Notice the recents screen won't open
+4. Restart launchair while staying at the new orientation
+5. It now works but you'll have to do the same everytime you change orientation 
+
+### Expected behavior
+
+Works without restart
+
+### Screenshots
+
+_No response_
+
+### Device information
+
+- Device: Samsung Galaxy J6 (j6lte)
+- OS: stock ROM Android version 10 (Samsung One UI 2)
+- App version: 14.0.0-20240807 (goooler fork)
+
+### Additional context
+
+_No response_
