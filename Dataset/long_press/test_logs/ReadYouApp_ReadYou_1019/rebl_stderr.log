@@ -1,0 +1,73 @@
+/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+Traceback (most recent call last):
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 1349, in getresponse
+    response.begin()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/util/retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='aiplatform.googleapis.com', port=443): Read timed out. (read timeout=120)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/darshan/Desktop/Papers/ReBL/old_ReBL/Automation/my_gpt.py", line 181, in generate_text
+    response, history = _generate_vertex(history, model)
+  File "/Users/darshan/Desktop/Papers/ReBL/old_ReBL/Automation/my_gpt.py", line 156, in _generate_vertex
+    r = _requests.post(url, json=payload, timeout=120)
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/requests/api.py", line 115, in post
+    return request("post", url, data=data, json=json, **kwargs)
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/requests/adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='aiplatform.googleapis.com', port=443): Read timed out. (read timeout=120)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/darshan/Desktop/Papers/ReBL/old_ReBL/Automation/reproduction.py", line 144, in <module>
+    main(sys.argv[1] , sys.argv[2]) #device_id, reprot_file_name
+  File "/Users/darshan/Desktop/Papers/ReBL/old_ReBL/Automation/reproduction.py", line 138, in main
+    reproduce_bug(device_port, reprot_file_name)
+  File "/Users/darshan/Desktop/Papers/ReBL/old_ReBL/Automation/reproduction.py", line 97, in reproduce_bug
+    response,  history = generate_text(prompt, history, package_name)
+  File "/Users/darshan/Desktop/Papers/ReBL/old_ReBL/Automation/my_gpt.py", line 192, in generate_text
+    save_chat_history(history, package_name)
+  File "/Users/darshan/Desktop/Papers/ReBL/old_ReBL/Automation/my_gpt.py", line 207, in save_chat_history
+    with open(file_name, 'w') as file:
+FileNotFoundError: [Errno 2] No such file or directory: './chat_history/com.google.android.apps.nexuslauncher_chat_2026-04-22 12-21-25.json'

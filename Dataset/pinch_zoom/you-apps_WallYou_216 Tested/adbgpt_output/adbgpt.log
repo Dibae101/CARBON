@@ -1,0 +1,34 @@
+2026-05-03 14:38:42.962 | INFO     | ChatGPT:__init__:36 - [AdbGPT LLM] Provider: vertex | Model: gemini-2.5-pro | Keys: 3
+2026-05-03 14:38:42.963 | INFO     | ChatGPT:infer:113 - Available actions: [tap, input, scroll, double tap, long tap]
+Action primitives: [Tap] [Component], [Scroll] [Direction], [Input] [Component] [Value], [Double-tap] [Component], [Long-tap] [Component]
+Question: Extract the entity from the following ->
+    "1. Open bookmark
+    2. Tap "add new bookmark" and create a name with "a"
+    3. Create another one with name "b"
+    4. Click "a"
+    5. Go back to bookmark after changing name "a" to "b"
+    6. App crash"
+Answer:
+    1st step is "Open bookmark". The action is "open" and the target component is "bookmark". However, there is no explicit "open" in the Available actions list. Therefore, we select the closest semantic action "tap". Following the Action primitives, the entity of the step is [Tap] ["bookmark"].
+    2nd step is "Tap 'add new bookmark' and create a name with 'a'". Due to the conjunction word "and", this step can be separated into two sub-steps. For the first sub-step, the entity is [Tap] ["add new bookmark"]. For the second sub-step, the entity is [Input] ["name"] ["a"].
+    3rd step is "Create another one with name 'b'". This repeats the previous steps: [Tap] ["add new bookmark"] and [Input] ["name"] ["b"].
+    4th step is "Click 'a'". The entity is [Tap] ["a"].
+    5th step is "Go back to bookmark after changing name 'a' to 'b'". The entity is [Input] ["name"] ["b"] then [Tap] ["back"].
+    6th step is "App crash". No operations.
+    Overall: 1.[Tap]["bookmark"] 2.[Tap]["add new bookmark"] 3.[Input]["name"]["a"] 4.[Tap]["add new bookmark"] 5.[Input]["name"]["b"] 6.[Tap]["a"] 7.[Input]["name"]["b"] 8.[Tap]["back"]
+Question: Extract the entity from the following -> "Improper edge-to-edge implementation
+
+App: you-apps/WallYou
+Version: 9.1
+Issue: https://github.com/you-apps/WallYou/issues/216
+APK: https://github.com/you-apps/WallYou/releases/download/v9.1/app-release.apk
+APK Tag: v9.1
+Gestures: pinch, pinch zoom, zoom
+Primary Gesture: pinch_zoom
+Keywords: pinch; pinch zoom; zoom
+
+Tested: yes
+"
+ Answer: 
+2026-05-03 14:38:57.643 | INFO     | ChatGPT:infer:117 - No steps can be extracted. The bug report describes a "pinch zoom" gesture, which is not in the available actions list.
+2026-05-03 14:38:58.954 | INFO     | ChatGPT:__init__:36 - [AdbGPT LLM] Provider: vertex | Model: gemini-2.5-pro | Keys: 3

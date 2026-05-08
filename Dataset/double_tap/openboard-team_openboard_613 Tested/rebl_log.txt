@@ -1,0 +1,31 @@
+ReBL Test Log
+============================================================
+App:              openboard-team/openboard
+Issue:            https://github.com/openboard-team/openboard/issues/613
+Version:          1.4.4
+Primary Gesture:  set_text, click
+Test Result:      SUCCESS
+Execution Time:   60s
+Total Commands:   12
+Unique Actions:   click, set_text, back
+============================================================
+
+ReBL Success — Bug only requires click and set_text actions.
+
+The bug is about the spellchecker incorrectly flagging words when a 
+period is appended. No double-tap gesture is actually needed.
+
+Steps performed:
+  1. click → Settings → System → Languages & input → Spell checker
+  2. click → Select "OpenBoard Spell Checker"
+  3. back → Return to home
+  4. click → Open Messages app
+  5. click → Select conversation
+  6. set_text → Type "hello."
+  7. Observe: word incorrectly flagged with red underline (bug reproduced)
+
+Note: This bug was miscategorized as double_tap. The bug report mentions
+"double-tap-spacebar" only to clarify the user is NOT using that feature.
+The actual reproduction requires only basic click + set_text actions.
+
+============================================================

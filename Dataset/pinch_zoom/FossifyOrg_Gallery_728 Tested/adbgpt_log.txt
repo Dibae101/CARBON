@@ -1,0 +1,275 @@
+AdbGPT Test Log
+============================================================
+App:              FossifyOrg/Gallery
+Issue:            https://github.com/FossifyOrg/Gallery/issues/728
+Version:          1.8.0
+Primary Gesture:  N/A
+Category:         pinch_zoom
+Test Result:      SUCCESS
+Execution Time:   114.8s
+Return Code:      0
+============================================================
+
+Result Reason:
+  AdbGPT completed all 10 extracted S2R steps without errors.
+
+============================================================
+FULL EXECUTION LOG (stdout)
+============================================================
+Extracted 10 steps
+{'currentPackageName': 'com.google.android.permissioncontroller', 'displayHeight': 2280, 'displayRotation': 0, 'displaySizeDpX': 393, 'displaySizeDpY': 829, 'displayWidth': 1080, 'productName': 'sdk_gphone64_arm64', 'screenOn': True, 'sdkInt': 33, 'naturalOrientation': True}
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_0.png
+run command: adb pull /sdcard/screenshot-step_0.png /Users/darshan/Desktop/Papers/ReBL/Dataset/pinch_zoom/FossifyOrg_Gallery_728 Tested/adbgpt_output
+run command: adb shell input tap 903.5 34.5
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_1.png
+run command: adb pull /sdcard/screenshot-step_1.png /Users/darshan/Desktop/Papers/ReBL/Dataset/pinch_zoom/FossifyOrg_Gallery_728 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_2.png
+run command: adb pull /sdcard/screenshot-step_2.png /Users/darshan/Desktop/Papers/ReBL/Dataset/pinch_zoom/FossifyOrg_Gallery_728 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_3.png
+run command: adb pull /sdcard/screenshot-step_3.png /Users/darshan/Desktop/Papers/ReBL/Dataset/pinch_zoom/FossifyOrg_Gallery_728 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_4.png
+run command: adb pull /sdcard/screenshot-step_4.png /Users/darshan/Desktop/Papers/ReBL/Dataset/pinch_zoom/FossifyOrg_Gallery_728 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_5.png
+run command: adb pull /sdcard/screenshot-step_5.png /Users/darshan/Desktop/Papers/ReBL/Dataset/pinch_zoom/FossifyOrg_Gallery_728 Tested/adbgpt_output
+run command: adb shell input tap 903.5 34.5
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_6.png
+run command: adb pull /sdcard/screenshot-step_6.png /Users/darshan/Desktop/Papers/ReBL/Dataset/pinch_zoom/FossifyOrg_Gallery_728 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_7.png
+run command: adb pull /sdcard/screenshot-step_7.png /Users/darshan/Desktop/Papers/ReBL/Dataset/pinch_zoom/FossifyOrg_Gallery_728 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_8.png
+run command: adb pull /sdcard/screenshot-step_8.png /Users/darshan/Desktop/Papers/ReBL/Dataset/pinch_zoom/FossifyOrg_Gallery_728 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_9.png
+run command: adb pull /sdcard/screenshot-step_9.png /Users/darshan/Desktop/Papers/ReBL/Dataset/pinch_zoom/FossifyOrg_Gallery_728 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+AdbGPT completed: 10/10 steps in 77.7s
+Missing steps: 0
+
+
+============================================================
+STDERR
+============================================================
+/Users/darshan/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-05-03 14:20:22.402 | INFO     | ChatGPT:__init__:36 - [AdbGPT LLM] Provider: vertex | Model: gemini-2.5-pro | Keys: 3
+2026-05-03 14:20:22.402 | INFO     | ChatGPT:infer:113 - Available actions: [tap, input, scroll, double tap, long tap]
+Action primitives: [Tap] [Component], [Scroll] [Direction], [Input] [Component] [Value], [Double-tap] [Component], [Long-tap] [Component]
+Question: Extract the entity from the following ->
+    "1. Open bookmark
+    2. Tap "add new bookmark" and create a name with "a"
+    3. Create another one with name "b"
+    4. Click "a"
+    5. Go back to bookmark after changing name "a" to "b"
+    6. App crash"
+Answer:
+    1st step is "Open bookmark". The action is "open" and the target component is "bookmark". However, there is no explicit "open" in the Available actions list. Therefore, we select the closest semantic action "tap". Following the Action primitives, the entity of the step is [Tap] ["bookmark"].
+    2nd step is "Tap 'add new bookmark' and create a name with 'a'". Due to the conjunction word "and", this step can be separated into two sub-steps. For the first sub-step, the entity is [Tap] ["add new bookmark"]. For the second sub-step, the entity is [Input] ["name"] ["a"].
+    3rd step is "Create another one with name 'b'". This repeats the previous steps: [Tap] ["add new bookmark"] and [Input] ["name"] ["b"].
+    4th step is "Click 'a'". The entity is [Tap] ["a"].
+    5th step is "Go back to bookmark after changing name 'a' to 'b'". The entity is [Input] ["name"] ["b"] then [Tap] ["back"].
+    6th step is "App crash". No operations.
+    Overall: 1.[Tap]["bookmark"] 2.[Tap]["add new bookmark"] 3.[Input]["name"]["a"] 4.[Tap]["add new bookmark"] 5.[Input]["name"]["b"] 6.[Tap]["a"] 7.[Input]["name"]["b"] 8.[Tap]["back"]
+Question: Extract the entity from the following -> "1. "Allow deep zooming images" must be enabled
+2. Open a picture
+3. With two fingers, (un)pinch to zoom in
+4. Release only one finger and try to pan with the other
+5. Place the finger back and try to zoom in/out or pan"
+ Answer: 
+2026-05-03 14:20:57.401 | INFO     | ChatGPT:infer:117 - 1st step is "'Allow deep zooming images' must be enabled". This is a precondition, which implies an action to tap a setting to enable it. The entity is [Tap] ["Allow deep zooming images" checkbox].
+2nd step is "Open a picture". The action "open" is not in the available actions. We select the closest semantic action, which is "tap". The entity is [Tap] ["picture"].
+3rd step is "With two fingers, (un)pinch to zoom in". The "pinch to zoom" gesture is a form of navigating the view. The closest available action is "scroll". The direction is "zoom in". The entity is [Scroll] ["zoom in"].
+4th step is "Release only one finger and try to pan with the other". Panning the view is a classic "scroll" action. The entity is [Scroll] ["pan"].
+5th step is "Place the finger back and try to zoom in/out or pan". This step describes two attempted actions. "zoom in/out" is a scroll action, so the entity is [Scroll] ["zoom in/out"]. "pan" is also a scroll action, so the entity is [Scroll] ["pan"].
+Overall: 1.[Tap]["Allow deep zooming images" checkbox] 2.[Tap]["picture"] 3.[Scroll]["zoom in"] 4.[Scroll]["pan"] 5.[Scroll]["zoom in/out"] 6.[Scroll]["pan"]
+2026-05-03 14:20:57.404 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-1: [Tap] [picture] [None]
+2026-05-03 14:20:57.404 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-2: [Scroll] [zoom in] [None]
+2026-05-03 14:20:57.404 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-3: [Scroll] [pan] [None]
+2026-05-03 14:20:57.404 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-4: [Scroll] [zoom in/out] [None]
+2026-05-03 14:20:57.404 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-5: [Scroll] [pan] [None]
+2026-05-03 14:20:57.404 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-6: [Tap] [picture] [None]
+2026-05-03 14:20:57.404 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-7: [Scroll] [zoom in] [None]
+2026-05-03 14:20:57.404 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-8: [Scroll] [pan] [None]
+2026-05-03 14:20:57.404 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-9: [Scroll] [zoom in/out] [None]
+2026-05-03 14:20:57.404 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-10: [Scroll] [pan] [None]
+2026-05-03 14:20:58.713 | INFO     | ChatGPT:__init__:36 - [AdbGPT LLM] Provider: vertex | Model: gemini-2.5-pro | Keys: 3
+2026-05-03 14:20:58.713 | DEBUG    | __main__:<module>:57 - [Tap] ["picture"]
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 14:20:58.767 | INFO     | guided_replay:encoding:16 - reading hierarchy tree from step_0_hierarchy.xml ...
+2026-05-03 14:20:58.783 | INFO     | guided_replay:encoding:26 - encoding the ui elements in hierarchy tree...
+2026-05-03 14:20:58.783 | INFO     | ChatGPT:infer:113 - Question:
+GUI screen: 
+<html>
+  <button id=0 class="" alt="open drawer" style="width:196px; height:196px; left:0px; top:84px"></button>
+  <button id=1 class="chat_actionbar" alt="Chat" style="width:168px; height:168px; left:1272px; top:98px"></button>
+  <p id=2 class="toolbar_title" alt="" style="width:1076px; height:76px; left:196px; top:144px">Log In</p>
+  <p id=3 class="" alt="" style="width:1440px; height:98px; left:0px; top:280px">LOG IN WITH YOUR EMAIL</p>
+  <input id=4 class="et_new_login_username" alt="" style="width:1334px; height:105px; left:53px; top:442px"></input>
+  <input id=5 class="et_new_login_password" alt="" style="width:1334px; height:105px; left:53px; top:565px"></input>
+  <button id=6 class="login_username_btn" alt="" style="width:1334px; height:140px; left:53px; top:688px">LOGIN</button>
+  <p id=7 class="et_forgot_password" alt="" style="width:341px; height:57px; left:53px; top:881px">Forgot Password?</p>
+  <p id=8 class="et_forgot_email" alt="" style="width:346px; height:57px; left:1041px; top:881px">Forgot your email?</p>
+  <input id=9 type="checkbox" name="login_save_chk">
+  <label for=9 style="width:580px; height:76px; left:53px; top:991px">Keep Me Logged In</label>
+  <p id=10 class="login_fb_text" alt="" style="width:1440px; height:98px; left:0px; top:1155px">OR LOG IN WITH FACEBOOK</p>
+  <button id=11 class="login_fb_button" alt="" style="width:1334px; height:131px; left:53px; top:1306px">Log in with Facebook</button>
+  <p id=12 class="create_account_button" alt="" style="width:287px; height:57px; left:1100px; top:1490px">Create Account</p>
+</html>
+
+If I need to [Tap] ["Sign in"], which component id should I operate on the GUI? ->
+Answer: There is no explicit "Sign in" component. However, there is "Log in" button with id=6. So operate on [id=6].
+Question:
+GUI screen: 
+<html>
+  <button id=0 class="" alt="open drawer" style="width:196px; height:196px; left:0px; top:84px"></button>
+  <button id=1 class="chat_actionbar" alt="Chat" style="width:168px; height:168px; left:1272px; top:98px"></button>
+  <p id=2 class="toolbar_title" alt="" style="width:1076px; height:76px; left:196px; top:144px">Log In</p>
+  <p id=3 class="" alt="" style="width:1440px; height:98px; left:0px; top:280px">LOG IN WITH YOUR EMAIL</p>
+  <input id=4 class="et_new_login_username" alt="" style="width:1334px; height:105px; left:53px; top:442px"></input>
+  <input id=5 class="et_new_login_password" alt="" style="width:1334px; height:105px; left:53px; top:565px"></input>
+  <button id=6 class="login_username_btn" alt="" style="width:1334px; height:140px; left:53px; top:688px">LOGIN</button>
+  <p id=7 class="et_forgot_password" alt="" style="width:341px; height:57px; left:53px; top:881px">Forgot Password?</p>
+  <p id=8 class="et_forgot_email" alt="" style="width:346px; height:57px; left:1041px; top:881px">Forgot your email?</p>
+  <input id=9 type="checkbox" name="login_save_chk">
+  <label for=9 style="width:580px; height:76px; left:53px; top:991px">Keep Me Logged In</label>
+  <p id=10 class="login_fb_text" alt="" style="width:1440px; height:98px; left:0px; top:1155px">OR LOG IN WITH FACEBOOK</p>
+  <button id=11 class="login_fb_button" alt="" style="width:1334px; height:131px; left:53px; top:1306px">Log in with Facebook</button>
+  <p id=12 class="create_account_button" alt="" style="width:287px; height:57px; left:1100px; top:1490px">Create Account</p>
+</html>
+
+If I need to [Tap] ["Settings"], which component id should I operate on the GUI? ->
+Answer: No explicit "Settings". Could be related to "drawer" id=0. So operate on [id=0]. [MISSING] step.
+Question:
+GUI screen: 
+<html>
+  <button id=0 class="status_bar_launch_animation_container"></button>
+  <p id=1 class="clock">2:20</p>
+  <img id=2 class="wifi_signal" alt="" />
+  <img id=3 class="mobile_signal" alt="" />
+  <img id=4 alt="" />
+  <img id=5 class="permission_icon" alt="" />
+  <p id=6 class="permission_message">Allow Gallery to access photos and videos on this device?</p>
+  <button id=7 class="permission_allow_button">Allow</button>
+  <button id=8 class="permission_deny_button">Don’t allow</button>
+</html>
+
+If I need to [Tap] [picture], which component id should I operate on the GUI? ->
+Answer:
+2026-05-03 14:21:42.473 | INFO     | ChatGPT:infer:117 - The instruction is ambiguous. There are multiple image elements that could be considered a "picture": id=2 (wifi_signal), id=3 (mobile_signal), id=4 (generic image), and id=5 (permission_icon). It is not possible to determine the correct component to operate on.
+2026-05-03 14:21:42.476 | INFO     | __main__:<module>:94 - Operate on id=2 in the GUI screen.
+sh: adb: command not found
+2026-05-03 14:21:44.003 | DEBUG    | __main__:<module>:57 - [Scroll] ["zoom in"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 14:21:45.640 | DEBUG    | __main__:<module>:57 - [Scroll] ["pan"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 14:21:47.303 | DEBUG    | __main__:<module>:57 - [Scroll] ["zoom in/out"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 14:21:48.915 | DEBUG    | __main__:<module>:57 - [Scroll] ["pan"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 14:21:50.495 | DEBUG    | __main__:<module>:57 - [Tap] ["picture"]
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 14:21:50.564 | INFO     | guided_replay:encoding:16 - reading hierarchy tree from step_5_hierarchy.xml ...
+2026-05-03 14:21:50.580 | INFO     | guided_replay:encoding:26 - encoding the ui elements in hierarchy tree...
+2026-05-03 14:21:50.580 | INFO     | ChatGPT:infer:113 - Question:
+GUI screen: 
+<html>
+  <button id=0 class="" alt="open drawer" style="width:196px; height:196px; left:0px; top:84px"></button>
+  <button id=1 class="chat_actionbar" alt="Chat" style="width:168px; height:168px; left:1272px; top:98px"></button>
+  <p id=2 class="toolbar_title" alt="" style="width:1076px; height:76px; left:196px; top:144px">Log In</p>
+  <p id=3 class="" alt="" style="width:1440px; height:98px; left:0px; top:280px">LOG IN WITH YOUR EMAIL</p>
+  <input id=4 class="et_new_login_username" alt="" style="width:1334px; height:105px; left:53px; top:442px"></input>
+  <input id=5 class="et_new_login_password" alt="" style="width:1334px; height:105px; left:53px; top:565px"></input>
+  <button id=6 class="login_username_btn" alt="" style="width:1334px; height:140px; left:53px; top:688px">LOGIN</button>
+  <p id=7 class="et_forgot_password" alt="" style="width:341px; height:57px; left:53px; top:881px">Forgot Password?</p>
+  <p id=8 class="et_forgot_email" alt="" style="width:346px; height:57px; left:1041px; top:881px">Forgot your email?</p>
+  <input id=9 type="checkbox" name="login_save_chk">
+  <label for=9 style="width:580px; height:76px; left:53px; top:991px">Keep Me Logged In</label>
+  <p id=10 class="login_fb_text" alt="" style="width:1440px; height:98px; left:0px; top:1155px">OR LOG IN WITH FACEBOOK</p>
+  <button id=11 class="login_fb_button" alt="" style="width:1334px; height:131px; left:53px; top:1306px">Log in with Facebook</button>
+  <p id=12 class="create_account_button" alt="" style="width:287px; height:57px; left:1100px; top:1490px">Create Account</p>
+</html>
+
+If I need to [Tap] ["Sign in"], which component id should I operate on the GUI? ->
+Answer: There is no explicit "Sign in" component. However, there is "Log in" button with id=6. So operate on [id=6].
+Question:
+GUI screen: 
+<html>
+  <button id=0 class="" alt="open drawer" style="width:196px; height:196px; left:0px; top:84px"></button>
+  <button id=1 class="chat_actionbar" alt="Chat" style="width:168px; height:168px; left:1272px; top:98px"></button>
+  <p id=2 class="toolbar_title" alt="" style="width:1076px; height:76px; left:196px; top:144px">Log In</p>
+  <p id=3 class="" alt="" style="width:1440px; height:98px; left:0px; top:280px">LOG IN WITH YOUR EMAIL</p>
+  <input id=4 class="et_new_login_username" alt="" style="width:1334px; height:105px; left:53px; top:442px"></input>
+  <input id=5 class="et_new_login_password" alt="" style="width:1334px; height:105px; left:53px; top:565px"></input>
+  <button id=6 class="login_username_btn" alt="" style="width:1334px; height:140px; left:53px; top:688px">LOGIN</button>
+  <p id=7 class="et_forgot_password" alt="" style="width:341px; height:57px; left:53px; top:881px">Forgot Password?</p>
+  <p id=8 class="et_forgot_email" alt="" style="width:346px; height:57px; left:1041px; top:881px">Forgot your email?</p>
+  <input id=9 type="checkbox" name="login_save_chk">
+  <label for=9 style="width:580px; height:76px; left:53px; top:991px">Keep Me Logged In</label>
+  <p id=10 class="login_fb_text" alt="" style="width:1440px; height:98px; left:0px; top:1155px">OR LOG IN WITH FACEBOOK</p>
+  <button id=11 class="login_fb_button" alt="" style="width:1334px; height:131px; left:53px; top:1306px">Log in with Facebook</button>
+  <p id=12 class="create_account_button" alt="" style="width:287px; height:57px; left:1100px; top:1490px">Create Account</p>
+</html>
+
+If I need to [Tap] ["Settings"], which component id should I operate on the GUI? ->
+Answer: No explicit "Settings". Could be related to "drawer" id=0. So operate on [id=0]. [MISSING] step.
+Question:
+GUI screen: 
+<html>
+  <button id=0 class="status_bar_launch_animation_container"></button>
+  <p id=1 class="clock">2:21</p>
+  <img id=2 class="wifi_signal" alt="" />
+  <img id=3 class="mobile_signal" alt="" />
+  <img id=4 alt="" />
+  <img id=5 class="permission_icon" alt="" />
+  <p id=6 class="permission_message">Allow Gallery to access photos and videos on this device?</p>
+  <button id=7 class="permission_allow_button">Allow</button>
+  <button id=8 class="permission_deny_button">Don’t allow</button>
+</html>
+
+If I need to [Tap] [picture], which component id should I operate on the GUI? ->
+Answer:
+2026-05-03 14:22:08.559 | INFO     | ChatGPT:infer:117 - The instruction is ambiguous. There are multiple image elements that could be considered a "picture": id=2 (wifi_signal), id=3 (mobile_signal), id=4 (generic image), and id=5 (permission_icon). It is not possible to determine the correct component to operate on.
+2026-05-03 14:22:08.561 | INFO     | __main__:<module>:94 - Operate on id=2 in the GUI screen.
+sh: adb: command not found
+2026-05-03 14:22:10.073 | DEBUG    | __main__:<module>:57 - [Scroll] ["zoom in"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 14:22:11.704 | DEBUG    | __main__:<module>:57 - [Scroll] ["pan"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 14:22:13.296 | DEBUG    | __main__:<module>:57 - [Scroll] ["zoom in/out"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 14:22:14.870 | DEBUG    | __main__:<module>:57 - [Scroll] ["pan"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+

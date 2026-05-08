@@ -1,0 +1,45 @@
+ReActDroid Test Log
+============================================================
+App:              FossifyOrg/Gallery
+Issue:            https://github.com/FossifyOrg/Gallery/issues/363
+Version:          1.2.1
+Primary Gesture:  N/A
+Category:         double_tap
+Test Result:      SUCCESS
+Execution Time:   20.6s
+============================================================
+
+Result Reason:
+  ReActDroid triggered a crash in 1 steps.
+
+============================================================
+FULL EXECUTION LOG (stdout)
+============================================================
+[ReActDroid] Package: org.fossify.gallery
+[ReActDroid] Activity: .activities.SplashActivity.Green
+[ReActDroid] Crash desc: webp images when double tapped don't zoom to height of image. Steps: Open a .webp images Double tap 
+[ReActDroid] Initialized. Starting exploration...
+  Step 1: [The crash report mentions opening a .webp image. To do that, I first need to nav] -> Click[All files]
+### activity out of app: com.android.settings .Settings$AppManageExternalStorageActivity
+05-03 21:08:39.587  1515  1541 E AndroidRuntime: FATAL EXCEPTION: Instr: androidx.test.runner.AndroidJUnitRunner
+
+[ReActDroid] CRASH DETECTED at step 1!
+[ReActDroid] SUCCESS — crash reproduced in 1 steps
+
+
+============================================================
+STDERR
+============================================================
+/Users/darshan/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-05-03 21:08:55,469 Step 1
+2026-05-03 21:08:56,265 page_id: dialog of Main Activity#0
+2026-05-03 21:08:56,265 page name: dialog of Main Activity
+2026-05-03 21:08:56,265 page actions: Click[All files], Click[Media only]
+2026-05-03 21:08:56,265 has_edittext:False, has_confirm:False, not_show_back:True
+2026-05-03 21:08:56,265 user3: <Observation>: You are now on the page called dialog of Main Activity, which is a newly explored page. On "dialog ...
+2026-05-03 21:08:56,265 user3: (2) Click Media only : You haven't performed the action yet.
+2026-05-03 21:09:09,274 ChatGPT Answer: <Thought>: The crash report mentions opening a .webp image. To do that, I first need to navigate to the file system. The "All files" option seems like the most direct way to access all file types, including .webp images. The "Media only" option might filter out .webp files. So, I'll choose "All files".
+2026-05-03 21:09:09,275 ChatGPT Answer: <Action>: 1
+2026-05-03 21:09:09,278 Perform action: Click[All files]
+

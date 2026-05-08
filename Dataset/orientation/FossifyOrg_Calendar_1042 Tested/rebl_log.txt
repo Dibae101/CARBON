@@ -1,0 +1,92 @@
+ReBL Test Log
+============================================================
+App:              FossifyOrg/Calendar
+Issue:            https://github.com/FossifyOrg/Calendar/issues/1042
+Version:          1.10.2
+Primary Gesture:  orientation
+Test Result:      SUCCESS
+Execution Time:   145.5s
+Total Commands:   12
+Unique Actions:   click, orientation
+============================================================
+
+Result Reason:
+  The bug is successfully reproduced. Before rotating the device, the displayed day was "April 27 (Mon)". After rotating the device, the displayed day reverted to "April 26 (Sun)", which was the day shown before navigating to the next day. This matches the bug report\
+
+============================================================
+FULL EXECUTION LOG
+============================================================
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AttributeError: 'Device' object has no attribute 'healthcheck'
+Performing Streamed Install
+Success
+  bash arg: -p
+  bash arg: org.fossify.calendar
+  bash arg: -c
+  bash arg: android.intent.category.LAUNCHER
+  bash arg: 1
+Events injected: 1
+## Network stats: elapsed time=272ms (0ms mobile, 0ms wifi, 272ms not connected)
+[Old ReBL LLM] Provider: vertex | Model: gemini-2.5-pro | URL: https://aiplatform.googleapis.com/v1/publishers/google/models
+*Prompt: [].
+*Current Screen Information:  #Current Activity: .activities.MainActivity.  # UI Information:set_text has the following group(s):1#.toolbar_container:['[914,88][1025,220]', {'Button': 'org.fossify.calendar:id/settings'}, {'Button': 'org.fossify.calendar:id/change_view'}, '[650,88][1025,220]', {'ViewGroup': 'org.fossify.calendar:id/top_toolbar'}, 'Search', {'EditText': 'org.fossify.calendar:id/top_toolbar_search'}, {'ImageView': 'Search'}];click has the following group(s):1#.calendar_fab:[{'FloatingActionButton': 'New Event'}];scrollable has the following group(s):1#.[{'View': '9 May'}, {'View': '8 May'}, {'View': '7 May'}, {'View': '6 May'}, {'View': '5 May'}, {'View': '4 May'}, {'View': '3 May'}, {'View': '2 May'}, {'View': '1 May'}, {'View': '30 April'}, {'View': '29 April'}, {'View': '28 April'}, {'View': '27 April'}, {'View': '26 April'}, {'View': '25 April'}, {'View': '24 April'}, {'View': '23 April'}, {'View': '22 April'}, {'View': '21 April'}, {'View': '20 April'}, {'View': '19 April'}, {'View': '18 April'}, {'View': '17 April'}, {'View': '16 April'}, {'View': '15 April'}, {'View': '14 April'}, {'View': '13 April'}, {'View': '12 April'}, {'View': '11 April'}, {'View': '10 April'}, {'View': '9 April'}, {'View': '8 April'}, {'View': '7 April'}, {'View': '6 April'}, {'View': '5 April'}, {'View': '4 April'}, {'View': '3 April'}, {'View': '2 April'}, {'View': '1 April'}, {'View': '31 March'}, {'View': '30 March'}, {'View': '29 March'}, {'ImageView': 'Go to next month'}, {'TextView': 'April'}, {'ImageView': 'Go to previous month'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'org.fossify.calendar:id/change_view'}]
+
+###############################################
+{'action': 'click', 'feature': 'org.fossify.calendar:id/change_view'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'org.fossify.calendar:id/change_view'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity.  # UI Information:click has the following group(s):1#.dialog_radio_group:['Simple event list', 'Yearly view', 'Monthly and daily view', 'Monthly view', 'Weekly view', 'Daily view'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Daily view'}]
+
+###############################################
+{'action': 'click', 'feature': 'Daily view'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Daily view'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity.  # UI Information:set_text has the following group(s):1#.toolbar_container:['[914,88][1025,220]', {'Button': 'org.fossify.calendar:id/settings'}, {'Button': 'org.fossify.calendar:id/change_view'}, '[650,88][1025,220]', {'ViewGroup': 'org.fossify.calendar:id/top_toolbar'}, 'Search', {'EditText': 'org.fossify.calendar:id/top_toolbar_search'}, {'ImageView': 'Search'}];click has the following group(s):1#.calendar_fab:[{'FloatingActionButton': 'New Event'}];scrollable has the following group(s):1#.[{'ImageView': 'Go to next day'}, {'TextView': 'April 26 (Sun)'}, {'ImageView': 'Go to previous day'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Go to next day'}]
+
+###############################################
+{'action': 'click', 'feature': 'Go to next day'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Go to next day'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity.  # UI Information:set_text has the following group(s):1#.toolbar_container:['[914,88][1025,220]', {'Button': 'org.fossify.calendar:id/change_view'}, {'Button': 'org.fossify.calendar:id/go_to_today'}, '[650,88][1025,220]', {'ViewGroup': 'org.fossify.calendar:id/top_toolbar'}, 'Search', {'EditText': 'org.fossify.calendar:id/top_toolbar_search'}, {'ImageView': 'Search'}];click has the following group(s):1#.calendar_fab:[{'FloatingActionButton': 'New Event'}];scrollable has the following group(s):1#.[{'ImageView': 'Go to next day'}, {'TextView': 'April 27 (Mon)'}, {'ImageView': 'Go to previous day'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'orientation', 'to_direction': 'left'}]
+
+###############################################
+{'action': 'orientation', 'to_direction': 'left'}
+*Prompt: ["Successfully execute {'action': 'orientation', 'to_direction': 'left'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity.  # UI Information:set_text has the following group(s):1#.toolbar_container:['[1850,88][1961,220]', {'Button': 'org.fossify.calendar:id/about'}, {'Button': 'org.fossify.calendar:id/settings'}, {'Button': 'org.fossify.calendar:id/change_view'}, '[1454,88][1961,220]', {'ViewGroup': 'org.fossify.calendar:id/top_toolbar'}, 'Search', {'EditText': 'org.fossify.calendar:id/top_toolbar_search'}, {'ImageView': 'Search'}];click has the following group(s):1#.calendar_fab:[{'FloatingActionButton': 'New Event'}];scrollable has the following group(s):1#.[{'ImageView': 'Go to next day'}, {'TextView': 'April 26 (Sun)'}, {'ImageView': 'Go to previous day'}];2#.[{'ImageView': 'Go to next day'}, {'TextView': 'April 26 (Sun)'}, {'ImageView': 'Go to previous day'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'result': 'success', 'reason': 'The bug is successfully reproduced. Before rotating the device, the displayed day was "April 27 (Mon)". After rotating the device, the displayed day reverted to "April 26 (Sun)", which was the day shown before navigating to the next day. This matches the bug report\'s description that the selected day is not preserved after rotation.', 'bugreport': '1. Start the app. \n2. Click the "Change view" button (ID: org.fossify.calendar:id/change_view). \n3. Select "Daily view" from the dialog. The app displays the daily view for the current date (e.g., "April 26 (Sun)"). \n4. Click the "Go to next day" button. The view updates to the next day (e.g., "April 27 (Mon)"). \n5. Rotate the device to landscape. \n6. **Bug:** The view incorrectly reverts to the previous day ("April 26 (Sun)") instead of preserving the selected day ("April 27 (Mon)").'}]
+
+###############################################
+!!!xxx!!!. Execution time: 118.94099 seconds
+!!!Response Times: 5. Total Commands: 5
+
+============================================================
+STDERR (if any)
+============================================================
+args: [-p, org.fossify.calendar, -c, android.intent.category.LAUNCHER, 1]
+ arg: "-p"
+ arg: "org.fossify.calendar"
+ arg: "-c"
+ arg: "android.intent.category.LAUNCHER"
+ arg: "1"
+data="org.fossify.calendar"
+data="android.intent.category.LAUNCHER"
+/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+

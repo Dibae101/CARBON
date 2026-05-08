@@ -1,0 +1,89 @@
+AdbGPT Test Log
+============================================================
+App:              netmackan/ATimeTracker
+Issue:            https://github.com/netmackan/ATimeTracker/issues/124
+Version:          0.22
+Primary Gesture:  none_scroll
+Category:         scroll
+Test Result:      SUCCESS
+Execution Time:   27.6s
+Return Code:      0
+============================================================
+
+Result Reason:
+  AdbGPT completed all 3 extracted S2R steps without errors.
+
+============================================================
+FULL EXECUTION LOG (stdout)
+============================================================
+Extracted 3 steps
+{'currentPackageName': 'com.markuspage.android.atimetracker', 'displayHeight': 2280, 'displayRotation': 0, 'displaySizeDpX': 393, 'displaySizeDpY': 829, 'displayWidth': 1080, 'productName': 'sdk_gphone64_arm64', 'screenOn': True, 'sdkInt': 33, 'naturalOrientation': True}
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_0.png
+run command: adb pull /sdcard/screenshot-step_0.png /Users/darshan/Desktop/Papers/ReBL/Dataset/scroll/netmackan_ATimeTracker_124 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_1.png
+run command: adb pull /sdcard/screenshot-step_1.png /Users/darshan/Desktop/Papers/ReBL/Dataset/scroll/netmackan_ATimeTracker_124 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+run command: adb shell /system/bin/screencap -p /sdcard/screenshot-step_2.png
+run command: adb pull /sdcard/screenshot-step_2.png /Users/darshan/Desktop/Papers/ReBL/Dataset/scroll/netmackan_ATimeTracker_124 Tested/adbgpt_output
+run command: adb shell input swipe 720.0 2660 721.0 300 500
+AdbGPT completed: 3/3 steps in 4.7s
+Missing steps: 0
+
+
+============================================================
+STDERR
+============================================================
+/Users/darshan/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+2026-05-03 15:01:45.615 | INFO     | ChatGPT:__init__:36 - [AdbGPT LLM] Provider: vertex | Model: gemini-2.5-pro | Keys: 3
+2026-05-03 15:01:45.615 | INFO     | ChatGPT:infer:113 - Available actions: [tap, input, scroll, double tap, long tap]
+Action primitives: [Tap] [Component], [Scroll] [Direction], [Input] [Component] [Value], [Double-tap] [Component], [Long-tap] [Component]
+Question: Extract the entity from the following ->
+    "1. Open bookmark
+    2. Tap "add new bookmark" and create a name with "a"
+    3. Create another one with name "b"
+    4. Click "a"
+    5. Go back to bookmark after changing name "a" to "b"
+    6. App crash"
+Answer:
+    1st step is "Open bookmark". The action is "open" and the target component is "bookmark". However, there is no explicit "open" in the Available actions list. Therefore, we select the closest semantic action "tap". Following the Action primitives, the entity of the step is [Tap] ["bookmark"].
+    2nd step is "Tap 'add new bookmark' and create a name with 'a'". Due to the conjunction word "and", this step can be separated into two sub-steps. For the first sub-step, the entity is [Tap] ["add new bookmark"]. For the second sub-step, the entity is [Input] ["name"] ["a"].
+    3rd step is "Create another one with name 'b'". This repeats the previous steps: [Tap] ["add new bookmark"] and [Input] ["name"] ["b"].
+    4th step is "Click 'a'". The entity is [Tap] ["a"].
+    5th step is "Go back to bookmark after changing name 'a' to 'b'". The entity is [Input] ["name"] ["b"] then [Tap] ["back"].
+    6th step is "App crash". No operations.
+    Overall: 1.[Tap]["bookmark"] 2.[Tap]["add new bookmark"] 3.[Input]["name"]["a"] 4.[Tap]["add new bookmark"] 5.[Input]["name"]["b"] 6.[Tap]["a"] 7.[Input]["name"]["b"] 8.[Tap]["back"]
+Question: Extract the entity from the following -> "Could not scroll on the menu
+
+App: netmackan/ATimeTracker
+Version: 0.22
+Issue: https://github.com/netmackan/ATimeTracker/issues/124
+APK: 
+APK Tag: v0.22
+Primary Gesture: none_scroll
+Keywords: scroll; swipe_region
+"
+ Answer: 
+2026-05-03 15:02:06.577 | INFO     | ChatGPT:infer:117 - 1st step is "Could not scroll on the menu". The action is "scroll" and the target component is "menu". The primitive for this action is `[Scroll] [Direction]`. The direction is not specified, so we can assume a default direction like "down". Therefore, the entity is `[Scroll] ["menu"] ["down"]`.
+Overall: 1.[Scroll]["menu"]["down"]
+2026-05-03 15:02:06.578 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-1: [Scroll] [Direction] [None]
+2026-05-03 15:02:06.578 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-2: [Scroll] [menu] [None]
+2026-05-03 15:02:06.578 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-3: [Scroll] [menu] [None]
+2026-05-03 15:02:07.855 | INFO     | ChatGPT:__init__:36 - [AdbGPT LLM] Provider: vertex | Model: gemini-2.5-pro | Keys: 3
+2026-05-03 15:02:07.856 | DEBUG    | __main__:<module>:62 - [Scroll] ["Direction"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 15:02:09.415 | DEBUG    | __main__:<module>:62 - [Scroll] ["menu"] ["down"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+2026-05-03 15:02:10.989 | DEBUG    | __main__:<module>:62 - [Scroll] ["menu"] ["down"]
+sh: adb: command not found
+sh: adb: command not found
+sh: adb: command not found
+
