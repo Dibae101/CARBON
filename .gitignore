@@ -1,8 +1,4 @@
-# ============================================
-# CARBON — .gitignore
-# ============================================
-
-# --- Python ---
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -12,23 +8,39 @@ __pycache__/
 *.pyo
 *.pyd
 
-# --- Virtual Environments ---
+# Virtual Environment
 env/
 venv/
 ENV/
 .venv/
 **/env/
 
-# --- Environment Variables & Credentials ---
+# APK Files - Large binary files
+*.apk
+Automation/APKs/
+tested_apk_brs/APKs/
+tested_apk_brs/APKs_others/
+
+# Results and Output Files
+Automation/Results/
+tested_apk_brs/results/
+Automation/logcat.txt
+
+# Temporary Files
+Automation/tmp
+**/tmp
+*.tmp
+*.temp
+
+# Environment Variables and Credentials
 .env
-**/.env
+Automation/.env
 *.env
-!.env.example
 *credentials*
 *apikey*
 *api_key*
 
-# --- IDE & Editor ---
+# IDE and Editor Files
 .vscode/
 .idea/
 *.swp
@@ -37,73 +49,52 @@ ENV/
 *.sublime-project
 *.sublime-workspace
 
-# --- OS Files ---
+# OS Files
 .DS_Store
+Automation/.DS_Store
 **/.DS_Store
 Thumbs.db
 desktop.ini
+*.bak
 
-# --- APK Files (large binaries) ---
-*.apk
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
 
-# --- Runtime Artifacts ---
-Automation/screenshots/
-Automation/chat_history/
-Automation/Results/
-Automation/logcat.txt
-Automation/tmp
-Automation/APKs/
-*.log
-appium.log
+# Android
+*.dex
+*.class
 
-# --- Test Output in Dataset ---
-Dataset/**/adbgpt_output/
-Dataset/**/reactdroid_output/
-Dataset/**/carbon_log.txt
-Dataset/**/rebl_log.txt
-Dataset/**/adbgpt_log.txt
-Dataset/**/reactdroid_log.txt
-Dataset/**/image.png
-Dataset/**/test_logs/
-
-# --- Third-Party Repos (not part of CARBON) ---
-test_repo/
-
-# --- Schaumamal (separate project) ---
-Schaumamal/
-
-# --- Related Papers (not source code) ---
-related_papers/
-
-# --- BugCrawler Output ---
-BugCrawler/output/
-
-# --- Extracted/Generated Data ---
-rebl_extracted_data.json
-extract_rebl_data.py
-
-# --- Temporary Files ---
-**/tmp
-*.tmp
-*.temp
-_adbgpt_run.py
-_reactdroid_run.py
-
-# --- Python Distribution ---
+# Python Distribution
 build/
 dist/
 *.egg-info/
 *.egg
 
-# --- Test & Coverage ---
+# Test and Coverage
 .pytest_cache/
 .coverage
 htmlcov/
 .tox/
 
-# --- Misc ---
+
+# Other
 *.orig
-*.bak
-uiautomatorviewer.sh
-overnight_test.log
-tested_apk_brs/
+.DS_Store
+
+# Schaumamal build artifacts (source is tracked)
+Schaumamal/.gradle/
+Schaumamal/build/
+Schaumamal/.idea/
+
+# Allow Dataset logs and screenshots (override above rules)
+!Dataset/**/*_log.txt
+!Dataset/**/*.log
+!Dataset/**/*.png
+!Dataset/**/*.jpg
+!Dataset/**/*.jpeg
+!Dataset/**/*.txt
+!Dataset/**/*.json
+
+# # Keep APKs excluded (too large for GitHub - 2GB total, some >100MB)
+# Dataset/**/*.apk

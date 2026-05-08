@@ -1,0 +1,585 @@
+CARBON Test Log
+============================================================
+App:              ankidroid/Anki-Android
+Issue:            https://github.com/ankidroid/Anki-Android/issues/17667
+Version:          2.21alpha4
+Primary Gesture:  pinch_zoom
+Test Result:      SUCCESS
+Execution Time:   238.0s
+Total Commands:   15
+Unique Actions:   click, back, long_click
+============================================================
+
+Action Breakdown:
+  click: 11x
+  back: 2x
+  long_click: 2x
+
+Result Reason:
+  We have followed the steps to reproduce: long-pressed a deck and tapped 'Deck options'. The resulting screen shows the 'Deck options' page content overflowing the screen width, with elements on the right side being cut off. This directly matches the 'Actual Behavior' described in the bug report, which states 'The right side of the page (all but the upper bars) doesn't fit on the screen.' The visual evidence in the current screenshot confirms the bug is triggered.
+
+============================================================
+FULL EXECUTION LOG
+============================================================
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AttributeError: 'Device' object has no attribute 'healthcheck'
+Performing Streamed Install
+Success
+  bash arg: -p
+  bash arg: com.ichi2.anki
+  bash arg: -c
+  bash arg: android.intent.category.LAUNCHER
+  bash arg: 1
+Events injected: 1
+## Network stats: elapsed time=24ms (0ms mobile, 0ms wifi, 24ms not connected)
+[LLM] Provider: vertex | Model: gemini-2.5-pro | Vision: True
+[LLM] Using key 1/3 (AQ.Ab8RN6IXH...)
+[UIAutomator Viewer] ENABLED - annotated screenshots with color-coded bounding boxes will be sent to Gemini
+[UIAutomator Viewer] Step 0: 13 elements (6 clickable, 0 editable, 0 scrollable)
+*Prompt: [].
+*Current Screen Information:  #Current Activity: .IntroductionActivity.  # UI Information:click has the following group(s):1#.['Sync from AnkiWeb', 'Get Started', 'Study less', 'Remember more'];.
+
+[UIAutomator Viewer - Element Map]
+Total visible elements: 13
+Box colors: GREEN=clickable, BLUE=text-input, ORANGE=scrollable, PURPLE=checkable, YELLOW=focused, GRAY=text
+---
+#3 [CLICKABLE] Button text="Get Started" id=get_started bounds=[265,1680][815,1812]
+#4 [CLICKABLE] Button text="Sync from AnkiWeb" id=sync_profile bounds=[265,1845][815,1977]
+#9 [CLICKABLE] ImageView desc="Back" id=back bounds=[169,2148][354,2280]
+#10 [CLICKABLE] ImageView desc="Overview" id=recent_apps bounds=[724,2148][910,2280]
+#11 [CLICKABLE] FrameLayout id=home bounds=[430,2148][650,2280]
+#12 [CLICKABLE] ImageView desc="Home" id=home_button bounds=[430,2148][650,2280]
+#0 [TEXT_ONLY] TextView text="Study less" id=study_less bounds=[321,1162][759,1310]
+#1 [TEXT_ONLY] TextView text="Remember more" id=remember_more bounds=[188,1316][892,1464]
+#2 [TEXT_ONLY] TextView text="Anki's card scheduler saves time by stre" id=subtitle bounds=[0,1464][1080,1647]
+#5 [TEXT_ONLY] TextView text="4:49" desc="4:49 AM" id=clock bounds=[77,3][158,66]
+#6 [TEXT_ONLY] FrameLayout desc="Wifi signal full." id=wifi_combo bounds=[876,4][924,65]
+#7 [TEXT_ONLY] FrameLayout desc="Phone three bars." id=mobile_combo bounds=[924,4][965,65]
+#8 [TEXT_ONLY] LinearLayout desc="Battery 100 percent." id=battery bounds=[982,3][1003,66]
+
+[Color Analysis — pixel sampling from screenshot]
+  Status Bar: cyan (#00a0f0, 95.0%), white (#f0f0f0, 1.7%)
+  Toolbar/Header: cyan (#20b0f0, 29.7%), cyan (#00a0f0, 26.0%)
+  Content Area: white (#f0f0f0, 50.7%), light-gray (#c0e0f0, 5.3%)
+  Navigation Bar: white (#f0f0f0, 99.3%), gray (#909090, 0.7%)
+
+[Element Color Sampling — pixel colors of image/visual elements]
+  Large image (top_gradient) [0,66][1080,956]: light-gray (#a0e0f0, 9.0%), cyan (#30b0f0, 8.5%), cyan (#20b0f0, 7.5%)
+  Large image (ankidroid_logo) [334,749][747,1162]: white (#f0f0f0, 51.0%), dark-gray (#505050, 10.0%), white (#e0f0f0, 6.5%)
+  Notification image [169,2148][354,2280]: white (#f0f0f0, 94.0%), gray (#909090, 5.0%), light-gray (#b0b0b0, 0.5%)
+  Notification image [724,2148][910,2280]: white (#f0f0f0, 92.0%), gray (#909090, 7.5%), pink (#e0e0e0, 0.5%)
+  Notification image [430,2148][650,2280]: white (#f0f0f0, 93.0%), gray (#909090, 6.0%), gray (#a0a0a0, 0.5%)
+[UIAutomator Viewer] Annotated screenshot included in prompt
+gemini-2.5-pro
+###############################################
+
+*GPT message: Based on the bug report, the first step is to open the app, which is the current state. The next step is to long-press a deck. To do that, we first need to get to the deck list. The "Get Started" button seems like the most direct way to proceed to the main interface.
+
+Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "Get Started"
+  }
+]
+```
+
+###############################################
+{'action': 'click', 'feature': 'Get Started'}
+[UIAutomator Viewer] Step 1: 14 elements (7 clickable, 0 editable, 0 scrollable)
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Get Started'}"].
+*Current Screen Information:  #Current Activity: .ui.windows.permissions.PermissionsActivity.  # UI Information:click has the following group(s):1#.['com.ichi2.anki:id/all_files_permission'];2#.continue_button:['Continue'];switch_widget has the following group(s):1#.[{'Switch': 'com.ichi2.anki:id/switch_widget'}, 'All files access'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid needs some permissions to work;.
+
+[UIAutomator Viewer - Element Map]
+Total visible elements: 14
+Box colors: GREEN=clickable, BLUE=text-input, ORANGE=scrollable, PURPLE=checkable, YELLOW=focused, GRAY=text
+---
+#5 [CLICKABLE] FrameLayout id=all_files_permission bounds=[0,418][1080,710]
+#8 [CHECKABLE] Switch id=switch_widget bounds=[849,498][1036,630]
+#9 [CLICKABLE] Button text="Continue" id=continue_button bounds=[44,1963][1036,2104] DISABLED
+#10 [CLICKABLE] ImageView desc="Back" id=back bounds=[169,2148][354,2280]
+#11 [CLICKABLE] ImageView desc="Overview" id=recent_apps bounds=[724,2148][910,2280]
+#12 [CLICKABLE] FrameLayout id=home bounds=[430,2148][650,2280]
+#13 [CLICKABLE] ImageView desc="Home" id=home_button bounds=[430,2148][650,2280]
+#0 [TEXT_ONLY] TextView text="4:50" desc="4:50 AM" id=clock bounds=[77,3][158,66]
+#1 [TEXT_ONLY] FrameLayout desc="Wifi signal full." id=wifi_combo bounds=[876,4][924,65]
+#2 [TEXT_ONLY] FrameLayout desc="Phone two bars." id=mobile_combo bounds=[924,4][965,65]
+#3 [TEXT_ONLY] LinearLayout desc="Battery 100 percent." id=battery bounds=[982,3][1003,66]
+#4 [TEXT_ONLY] TextView text="AnkiDroid needs some permissions to work" id=headline bounds=[0,66][1080,418]
+#6 [TEXT_ONLY] TextView text="All files access" id=title bounds=[198,462][849,515]
+#7 [TEXT_ONLY] TextView text="Saves your collection in a safe place th" id=summary bounds=[198,521][849,666]
+
+[Color Analysis — pixel sampling from screenshot]
+  Status Bar: white (#f0f0f0, 96.0%), gray (#606060, 3.0%)
+  Toolbar/Header: white (#f0f0f0, 94.3%), black (#101010, 2.0%)
+  Content Area: white (#f0f0f0, 98.7%), gray (#a0a0a0, 0.3%)
+  Navigation Bar: gray (#808090, 54.3%), white (#f0f0f0, 25.0%)
+
+[Element Color Sampling — pixel colors of image/visual elements]
+  Notification image [169,2148][354,2280]: gray (#808090, 90.5%), light-gray (#d0d0d0, 4.5%), gray (#808080, 2.5%)
+  Notification image [724,2148][910,2280]: gray (#808090, 90.5%), light-gray (#d0d0d0, 7.0%), gray (#808080, 2.0%)
+  Notification image [430,2148][650,2280]: gray (#808090, 89.0%), light-gray (#d0d0d0, 5.5%), gray (#808080, 3.0%)
+
+[Color Change Detected]
+  Status Bar: cyan (#00a0f0) -> white (#f0f0f0)
+  Toolbar/Header: cyan (#20b0f0) -> white (#f0f0f0)
+  Navigation Bar: white (#f0f0f0) -> gray (#808090)
+  Notification image [169,2148][354,2280]: white (#f0f0f0) -> gray (#808090)
+  Notification image [724,2148][910,2280]: white (#f0f0f0) -> gray (#808090)
+  Notification image [430,2148][650,2280]: white (#f0f0f0) -> gray (#808090)
+[UIAutomator Viewer] Annotated screenshot included in prompt
+gemini-2.5-pro
+###############################################
+
+*GPT message: The app is now asking for permissions, which is a necessary step before we can get to the deck list. The "Continue" button is disabled, and it will likely be enabled after we grant the "All files access" permission. The most direct way to do this is to click on the permission request.
+
+Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "com.ichi2.anki:id/all_files_permission"
+  }
+]
+```
+
+###############################################
+{'action': 'click', 'feature': 'com.ichi2.anki:id/all_files_permission'}
+[UIAutomator Viewer] Step 2: 19 elements (7 clickable, 0 editable, 1 scrollable)
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'com.ichi2.anki:id/all_files_permission'}"].
+*Current Screen Information:  #Current Activity: .Settings$AppManageExternalStorageActivity.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.entity_header_content:[{'LinearLayout': 'com.android.settings:id/entity_header_content'}, 'AnkiDroid', '2.21alpha4'];switch_widget has the following group(s):1#.['Allow access to manage all files'];Other Widgets with Text in This Page has the following group(s):1#.Allow this app to read, modify and delete all files on this device or any connected storage volumes. If granted, app may access files without your explicit knowledge.;.
+
+[UIAutomator Viewer - Element Map]
+Total visible elements: 19
+Box colors: GREEN=clickable, BLUE=text-input, ORANGE=scrollable, PURPLE=checkable, YELLOW=focused, GRAY=text
+---
+#4 [CLICKABLE] ImageView desc="Back" id=back bounds=[169,2148][354,2280]
+#5 [CLICKABLE] ImageView desc="Overview" id=recent_apps bounds=[724,2148][910,2280]
+#6 [CLICKABLE] FrameLayout id=home bounds=[430,2148][650,2280]
+#7 [CLICKABLE] ImageView desc="Home" id=home_button bounds=[430,2148][650,2280]
+#8 [SCROLLABLE] ScrollView id=content_parent bounds=[0,0][1080,2148]
+#10 [CLICKABLE] ImageButton desc="Navigate up" bounds=[0,66][154,220]
+#11 [FOCUSED] RecyclerView id=recycler_view bounds=[0,558][1080,1513]
+#12 [CLICKABLE] LinearLayout id=entity_header_content bounds=[421,624][658,911]
+#15 [CLICKABLE] LinearLayout bounds=[0,955][1080,1181]
+#17 [CHECKABLE] Switch id=switch_widget bounds=[882,1002][1036,1134]
+#0 [TEXT_ONLY] TextView text="4:50" desc="4:50 AM" id=clock bounds=[77,3][158,66]
+#1 [TEXT_ONLY] FrameLayout desc="Wifi signal full." id=wifi_combo bounds=[876,4][924,65]
+#2 [TEXT_ONLY] FrameLayout desc="Phone two bars." id=mobile_combo bounds=[924,4][965,65]
+#3 [TEXT_ONLY] LinearLayout desc="Battery 100 percent." id=battery bounds=[982,3][1003,66]
+#9 [TEXT_ONLY] FrameLayout desc="All files access" id=collapsing_toolbar bounds=[0,0][1080,558]
+#13 [TEXT_ONLY] TextView text="AnkiDroid" id=entity_header_title bounds=[421,778][658,852]
+#14 [TEXT_ONLY] TextView text="2.21alpha4" id=entity_header_summary bounds=[443,858][635,911]
+#16 [TEXT_ONLY] TextView text="Allow access to manage all files" id=title bounds=[66,999][838,1137]
+#18 [TEXT_ONLY] TextView text="Allow this app to read, modify and delet" id=title bounds=[66,1302][1036,1513]
+
+[Color Analysis — pixel sampling from screenshot]
+  Status Bar: white (#f0f0f0, 96.0%), gray (#606060, 2.0%)
+  Toolbar/Header: white (#f0f0f0, 99.0%), pink (#e0e0e0, 0.3%)
+  Content Area: white (#f0f0f0, 92.3%), white (#e0e0f0, 2.0%)
+  Navigation Bar: white (#f0f0f0, 96.7%), gray (#909090, 2.0%)
+
+[Element Color Sampling — pixel colors of image/visual elements]
+  Notification image [169,2148][354,2280]: white (#f0f0f0, 93.5%), gray (#909090, 4.0%), light-gray (#d0d0d0, 2.0%)
+  Notification image [724,2148][910,2280]: white (#f0f0f0, 89.5%), gray (#909090, 7.0%), light-gray (#d0d0d0, 3.0%)
+  Notification image [430,2148][650,2280]: white (#f0f0f0, 91.5%), gray (#909090, 4.5%), light-gray (#d0d0d0, 2.5%)
+
+[Color Change Detected]
+  Navigation Bar: gray (#808090) -> white (#f0f0f0)
+  Notification image [169,2148][354,2280]: gray (#808090) -> white (#f0f0f0)
+  Notification image [724,2148][910,2280]: gray (#808090) -> white (#f0f0f0)
+  Notification image [430,2148][650,2280]: gray (#808090) -> white (#f0f0f0)
+[UIAutomator Viewer] Annotated screenshot included in prompt
+gemini-2.5-pro
+###############################################
+
+*GPT message: The app has taken us to the system settings to grant "All files access". To proceed, we need to enable this permission by toggling the switch.
+
+Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "switch_widget"
+  }
+]
+```
+
+###############################################
+{'action': 'click', 'feature': 'switch_widget'}
+[UIAutomator Viewer] Step 3: 19 elements (7 clickable, 0 editable, 1 scrollable)
+*Prompt: ["Failed to execute {'action': 'click', 'feature': 'switch_widget'}"].
+*Current Screen Information:  #Current Activity: .Settings$AppManageExternalStorageActivity.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.entity_header_content:[{'LinearLayout': 'com.android.settings:id/entity_header_content'}, 'AnkiDroid', '2.21alpha4'];switch_widget has the following group(s):1#.['Allow access to manage all files'];Other Widgets with Text in This Page has the following group(s):1#.Allow this app to read, modify and delete all files on this device or any connected storage volumes. If granted, app may access files without your explicit knowledge.;.
+
+[UIAutomator Viewer - Element Map]
+Total visible elements: 19
+Box colors: GREEN=clickable, BLUE=text-input, ORANGE=scrollable, PURPLE=checkable, YELLOW=focused, GRAY=text
+---
+#4 [CLICKABLE] ImageView desc="Back" id=back bounds=[169,2148][354,2280]
+#5 [CLICKABLE] ImageView desc="Overview" id=recent_apps bounds=[724,2148][910,2280]
+#6 [CLICKABLE] FrameLayout id=home bounds=[430,2148][650,2280]
+#7 [CLICKABLE] ImageView desc="Home" id=home_button bounds=[430,2148][650,2280]
+#8 [SCROLLABLE] ScrollView id=content_parent bounds=[0,0][1080,2148]
+#10 [CLICKABLE] ImageButton desc="Navigate up" bounds=[0,66][154,220]
+#11 [FOCUSED] RecyclerView id=recycler_view bounds=[0,558][1080,1513]
+#12 [CLICKABLE] LinearLayout id=entity_header_content bounds=[421,624][658,911]
+#15 [CLICKABLE] LinearLayout bounds=[0,955][1080,1181]
+#17 [CHECKABLE] Switch id=switch_widget bounds=[882,1002][1036,1134]
+#0 [TEXT_ONLY] TextView text="4:51" desc="4:51 AM" id=clock bounds=[77,3][158,66]
+#1 [TEXT_ONLY] FrameLayout desc="Wifi signal full." id=wifi_combo bounds=[876,4][924,65]
+#2 [TEXT_ONLY] FrameLayout desc="Phone signal full." id=mobile_combo bounds=[924,4][965,65]
+#3 [TEXT_ONLY] LinearLayout desc="Battery 100 percent." id=battery bounds=[982,3][1003,66]
+#9 [TEXT_ONLY] FrameLayout desc="All files access" id=collapsing_toolbar bounds=[0,0][1080,558]
+#13 [TEXT_ONLY] TextView text="AnkiDroid" id=entity_header_title bounds=[421,778][658,852]
+#14 [TEXT_ONLY] TextView text="2.21alpha4" id=entity_header_summary bounds=[443,858][635,911]
+#16 [TEXT_ONLY] TextView text="Allow access to manage all files" id=title bounds=[66,999][838,1137]
+#18 [TEXT_ONLY] TextView text="Allow this app to read, modify and delet" id=title bounds=[66,1302][1036,1513]
+
+[Color Analysis — pixel sampling from screenshot]
+  Status Bar: white (#f0f0f0, 93.3%), gray (#606060, 1.7%)
+  Toolbar/Header: white (#f0f0f0, 99.7%), light-gray (#c0c0c0, 0.3%)
+  Content Area: white (#f0f0f0, 92.0%), white (#e0e0f0, 1.7%)
+  Navigation Bar: white (#f0f0f0, 95.3%), gray (#909090, 1.3%)
+
+[Element Color Sampling — pixel colors of image/visual elements]
+  Notification image [169,2148][354,2280]: white (#f0f0f0, 90.0%), gray (#909090, 4.5%), light-gray (#d0d0d0, 3.0%)
+  Notification image [724,2148][910,2280]: white (#f0f0f0, 90.5%), gray (#909090, 7.5%), light-gray (#d0d0d0, 1.0%)
+  Notification image [430,2148][650,2280]: white (#f0f0f0, 89.0%), light-gray (#d0d0d0, 5.0%), gray (#909090, 4.0%)
+[UIAutomator Viewer] Annotated screenshot included in prompt
+gemini-2.5-pro
+###############################################
+
+*GPT message: The previous attempt to click the switch widget directly failed. Looking at the UI hierarchy, the switch is part of a larger clickable `LinearLayout` that also contains the text "Allow access to manage all files". It's common in Android settings for the entire row to be clickable to toggle the switch. Let's try clicking the text associated with the switch.
+
+Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "Allow access to manage all files"
+  }
+]
+```
+
+###############################################
+{'action': 'click', 'feature': 'Allow access to manage all files'}
+[UIAutomator Viewer] Step 4: 19 elements (7 clickable, 0 editable, 1 scrollable)
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Allow access to manage all files'}"].
+*Current Screen Information:  #Current Activity: .Settings$AppManageExternalStorageActivity.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.entity_header_content:[{'LinearLayout': 'com.android.settings:id/entity_header_content'}, 'AnkiDroid', '2.21alpha4'];switch_widget has the following group(s):1#.['Allow access to manage all files'];Other Widgets with Text in This Page has the following group(s):1#.Allow this app to read, modify and delete all files on this device or any connected storage volumes. If granted, app may access files without your explicit knowledge.;.
+
+[UIAutomator Viewer - Element Map]
+Total visible elements: 19
+Box colors: GREEN=clickable, BLUE=text-input, ORANGE=scrollable, PURPLE=checkable, YELLOW=focused, GRAY=text
+---
+#4 [CLICKABLE] ImageView desc="Back" id=back bounds=[169,2148][354,2280]
+#5 [CLICKABLE] ImageView desc="Overview" id=recent_apps bounds=[724,2148][910,2280]
+#6 [CLICKABLE] FrameLayout id=home bounds=[430,2148][650,2280]
+#7 [CLICKABLE] ImageView desc="Home" id=home_button bounds=[430,2148][650,2280]
+#8 [SCROLLABLE] ScrollView id=content_parent bounds=[0,0][1080,2148]
+#10 [CLICKABLE] ImageButton desc="Navigate up" bounds=[0,66][154,220]
+#11 [FOCUSED] RecyclerView id=recycler_view bounds=[0,558][1080,1513]
+#12 [CLICKABLE] LinearLayout id=entity_header_content bounds=[421,624][658,911]
+#15 [CLICKABLE] LinearLayout bounds=[0,955][1080,1181]
+#17 [CHECKABLE] Switch id=switch_widget bounds=[882,1002][1036,1134] checked
+#0 [TEXT_ONLY] TextView text="4:51" desc="4:51 AM" id=clock bounds=[77,3][158,66]
+#1 [TEXT_ONLY] FrameLayout desc="Wifi signal full." id=wifi_combo bounds=[876,4][924,65]
+#2 [TEXT_ONLY] FrameLayout desc="Phone signal full." id=mobile_combo bounds=[924,4][965,65]
+#3 [TEXT_ONLY] LinearLayout desc="Battery 100 percent." id=battery bounds=[982,3][1003,66]
+#9 [TEXT_ONLY] FrameLayout desc="All files access" id=collapsing_toolbar bounds=[0,0][1080,558]
+#13 [TEXT_ONLY] TextView text="AnkiDroid" id=entity_header_title bounds=[421,778][658,852]
+#14 [TEXT_ONLY] TextView text="2.21alpha4" id=entity_header_summary bounds=[443,858][635,911]
+#16 [TEXT_ONLY] TextView text="Allow access to manage all files" id=title bounds=[66,999][838,1137]
+#18 [TEXT_ONLY] TextView text="Allow this app to read, modify and delet" id=title bounds=[66,1302][1036,1513]
+
+[Color Analysis — pixel sampling from screenshot]
+  Status Bar: white (#f0f0f0, 92.7%), pink (#e0e0e0, 1.7%)
+  Toolbar/Header: white (#f0f0f0, 99.0%), white (#e0e0f0, 0.7%)
+  Content Area: white (#f0f0f0, 92.0%), white (#e0e0f0, 2.3%)
+  Navigation Bar: white (#f0f0f0, 97.7%), gray (#909090, 1.0%)
+
+[Element Color Sampling — pixel colors of image/visual elements]
+  Notification image [169,2148][354,2280]: white (#f0f0f0, 93.5%), gray (#909090, 5.0%), light-gray (#d0d0d0, 1.5%)
+  Notification image [724,2148][910,2280]: white (#f0f0f0, 91.5%), gray (#909090, 4.0%), light-gray (#d0d0d0, 3.5%)
+  Notification image [430,2148][650,2280]: white (#f0f0f0, 92.5%), gray (#909090, 5.5%), light-gray (#d0d0d0, 1.5%)
+[UIAutomator Viewer] Annotated screenshot included in prompt
+gemini-2.5-pro
+###############################################
+
+*GPT message: The permission has been granted, as indicated by the checked switch. Now we need to go back to the app to continue.
+
+Suggestion:
+```json
+[
+  {
+    "action": "back"
+  }
+]
+```
+
+###############################################
+{'action': 'back'}
+[UIAutomator Viewer] Step 5: 45 elements (18 clickable, 0 editable, 0 scrollable)
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .DeckPicker.  # UI Information:click has the following group(s):1#.toolbar:[{'ImageView': 'More options'}, {'ImageButton': 'com.ichi2.anki:id/button'}, {'ImageButton': 'Open drawer'}, 'AnkiDroid', '38 cards due'];2#.[{'ImageButton': 'com.ichi2.anki:id/fab_main'}];3#.['com.ichi2.anki:id/DeckPickerHoriz'];4#.counts_layout:[{'LinearLayout': 'Open the deck overview page containing the number of cards to see today.'}, '0', '0', '0'];5#.['com.ichi2.anki:id/DeckPickerHoriz'];6#.counts_layout:[{'LinearLayout': 'Open the deck overview page containing the number of cards to see today.'}, '0', '0', '9'];7#.['com.ichi2.anki:id/DeckPickerHoriz'];8#.counts_layout:[{'LinearLayout': 'Open the deck overview page containing the number of cards to see today.'}, '0', '29', '0'];9#.['com.ichi2.anki:id/DeckPickerHoriz'];10#.counts_layout:[{'LinearLayout': 'Open the deck overview page containing the number of cards to see today.'}, '0', '0', '0'];11#.['com.ichi2.anki:id/DeckPickerHoriz'];12#.counts_layout:[{'LinearLayout': 'Open the deck overview page containing the number of cards to see today.'}, '0', '0', '0'];Other Widgets with Text in This Page has the following group(s):1#.Custom study session;2#.Default;3#.Filtered Deck 1;4#.Filtered Deck 2;5#.New Deck;6#.Studied ⁨0⁩ cards ⁨in ⁨0⁩ seconds⁩ today (⁨0⁩s/card);.
+
+[UIAutomator Viewer - Element Map]
+Total visible elements: 45
+Box colors: GREEN=clickable, BLUE=text-input, ORANGE=scrollable, PURPLE=checkable, YELLOW=focused, GRAY=text
+---
+#4 [CLICKABLE] ImageButton desc="Open drawer" bounds=[0,77][154,231]
+#7 [CLICKABLE] ImageButton id=button bounds=[837,88][969,220]
+#8 [CLICKABLE] ImageView desc="More options" bounds=[969,88][1080,220]
+#9 [CLICKABLE] ImageButton id=fab_main bounds=[837,1904][991,2058]
+#10 [CLICKABLE] RelativeLayout id=DeckPickerHoriz bounds=[0,242][1080,374]
+#12 [CLICKABLE] LinearLayout desc="Open the deck overview page containing t" id=counts_layout bounds=[876,242][1069,374]
+#16 [CLICKABLE] RelativeLayout id=DeckPickerHoriz bounds=[0,375][1080,507]
+#18 [CLICKABLE] LinearLayout desc="Open the deck overview page containing t" id=counts_layout bounds=[876,375][1069,507]
+#22 [CLICKABLE] RelativeLayout id=DeckPickerHoriz bounds=[0,508][1080,640]
+#24 [CLICKABLE] LinearLayout desc="Open the deck overview page containing t" id=counts_layout bounds=[876,508][1069,640]
+#28 [CLICKABLE] RelativeLayout id=DeckPickerHoriz bounds=[0,641][1080,773]
+#30 [CLICKABLE] LinearLayout desc="Open the deck overview page containing t" id=counts_layout bounds=[876,641][1069,773]
+#34 [CLICKABLE] RelativeLayout id=DeckPickerHoriz bounds=[0,774][1080,906]
+#36 [CLICKABLE] LinearLayout desc="Open the deck overview page containing t" id=counts_layout bounds=[876,774][1069,906]
+#41 [CLICKABLE] ImageView desc="Back" id=back bounds=[169,2148][354,2280]
+#42 [CLICKABLE] ImageView desc="Overview" id=recent_apps bounds=[724,2148][910,2280]
+#43 [CLICKABLE] FrameLayout id=home bounds=[430,2148][650,2280]
+#44 [CLICKABLE] ImageView desc="Home" id=home_button bounds=[430,2148][650,2280]
+#0 [TEXT_ONLY] TextView text="4:51" desc="4:51 AM" id=clock bounds=[77,3][158,66]
+#1 [TEXT_ONLY] FrameLayout desc="Wifi signal full." id=wifi_combo bounds=[876,4][924,65]
+#2 [TEXT_ONLY] FrameLayout desc="Phone signal full." id=mobile_combo bounds=[924,4][965,65]
+#3 [TEXT_ONLY] LinearLayout desc="Battery 100 percent." id=battery bounds=[982,3][1003,66]
+#5 [TEXT_ONLY] TextView text="AnkiDroid" bounds=[165,83][430,165]
+#6 [TEXT_ONLY] TextView text="38 cards due" bounds=[165,165][426,224]
+#11 [TEXT_ONLY] TextView text="Custom study session" id=deckpicker_name bounds=[66,242][615,374]
+#13 [TEXT_ONLY] TextView text="0" desc="Number of new cards to see today in this" id=deckpicker_new bounds=[958,281][994,334]
+#14 [TEXT_ONLY] TextView text="0" desc="Number of cards in learning in this deck" id=deckpicker_lrn bounds=[994,281][1030,334]
+#15 [TEXT_ONLY] TextView text="0" desc="Number of cards due today in this deck." id=deckpicker_rev bounds=[1030,281][1052,334]
+#17 [TEXT_ONLY] TextView text="Default" id=deckpicker_name bounds=[66,375][246,507]
+#19 [TEXT_ONLY] TextView text="0" desc="Number of new cards to see today in this" id=deckpicker_new bounds=[958,414][994,467]
+#20 [TEXT_ONLY] TextView text="0" desc="Number of cards in learning in this deck" id=deckpicker_lrn bounds=[994,414][1030,467]
+#21 [TEXT_ONLY] TextView text="9" desc="Number of cards due today in this deck." id=deckpicker_rev bounds=[1030,414][1052,467]
+#23 [TEXT_ONLY] TextView text="Filtered Deck 1" id=deckpicker_name bounds=[66,508][440,640]
+#25 [TEXT_ONLY] TextView text="0" desc="Number of new cards to see today in this" id=deckpicker_new bounds=[936,547][972,600]
+#26 [TEXT_ONLY] TextView text="29" desc="Number of cards in learning in this deck" id=deckpicker_lrn bounds=[972,547][1030,600]
+#27 [TEXT_ONLY] TextView text="0" desc="Number of cards due today in this deck." id=deckpicker_rev bounds=[1030,547][1052,600]
+#29 [TEXT_ONLY] TextView text="Filtered Deck 2" id=deckpicker_name bounds=[66,641][440,773]
+#31 [TEXT_ONLY] TextView text="0" desc="Number of new cards to see today in this" id=deckpicker_new bounds=[958,680][994,733]
+#32 [TEXT_ONLY] TextView text="0" desc="Number of cards in learning in this deck" id=deckpicker_lrn bounds=[994,680][1030,733]
+#33 [TEXT_ONLY] TextView text="0" desc="Number of cards due today in this deck." id=deckpicker_rev bounds=[1030,680][1052,733]
+#35 [TEXT_ONLY] TextView text="New Deck" id=deckpicker_name bounds=[66,774][313,906]
+#37 [TEXT_ONLY] TextView text="0" desc="Number of new cards to see today in this" id=deckpicker_new bounds=[958,813][994,866]
+#38 [TEXT_ONLY] TextView text="0" desc="Number of cards in learning in this deck" id=deckpicker_lrn bounds=[994,813][1030,866]
+#39 [TEXT_ONLY] TextView text="0" desc="Number of cards due today in this deck." id=deckpicker_rev bounds=[1030,813][1052,866]
+#40 [TEXT_ONLY] TextView text="Studied ⁨0⁩ cards ⁨in ⁨0⁩ seconds⁩ today" id=today_stats_text_view bounds=[0,2095][1080,2148]
+
+[Color Analysis — pixel sampling from screenshot]
+  Status Bar: cyan (#00a0f0, 94.3%), white (#f0f0f0, 2.0%)
+  Toolbar/Header: cyan (#00a0f0, 90.7%), white (#e0f0f0, 1.7%)
+  Content Area: white (#f0f0f0, 88.0%), pink (#e0e0e0, 8.3%)
+  Navigation Bar: white (#f0f0f0, 95.0%), gray (#909090, 1.7%)
+
+[Element Color Sampling — pixel colors of image/visual elements]
+  Large image (background) [0,242][1080,2148]: white (#f0f0f0, 92.0%), pink (#e0e0e0, 5.5%), black (#000000, 0.5%)
+  Notification image [169,2148][354,2280]: white (#f0f0f0, 94.5%), gray (#909090, 5.0%), pink (#e0e0e0, 0.5%)
+  Notification image [724,2148][910,2280]: white (#f0f0f0, 90.5%), gray (#909090, 9.0%), gray (#a0a0a0, 0.5%)
+  Notification image [430,2148][650,2280]: white (#f0f0f0, 96.0%), gray (#909090, 4.0%)
+
+[Color Change Detected]
+  Status Bar: white (#f0f0f0) -> cyan (#00a0f0)
+  Toolbar/Header: white (#f0f0f0) -> cyan (#00a0f0)
+[UIAutomator Viewer] Annotated screenshot included in prompt
+gemini-2.5-pro
+###############################################
+
+*GPT message: We are now on the main screen with the list of decks. According to the bug report, the next step is to long-press a deck. I will choose the "Default" deck for this action.
+
+Suggestion:
+```json
+[
+  {
+    "action": "long_click",
+    "feature": "Default"
+  }
+]
+```
+
+###############################################
+{'action': 'long_click', 'feature': 'Default'}
+[UIAutomator Viewer] Step 6: 19 elements (14 clickable, 0 editable, 0 scrollable)
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'Default'}"].
+*Current Screen Information:  #Current Activity: .DeckPicker.  # UI Information:click has the following group(s):1#.select_dialog_listview:['Delete deck', 'Edit description', 'Create shortcut', 'Export deck', 'Custom study', 'Deck options', 'Create subdeck', 'Rename deck', 'Browse cards', 'Add'];Other Widgets with Text in This Page has the following group(s):1#.Default;.
+
+[UIAutomator Viewer - Element Map]
+Total visible elements: 19
+Box colors: GREEN=clickable, BLUE=text-input, ORANGE=scrollable, PURPLE=checkable, YELLOW=focused, GRAY=text
+---
+#1 [CLICKABLE] TextView text="Add" id=text1 bounds=[71,527][1009,659]
+#2 [CLICKABLE] TextView text="Browse cards" id=text1 bounds=[71,659][1009,791]
+#3 [CLICKABLE] TextView text="Rename deck" id=text1 bounds=[71,791][1009,923]
+#4 [CLICKABLE] TextView text="Create subdeck" id=text1 bounds=[71,923][1009,1055]
+#5 [CLICKABLE] TextView text="Deck options" id=text1 bounds=[71,1055][1009,1187]
+#6 [CLICKABLE] TextView text="Custom study" id=text1 bounds=[71,1187][1009,1319]
+#7 [CLICKABLE] TextView text="Export deck" id=text1 bounds=[71,1319][1009,1451]
+#8 [CLICKABLE] TextView text="Create shortcut" id=text1 bounds=[71,1451][1009,1583]
+#9 [CLICKABLE] TextView text="Edit description" id=text1 bounds=[71,1583][1009,1715]
+#10 [CLICKABLE] TextView text="Delete deck" id=text1 bounds=[71,1715][1009,1847]
+#15 [CLICKABLE] ImageView desc="Back" id=back bounds=[169,2148][354,2280]
+#16 [CLICKABLE] ImageView desc="Overview" id=recent_apps bounds=[724,2148][910,2280]
+#17 [CLICKABLE] FrameLayout id=home bounds=[430,2148][650,2280]
+#18 [CLICKABLE] ImageView desc="Home" id=home_button bounds=[430,2148][650,2280]
+#0 [TEXT_ONLY] TextView text="Default" id=alertTitle bounds=[137,395][348,483]
+#11 [TEXT_ONLY] TextView text="4:52" desc="4:52 AM" id=clock bounds=[77,3][158,66]
+#12 [TEXT_ONLY] FrameLayout desc="Wifi signal full." id=wifi_combo bounds=[876,4][924,65]
+#13 [TEXT_ONLY] FrameLayout desc="Phone three bars." id=mobile_combo bounds=[924,4][965,65]
+#14 [TEXT_ONLY] LinearLayout desc="Battery 100 percent." id=battery bounds=[982,3][1003,66]
+
+[Color Analysis — pixel sampling from screenshot]
+  Status Bar: teal (#0070a0, 93.0%), white (#f0f0f0, 2.7%)
+  Toolbar/Header: teal (#0070a0, 91.0%), teal (#0060a0, 1.3%)
+  Content Area: white (#f0f0f0, 73.3%), gray (#a0a0a0, 19.0%)
+  Navigation Bar: gray (#a0a0a0, 89.3%), black (#000000, 4.3%)
+
+[Element Color Sampling — pixel colors of image/visual elements]
+  Notification image [169,2148][354,2280]: gray (#a0a0a0, 93.5%), light-gray (#d0d0d0, 3.5%), light-gray (#b0b0b0, 1.0%)
+  Notification image [724,2148][910,2280]: gray (#a0a0a0, 95.5%), light-gray (#d0d0d0, 4.5%)
+  Notification image [430,2148][650,2280]: gray (#a0a0a0, 92.0%), light-gray (#d0d0d0, 6.5%), gray (#909090, 0.5%)
+
+[Color Change Detected]
+  Status Bar: cyan (#00a0f0) -> teal (#0070a0)
+  Toolbar/Header: cyan (#00a0f0) -> teal (#0070a0)
+  Navigation Bar: white (#f0f0f0) -> gray (#a0a0a0)
+  Notification image [169,2148][354,2280]: white (#f0f0f0) -> gray (#a0a0a0)
+  Notification image [724,2148][910,2280]: white (#f0f0f0) -> gray (#a0a0a0)
+  Notification image [430,2148][650,2280]: white (#f0f0f0) -> gray (#a0a0a0)
+[UIAutomator Viewer] Annotated screenshot included in prompt
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have successfully long-pressed the "Default" deck, and a context menu has appeared. The next step in the bug report is to tap "Deck options".
+
+Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "Deck options"
+  }
+]
+```
+
+###############################################
+{'action': 'click', 'feature': 'Deck options'}
+[UIAutomator Viewer] Step 7: 49 elements (32 clickable, 5 editable, 1 scrollable)
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Deck options'}"].There are a UI quickly disappear(less than 0.5s) after ["Successfully execute {'action': 'click', 'feature': 'Deck options'}"]. The UI information of the page is {info_1}. If the next action related to the quick diappear page, Please provide a seris of actions to tigger the quick disappear UI then execute actions on the relevant transient widget in one go. Current page is 
+*Current Screen Information:  #Current Activity: .SingleFragmentActivity.  # UI Information:set_text has the following group(s):1#.['[74,756][984,827]'];2#.['[74,1012][984,1083]'];3#.['1m 10m'];4#.['[574,1861][984,1933]'];5#.['[574,1955][984,2024]'];click has the following group(s):1#.toolbar:[{'ImageButton': 'Navigate up'}, 'Deck options'];2#.[{'NAF': '[937,462][998,519]'}];3#.['Preset'];4#.['This deck'];5#.['Today only'];6#.[{'NAF': '[979,753][1056,833]'}];7#.['Preset'];8#.['This deck'];9#.['Today only'];10#.[{'NAF': '[979,1006][1056,1086]'}];11#.[{'NAF': '[979,1311][1056,1391]'}];12#.[{'NAF': '[979,1405][1056,1485]'}];13#.[{'NAF': '[937,1644][998,1702]'}];14#.[{'NAF': '[979,1771][1056,1848]'}];15#.[{'NAF': '[979,1859][1056,1936]'}];16#.[{'NAF': '[979,1952][1056,2029]'}];17#.[{'NAF': '[979,2095][1056,2149]'}];spinner has the following group(s):1#.[{'NAF': '[1020,261][1080,330]'}, 'Save', 'Default (used by \u2068\u20682\u2069 decks\u2069)'];2#.['Sequential (oldest cards first)'];check_box has the following group(s):1#.['New cards ignore review limit', 'status:unchecked'];2#.['Limits start from top', 'status:unchecked'];Other Widgets with Text in This Page has the following group(s):1#.Daily Limits;2#.New cards/day;3#.Maximum reviews/day;4#.If adding 20 new cards each day, your review limit should be at least 200.;5#.New cards ignore review limit ;6#.Limits start from top ;7#.New Cards;8#.Learning steps;9#.Graduating interval;10#.Easy interval;11#.Insertion order;..  It the quick diappear UI is not related, we can ignore it and proceeed based on the state of current page
+
+[UIAutomator Viewer - Element Map]
+Total visible elements: 49
+Box colors: GREEN=clickable, BLUE=text-input, ORANGE=scrollable, PURPLE=checkable, YELLOW=focused, GRAY=text
+---
+#0 [CLICKABLE] ImageButton desc="Navigate up" bounds=[0,77][154,231]
+#2 [FOCUSED] WebView bounds=[0,242][1080,2149]
+#3 [CLICKABLE] Spinner text="Default (used by ⁨⁨2⁩ decks⁩)" bounds=[0,261][830,330]
+#4 [CLICKABLE] Button text="Save" bounds=[869,261][1023,330]
+#5 [CLICKABLE] Button bounds=[1020,261][1080,330]
+#7 [CLICKABLE] Button bounds=[937,462][998,519]
+#9 [CLICKABLE] Button text="Preset" bounds=[71,654][228,737]
+#10 [CLICKABLE] Button text="This deck" bounds=[385,654][596,726]
+#11 [CLICKABLE] Button text="Today only" bounds=[753,654][987,726]
+#12 [CLICKABLE] Button bounds=[979,753][1056,833]
+#13 [EDITABLE] EditText bounds=[74,756][984,827]
+#15 [CLICKABLE] Button text="Preset" bounds=[71,910][228,992]
+#16 [CLICKABLE] Button text="This deck" bounds=[385,910][596,981]
+#17 [CLICKABLE] Button text="Today only" bounds=[753,910][987,981]
+#18 [CLICKABLE] Button bounds=[979,1006][1056,1086]
+#19 [EDITABLE] EditText bounds=[74,1012][984,1083]
+#22 [CLICKABLE] Button bounds=[979,1311][1056,1391]
+#23 [CLICKABLE] CheckBox text="New cards ignore review limit" id=3jss9jqd20j bounds=[860,1317][987,1383]
+#25 [CLICKABLE] Button bounds=[979,1405][1056,1485]
+#26 [CLICKABLE] CheckBox text="Limits start from top" id=bar434p4lob bounds=[860,1410][987,1476]
+#28 [CLICKABLE] Button bounds=[937,1644][998,1702]
+#30 [CLICKABLE] Button bounds=[979,1771][1056,1848]
+#31 [EDITABLE] EditText text="1m 10m" bounds=[574,1771][987,1845]
+#33 [CLICKABLE] Button bounds=[979,1859][1056,1936]
+#34 [EDITABLE] EditText bounds=[574,1861][984,1933]
+#36 [CLICKABLE] Button bounds=[979,1952][1056,2029]
+#37 [EDITABLE] EditText bounds=[574,1955][984,2024]
+#39 [CLICKABLE] Button bounds=[979,2095][1056,2149]
+#40 [CLICKABLE] Spinner text="Sequential (oldest cards first)" bounds=[71,2103][987,2149]
+#45 [CLICKABLE] ImageView desc="Back" id=back bounds=[169,2148][354,2280]
+#46 [CLICKABLE] ImageView desc="Overview" id=recent_apps bounds=[724,2148][910,2280]
+#47 [CLICKABLE] FrameLayout id=home bounds=[430,2148][650,2280]
+#48 [CLICKABLE] ImageView desc="Home" id=home_button bounds=[430,2148][650,2280]
+#1 [TEXT_ONLY] TextView text="Deck options" bounds=[165,113][519,195]
+#6 [TEXT_ONLY] TextView text="Daily Limits" bounds=[60,453][998,566]
+#8 [TEXT_ONLY] TextView text="New cards/day" bounds=[71,588][352,654]
+#14 [TEXT_ONLY] TextView text="Maximum reviews/day" bounds=[71,841][492,907]
+#20 [TEXT_ONLY] TextView text="If adding 20 new cards each day, your re" bounds=[60,1097][998,1309]
+#21 [TEXT_ONLY] TextView text="New cards ignore review limit " bounds=[71,1333][624,1386]
+#24 [TEXT_ONLY] TextView text="Limits start from top " bounds=[71,1427][462,1479]
+#27 [TEXT_ONLY] TextView text="New Cards" bounds=[60,1639][998,1749]
+#29 [TEXT_ONLY] TextView text="Learning steps" bounds=[71,1771][346,1837]
+#32 [TEXT_ONLY] TextView text="Graduating interval" bounds=[71,1853][423,1919]
+#35 [TEXT_ONLY] TextView text="Easy interval" bounds=[71,1947][308,2013]
+#38 [TEXT_ONLY] TextView text="Insertion order" bounds=[71,2040][343,2106]
+#41 [TEXT_ONLY] TextView text="4:52" desc="4:52 AM" id=clock bounds=[77,3][158,66]
+#42 [TEXT_ONLY] FrameLayout desc="Wifi signal full." id=wifi_combo bounds=[876,4][924,65]
+#43 [TEXT_ONLY] FrameLayout desc="Phone three bars." id=mobile_combo bounds=[924,4][965,65]
+#44 [TEXT_ONLY] LinearLayout desc="Battery 100 percent." id=battery bounds=[982,3][1003,66]
+
+[Color Analysis — pixel sampling from screenshot]
+  Status Bar: white (#f0f0f0, 95.3%), gray (#606060, 4.0%)
+  Toolbar/Header: white (#f0f0f0, 94.7%), black (#101020, 2.0%)
+  Content Area: white (#f0f0f0, 80.7%), pink (#f0f0c0, 8.3%)
+  Navigation Bar: gray (#808090, 55.7%), white (#f0f0f0, 36.0%)
+
+[Element Color Sampling — pixel colors of image/visual elements]
+  Notification image [169,2148][354,2280]: gray (#808090, 91.0%), light-gray (#d0d0d0, 4.5%), gray (#808080, 2.0%)
+  Notification image [724,2148][910,2280]: gray (#808090, 90.5%), light-gray (#d0d0d0, 4.5%), gray (#808080, 3.0%)
+  Notification image [430,2148][650,2280]: gray (#808090, 89.5%), light-gray (#d0d0d0, 5.5%), gray (#808080, 2.5%)
+
+[Color Change Detected]
+  Status Bar: teal (#0070a0) -> white (#f0f0f0)
+  Toolbar/Header: teal (#0070a0) -> white (#f0f0f0)
+[UIAutomator Viewer] Annotated screenshot included in prompt
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have successfully followed the steps outlined in the bug report:
+1.  Opened the app.
+2.  Long-pressed a deck ("Default").
+3.  Tapped "Deck options".
+
+We are now on the "Deck options" page. As described in the bug report's "Actual Behavior", the content on this page is wider than the screen. The provided screenshot clearly shows that elements on the right side, such as the question mark icons and parts of the text, are cut off. This visually confirms that the layout bug has been triggered.
+
+Suggestion:
+```json
+[
+  {
+    "result": "success",
+    "reason": "We have followed the steps to reproduce: long-pressed a deck and tapped 'Deck options'. The resulting screen shows the 'Deck options' page content overflowing the screen width, with elements on the right side being cut off. This directly matches the 'Actual Behavior' described in the bug report, which states 'The right side of the page (all but the upper bars) doesn't fit on the screen.' The visual evidence in the current screenshot confirms the bug is triggered.",
+    "bugreport": "1. Launch AnkiDroid.\n2. Tap 'Get Started'.\n3. On the permissions screen, tap the 'All files access' row.\n4. In the system settings, enable the 'Allow access to manage all files' switch.\n5. Press the back button to return to the app.\n6. On the main deck list screen, long-press a deck (e.g., 'Default').\n7. From the context menu, tap 'Deck options'.\n8. **Bug:** Observe the 'Deck options' screen. The content is wider than the device screen, causing elements on the right side to be cut off and inaccessible."
+  }
+]
+```
+
+###############################################
+!!!xxx!!!. Execution time: 222.838594 seconds
+!!!Response Times: 8. Total Commands: 8
+
+============================================================
+STDERR (if any)
+============================================================
+args: [-p, com.ichi2.anki, -c, android.intent.category.LAUNCHER, 1]
+ arg: "-p"
+ arg: "com.ichi2.anki"
+ arg: "-c"
+ arg: "android.intent.category.LAUNCHER"
+ arg: "1"
+data="com.ichi2.anki"
+data="android.intent.category.LAUNCHER"
+/Users/darshan/Desktop/Papers/ReBL/env/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+

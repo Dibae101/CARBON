@@ -1,0 +1,35 @@
+2026-05-03 16:17:51.986 | INFO     | ChatGPT:__init__:36 - [AdbGPT LLM] Provider: vertex | Model: gemini-2.5-pro | Keys: 3
+2026-05-03 16:17:51.986 | INFO     | ChatGPT:infer:113 - Available actions: [tap, input, scroll, double tap, long tap]
+Action primitives: [Tap] [Component], [Scroll] [Direction], [Input] [Component] [Value], [Double-tap] [Component], [Long-tap] [Component]
+Question: Extract the entity from the following ->
+    "1. Open bookmark
+    2. Tap "add new bookmark" and create a name with "a"
+    3. Create another one with name "b"
+    4. Click "a"
+    5. Go back to bookmark after changing name "a" to "b"
+    6. App crash"
+Answer:
+    1st step is "Open bookmark". The action is "open" and the target component is "bookmark". However, there is no explicit "open" in the Available actions list. Therefore, we select the closest semantic action "tap". Following the Action primitives, the entity of the step is [Tap] ["bookmark"].
+    2nd step is "Tap 'add new bookmark' and create a name with 'a'". Due to the conjunction word "and", this step can be separated into two sub-steps. For the first sub-step, the entity is [Tap] ["add new bookmark"]. For the second sub-step, the entity is [Input] ["name"] ["a"].
+    3rd step is "Create another one with name 'b'". This repeats the previous steps: [Tap] ["add new bookmark"] and [Input] ["name"] ["b"].
+    4th step is "Click 'a'". The entity is [Tap] ["a"].
+    5th step is "Go back to bookmark after changing name 'a' to 'b'". The entity is [Input] ["name"] ["b"] then [Tap] ["back"].
+    6th step is "App crash". No operations.
+    Overall: 1.[Tap]["bookmark"] 2.[Tap]["add new bookmark"] 3.[Input]["name"]["a"] 4.[Tap]["add new bookmark"] 5.[Input]["name"]["b"] 6.[Tap]["a"] 7.[Input]["name"]["b"] 8.[Tap]["back"]
+Question: Extract the entity from the following -> "1. Have application open and being used
+2. Swipe up to put current application in background
+3. Lunar crashes
+4. Occurrences are irregular and happen with various apps"
+ Answer: 
+2026-05-03 16:18:10.026 | INFO     | ChatGPT:infer:117 - 1st step is "Have application open and being used". This is a precondition, not an explicit user action. No operation.
+2nd step is "Swipe up to put current application in background". The action is "Swipe up". The closest semantic action in the Available actions list is "scroll". The direction is "up". Following the Action primitives, the entity is [Scroll] ["up"].
+3rd step is "Lunar crashes". This is the outcome of the bug. No operation.
+4th step is "Occurrences are irregular and happen with various apps". This is additional information about the bug, not a step to reproduce. No operation.
+Overall: 1.[Scroll] ["up"]
+2026-05-03 16:18:10.028 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-1: [Scroll] [up] [None]
+2026-05-03 16:18:10.028 | INFO     | extract_step:infer:122 - 
+  >>>> FALLBACK STEP-2: [Scroll] [up] [None]
+2026-05-03 16:18:10.810 | INFO     | ChatGPT:__init__:36 - [AdbGPT LLM] Provider: vertex | Model: gemini-2.5-pro | Keys: 3
+2026-05-03 16:18:10.811 | DEBUG    | __main__:<module>:56 - [Scroll] ["up"]
+2026-05-03 16:18:12.401 | DEBUG    | __main__:<module>:56 - [Scroll] ["up"]

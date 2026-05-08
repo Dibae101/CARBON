@@ -1,0 +1,34 @@
+Result: SUCCESS
+Reason: After skipping to the next track via the notification controls, the song title and artist text failed to update, remaining on the previous song ('In Your Eyes'). However, the color analysis of the notification artwork confirms that the image did change, creating a mismatch between the displayed text and the album art. This reproduces the bug.
+Screenshots: 8
+
+lors of the `Notification artwork` have changed significantly, from a brownish-gray (`#402010`) to a dark red (`#500000`).
+
+This confirms the bug: the notification is in an inconsistent state. The text is for the previous song, but the album art has changed (presumably to match the new, currently playing song). This matches the bug report's description of "Notification shows wrong album art for current song," as the art is incorrect for the song title being displayed.
+
+Suggestion:
+```json
+[
+  {
+    "result": "success",
+    "reason": "After skipping to the next track via the notification controls, the song title and artist text failed to update, remaining on the previous song ('In Your Eyes'). However, the color analysis of the notification artwork confirms that the image did change, creating a mismatch between the displayed text and the album art. This reproduces the bug.",
+    "bugreport": {
+      "title": "Notification UI Fails to Update on Track Change, Showing Stale Song Title with New Album Art",
+      "app_name": "ViTune",
+      "version": "0.12.3",
+      "steps_to_reproduce": [
+        "Launch the ViTune app.",
+        "Start playing any song (e.g., by tapping a track in 'Quick picks').",
+        "Swipe down from the top of the screen to open the notification panel.",
+        "In the media control notification, tap the 'Next track' button."
+      ],
+      "expected_behavior": "The notification should fully update to display the song title, artist, and album art corresponding to the new song that is now playing.",
+      "actual_behavior": "The song title and artist text in the notification do not update; they remain stuck showing the details of the previous song. The album art, however, does change. This results in an inconsistent UI where the notification displays the wrong album art for the song title shown."
+    }
+  }
+]
+```
+
+###############################################
+!!!xxx!!!. Execution time: 139.792181 seconds
+!!!Response Times: 4. Total Commands: 4

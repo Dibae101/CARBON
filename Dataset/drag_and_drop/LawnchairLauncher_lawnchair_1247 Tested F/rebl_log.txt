@@ -1,0 +1,257 @@
+ReBL Test Log — FALSE POSITIVE CORRECTED
+============================================================
+App:              LawnchairLauncher/lawnchair
+Issue:            https://github.com/LawnchairLauncher/lawnchair/issues/1247
+Version:          v15.0.0-beta3.0
+Primary Gesture:  talkback
+Test Result:      FAIL
+Execution Time:   (see original log below)
+Total Commands:   60
+Unique Actions:   long_click, click, back, swipe
+============================================================
+
+CORRECTED: ReBL originally reported SUCCESS but this was a FALSE POSITIVE.
+
+Failure Reason:
+  ReBL triggered a crash but NOT through the TalkBack actions menu as required by the bug report (Step 3: "Bring up the TalkBack actions menu"). ReBL does not have the ability to enable TalkBack or use TalkBack gestures. The crash ReBL triggered was through a different code path (long_click + drag), not the TalkBack-specific crash described in the bug report. This is a FALSE POSITIVE — the actual bug requires TalkBack to be active.
+
+============================================================
+ORIGINAL EXECUTION LOG (preserved for reference)
+============================================================
+ReBL Test Log
+============================================================
+App:              LawnchairLauncher/lawnchair
+Issue:            https://github.com/LawnchairLauncher/lawnchair/issues/1247
+Version:          v15.0.0-beta3.0
+Primary Gesture:  talkback
+Test Result:      SUCCESS
+Execution Time:   1086.4s
+Total Commands:   60
+Unique Actions:   long_click, click, back, swipe
+============================================================
+
+Result Reason:
+  (no reason provided)
+
+============================================================
+FULL EXECUTION LOG
+============================================================
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AttributeError: 'Device' object has no attribute 'healthcheck'
+Performing Streamed Install
+Success
+  bash arg: -p
+  bash arg: app.lawnchair
+  bash arg: -c
+  bash arg: android.intent.category.LAUNCHER
+  bash arg: 1
+Events injected: 1
+## Network stats: elapsed time=203ms (0ms mobile, 0ms wifi, 203ms not connected)
+[Old ReBL LLM] Provider: vertex | Model: gemini-2.5-pro | URL: https://aiplatform.googleapis.com/v1/publishers/google/models
+*Prompt: [].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.['app.lawnchair:id/search_container_workspace'];2#.['Tap to set up'];3#.[{'FrameLayout': 'Folder: Google, 4 or more items'}, 'Google'];4#.[{'TextView': 'Play Store'}];5#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];6#.['Search'];7#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'long_click', 'feature': 'Play Store'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'Play Store'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'Play Store'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.system_shortcut:[{'FrameLayout': 'app.lawnchair:id/system_shortcut'}, 'App info'];2#.system_shortcut:[{'FrameLayout': 'app.lawnchair:id/system_shortcut'}, 'Widgets'];3#.system_shortcut:[{'FrameLayout': 'app.lawnchair:id/system_shortcut'}, 'Customize'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Customize'}]
+
+###############################################
+{'action': 'click', 'feature': 'Customize'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Customize'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:set_text has the following group(s):1#.['[88,1653][893,1785]', 'Label', '[44,1642][1036,1796]', 'Play Store'];click has the following group(s):1#.[{'NAF': '[444,1361][637,1554]'}];2#.[{'NAF': '[849,1829][992,1961]'}, 'Hide from app drawer'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.['app.lawnchair:id/search_container_workspace'];2#.['Tap to set up'];3#.[{'FrameLayout': 'Folder: Google, 4 or more items'}, 'Google'];4#.[{'TextView': 'Play Store'}];5#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];6#.['Search'];7#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'long_click', 'feature': 'Google'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'Google'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'Google'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.['app.lawnchair:id/search_container_workspace'];2#.['Tap to set up'];3#.[{'FrameLayout': 'Folder: Google, 4 or more items'}, 'Google'];4#.[{'TextView': 'Play Store'}];5#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];6#.['Search'];7#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'long_click', 'feature': 'Chrome'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'Chrome'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'Chrome'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.system_shortcut:[{'FrameLayout': 'app.lawnchair:id/system_shortcut'}, 'App info'];2#.system_shortcut:[{'FrameLayout': 'app.lawnchair:id/system_shortcut'}, 'Widgets'];3#.system_shortcut:[{'FrameLayout': 'app.lawnchair:id/system_shortcut'}, 'Customize'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.['app.lawnchair:id/search_container_workspace'];2#.['Tap to set up'];3#.[{'FrameLayout': 'Folder: Google, 4 or more items'}, 'Google'];4#.[{'TextView': 'Play Store'}];5#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];6#.['Search'];7#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'swipe', 'from_direction': 'right', 'to_direction': 'left'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'right', 'to_direction': 'left'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'right', 'to_direction': 'left'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.[{'TextView': 'Settings'}, {'TextView': 'Photos'}, {'TextView': 'Gmail'}];2#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];3#.['Search'];4#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'long_click', 'feature': 'Settings'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'Settings'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'Settings'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.system_shortcut:[{'FrameLayout': 'app.lawnchair:id/system_shortcut'}, 'App info'];2#.system_shortcut:[{'FrameLayout': 'app.lawnchair:id/system_shortcut'}, 'Widgets'];3#.system_shortcut:[{'FrameLayout': 'app.lawnchair:id/system_shortcut'}, 'Customize'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.[{'TextView': 'Settings'}, {'TextView': 'Photos'}, {'TextView': 'Gmail'}];2#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];3#.['Search'];4#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.['app.lawnchair:id/search_container_workspace'];2#.['Tap to set up'];3#.[{'FrameLayout': 'Folder: Google, 4 or more items'}, 'Google'];4#.[{'TextView': 'Play Store'}];5#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];6#.['Search'];7#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'long_click', 'feature': 'Google'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'Google'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'Google'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.['app.lawnchair:id/search_container_workspace'];2#.['Tap to set up'];3#.[{'FrameLayout': 'Folder: Google, 4 or more items'}, 'Google'];4#.[{'TextView': 'Play Store'}];5#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];6#.['Search'];7#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'swipe', 'from_direction': 'right', 'to_direction': 'left'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'right', 'to_direction': 'left'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'right', 'to_direction': 'left'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.[{'TextView': 'Settings'}, {'TextView': 'Photos'}, {'TextView': 'Gmail'}];2#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];3#.['Search'];4#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Settings'}]
+
+###############################################
+{'action': 'click', 'feature': 'Settings'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Settings'}"].
+*Current Screen Information:  #Current Activity: .Settings.  # UI Information:click has the following group(s):1#.account_avatar:[{'ImageView': 'Profile picture, double tap to open Google Account'}];2#.search_action_bar:[{'ViewGroup': 'com.android.settings:id/search_action_bar'}, 'Search settings'];3#.['Network & internet', 'Mobile, Wi‑Fi, hotspot'];4#.['Connected devices', 'Bluetooth, pairing'];5#.['Apps', 'Assistant, recent apps, default apps'];6#.['Notifications', 'Notification history, conversations'];7#.['Battery', '100%'];8#.['Storage', '85% used - 1.17 GB free'];Other Widgets with Text in This Page has the following group(s):1#.Settings;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.[{'TextView': 'Settings'}, {'TextView': 'Photos'}, {'TextView': 'Gmail'}];2#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];3#.['Search'];4#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.['app.lawnchair:id/search_container_workspace'];2#.['Tap to set up'];3#.[{'FrameLayout': 'Folder: Google, 4 or more items'}, 'Google'];4#.[{'TextView': 'Play Store'}];5#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];6#.['Search'];7#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'long_click', 'feature': 'app.lawnchair:id/search_container_workspace'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'app.lawnchair:id/search_container_workspace'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'app.lawnchair:id/search_container_workspace'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.system_shortcut:[{'FrameLayout': 'app.lawnchair:id/system_shortcut'}, 'Customize'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .LawnchairLauncher.  # UI Information:click has the following group(s):1#.['app.lawnchair:id/search_container_workspace'];2#.['Tap to set up'];3#.[{'FrameLayout': 'Folder: Google, 4 or more items'}, 'Google'];4#.[{'TextView': 'Play Store'}];5#.[{'TextView': 'Chrome'}, {'TextView': 'Contacts'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];6#.['Search'];7#.[{'ImageButton': 'Voice Search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Tap to set up'}]
+
+###############################################
+{'action': 'click', 'feature': 'Tap to set up'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Tap to set up'}"].
+*Current Screen Information:  #Current Activity: .BlankActivity.  # UI Information:click has the following group(s):1#.['Cancel'];2#.['Change settings'];Other Widgets with Text in This Page has the following group(s):1#.Notification access needed;2#.To use Now Playing, turn on Notification Dots.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .BlankActivity.  # UI Information:.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: Just a reminder, we are repeating the following steps Repeating sequence detected: , [{'action': 'back'}]. If the bug report doesn' require repeated steps, it seems like we're trapped into a loop. If you belive we are in the right track, maybe try different text for set_text. If there are more other widgets, maybe try a different path. 
+*Current Screen Information:  #Current Activity: .BlankActivity.  # UI Information:click has the following group(s):1#.['Wait', 'Close app'];Other Widgets with Text in This Page has the following group(s):1#.Lawnchair isn't responding;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'result': 'success', 'reason': "The application has crashed, as indicated by the 'Lawnchair isn't responding' dialog on the screen. This directly matches the expected buggy behavior described in the bug report, which states 'The app crashes and the close and send feedback that android brings up shows up.'", 'bugreport': '1. Launch the Lawnchair app.\n2. Click on the "Tap to set up" widget on the home screen.\n3. On the "Notification access needed" screen, press the back button.\n4. Press the back button again.\n5. The application crashes, and the system displays an "Lawnchair isn\'t responding" dialog.'}]
+
+###############################################
+!!!xxx!!!. Execution time: 1053.873761 seconds
+!!!Response Times: 21. Total Commands: 21
+
+============================================================
+STDERR (if any)
+============================================================
+args: [-p, app.lawnchair, -c, android.intent.category.LAUNCHER, 1]
+ arg: "-p"
+ arg: "app.lawnchair"
+ arg: "-c"
+ arg: "android.intent.category.LAUNCHER"
+ arg: "1"
+data="app.lawnchair"
+data="android.intent.category.LAUNCHER"
+/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+

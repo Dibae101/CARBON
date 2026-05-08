@@ -1,0 +1,43 @@
+Bug: FossifyOrg/Calendar #273
+Title: Setting a default event length doesn't change the default event length
+Category: Double Tap
+Gesture Required: double_tap on calendar to create new event
+
+---
+
+CARBON (✅ SUCCESS)
+  Action: tap_screen(x=640, y=1100) x 2 (simulates double-tap)
+  CARBON used two consecutive tap_screen commands at the same coordinates to perform a double-tap on the calendar.
+  This created a new event directly on the calendar view (bypassing the + button), which is the exact reproduction step described in the bug report.
+  CARBON has a native double-tap capability via coordinate-based tap_screen, allowing it to tap anywhere on the screen, not just on labeled UI widgets.
+
+ReBL (❌ FAIL)
+  ReBL lacks tap_screen and double_tap commands.
+  It can only click on named UI widgets (buttons, text fields).
+  The calendar view has no clickable widget at the double-tap location, it is a custom canvas view.
+  ReBL cannot perform coordinate-based taps, so it cannot double-tap the calendar to create an event.
+
+AdbGPT (✅ reported, but fake)
+  Extracted: [Input] [default event duration] [35 minutes] then [Double tap] [calendar]
+  However, all 4 steps had [MISSING], the LLM could not match targets to any UI element.
+  AdbGPT tapped random elements on the home screen and never navigated to Settings or performed a real double-tap.
+  6 MISSING flags, no genuine navigation occurred.
+
+ReActDroid (❌ FAIL)
+  ReActDroid navigated to Settings then Manage event types then got stuck in color picker and event type editing.
+  It explored 18 steps but never found the default event duration setting.
+  It never performed a double-tap on the calendar, ReActDroid has no double-tap command.
+  Oracle: crash-only, this is a non-crash bug, so ReActDroid cannot detect it even if it reached the right screen.
+
+---
+
+Why CARBON succeeded:
+  1. tap_screen command, can tap at any (x,y) coordinate, not limited to named widgets
+  2. Two consecutive taps simulate double-tap gesture
+  3. Visual/LLM oracle, verified the bug by checking the event duration in the new event screen
+  
+Why others failed:
+  - No coordinate-based tap (ReBL, ReActDroid)
+  - No double-tap gesture (all three)
+  - No visual oracle for non-crash bugs (ReActDroid)
+  - Poor UI element matching (AdbGPT)
