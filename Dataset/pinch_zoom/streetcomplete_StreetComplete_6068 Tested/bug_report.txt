@@ -7,3 +7,23 @@ APK: https://github.com/streetcomplete/StreetComplete/releases/download/v59.0-al
 APK Tag: v59.0-alpha1
 Primary Gesture: pinch_zoom
 Keywords: zoom out; zoom; pinch
+
+
+When downloading large areas with high element density, the app may crash with an OOM error.
+I got a bunch of error reports for SCEE since release of 59.0, and reproduced it also in SC. Never seen it with older versions.
+
+How to Reproduce
+
+go to a well mapped city, e.g. https://www.openstreetmap.org/#map=15/25.00673/121.31786
+zoom out as much as possible, but to a level where you can still download data
+note that it the area actually doesn't need to be close to the 12 km² limit, I got reports for 7.4 km² and even one coming from auto-downloading a 3.5 km² area
+manually download data
+see crash
+Expected Behavior
+Download completes, like it did on older versions.
+I think it's related to the download, so probably not connected to MapLibre, as the stacktrace contains MapDataApiClient.getMap. #5686 was tested for performance, but looks like increased memory use was not a consideration.
+
+Stacktrace for 60.0
+Versions affected
+Tested on 59.0-alpha1 and 60.0.
+Does not happen on 58.2

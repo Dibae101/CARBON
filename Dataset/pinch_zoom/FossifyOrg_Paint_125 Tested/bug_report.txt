@@ -7,3 +7,39 @@ APK: https://github.com/FossifyOrg/Paint/releases/download/1.2.0/paint-5-foss-re
 APK Tag: 1.2.0
 Primary Gesture: pinch_zoom
 Keywords: pinch; zoom; rotation
+
+
+How did you install the app?
+F-Droid / IzzyOnDroid
+
+Steps to reproduce the bug
+sometimes paint goes to "draw to wrong place" bug mode. This happens typically after first drawing something with pencil and then zooming out with 2 fingers. Also I now noticed that the bug appears sometimes when I turn the device from portrait to landscape or back (auto rotate android UI is enabled).
+
+When bug is present if I touch pixel 300,300 and pull it to pixel 600,600, the actual line on the screen could appear to pixels 600,100 - 900,400.
+
+The length of error vector varies, sometimes it could be 25% of the length of display and sometimes only 2-5%
+
+Getting rid of the bug I have to go to settings - apps - Fossify Paint - force stop.
+
+Device is Oneplus Pad Go (Mediatek G99 soc, 8GB RAM, 2480 x 1720 resolution (1.4 aspect ratio), 11 inch screen).
+
+I did just 5min test with my phone (galaxy S21fe, 2300ish x 1080 res) and in that time I was unable to reproduce it.
+
+Worth noting is that this tablet has unusual aspect ratio and resolution for androids (typical android tablets are 1.6 aspect ratio and phones are over 2). Nevertheless IMO this is best aspect ratio and e.g. iPad aspect ratios are at same ballpark (1.33 - 1.5).
+
+With tablet it is much more common to rotate the device than with phones (IMO) so program should take this into account.
+
+The bug does not appear every time, I am not sure what factors cause it. But if you take a tablet, start drawing, doing lot of 2 finger pinch zooms in and out and drawing in different zooming factors, sometimes panning (moving 2 fingers to any directions), and then rotating the device so that auto-rotate happens you have high change of running into this bug.
+
+I suspect that the bug is on the algorithm which translates touch coordinate to drawn pixel coordinate.
+
+Expected behavior
+pen location remains in touch location
+
+Actual behavior
+pen location is different than touch location
+
+Screenshots/Screen recordings
+Here is link to screen recording of the bug (skip to 00:28 if you want to see it directly). I tried to attach it but was unable to do it so below is a nextcloud to the recording (h265)
+
+https://nx76363.your-storageshare.de/s/AY8GA5gkaXkqzc4

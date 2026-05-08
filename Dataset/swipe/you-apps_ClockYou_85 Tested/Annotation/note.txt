@@ -1,0 +1,21 @@
+Bug: you-apps/ClockYou #85
+Title: App cycles through previously visited tabs on back gesture instead of closing
+Category: Swipe
+Gesture Required: edge_swipe
+
+---
+
+CARBON (✅ SUCCESS)
+  Key gesture: back
+  Actions used: back(4x), click(3x)
+  Coordinates: (541,1305)
+  Reason: After navigating from the 'Clock' tab to the 'Alarm' tab, performing a back gesture returned the app to the 'Clock' tab instead of closing it. This matches the buggy behavior described in the report.
+
+ReBL (✅)
+  Reproduced with basic actions
+
+AdbGPT (✅)
+  4/4 steps, 4 MISSING (fake — tapped random elements)
+
+ReActDroid (❌)
+  ReActDroid completed 30 steps without triggering the expected crash.

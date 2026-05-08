@@ -1,0 +1,35 @@
+Result: SUCCESS
+Reason: Following the steps in the bug report (swiping up on the homescreen, then opening the Recents menu) resulted in a corrupted app preview in the Recents list. The preview for the 'Messages' app is rendered as a narrow, broken sliver instead of a full preview, which matches the description of a 'strange ghost app'.
+Screenshots: 8
+
+).
+*   To the left, there is a very narrow, malformed preview (`#17`) which the system identifies as "Messages".
+
+This malformed preview is not a proper, full-screenshot representation of the app. It's a graphical glitch, a "strange" entry in the Recents menu, which directly corresponds to the "ghost app" described in the bug report. The bug is that the swipe gesture on the homescreen corrupts the state of the Recents list, causing a rendering error for one of the app previews.
+
+Therefore, the buggy behavior has been successfully triggered.
+
+Suggestion:
+```json
+[
+  {
+    "result": "success",
+    "reason": "Following the steps in the bug report (swiping up on the homescreen, then opening the Recents menu) resulted in a corrupted app preview in the Recents list. The preview for the 'Messages' app is rendered as a narrow, broken sliver instead of a full preview, which matches the description of a 'strange ghost app'.",
+    "bugreport": {
+      "title": "[BUG] Gesture nav: swiping up to go home when already in Lawnchair creates a corrupted app preview in the Recents menu.",
+      "steps_to_reproduce": [
+        "1. Start on the Lawnchair homescreen.",
+        "2. Perform a swipe-up gesture from the bottom of the screen to open the app drawer.",
+        "3. Press the back button to return to the homescreen.",
+        "4. Perform a swipe-up-and-hold gesture from the bottom of the screen to open the Recents (app switcher) menu."
+      ],
+      "expected_behavior": "The Recents menu should display normal, fully rendered previews of all recent apps.",
+      "actual_behavior": "The Recents menu displays a corrupted preview for the app preceding Lawnchair in the list. The preview appears as a narrow, incorrectly rendered vertical sliver instead of a full app screenshot. This is the 'ghost app' described in the original report."
+    }
+  }
+]
+```
+
+###############################################
+!!!xxx!!!. Execution time: 204.828183 seconds
+!!!Response Times: 4. Total Commands: 4

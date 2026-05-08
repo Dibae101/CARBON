@@ -1,0 +1,13 @@
+Result: SUCCESS
+Reason: After disabling pull-to-refresh, entering and then exiting selection mode, a drag-and-drop gesture (simulating a long-press and downward slip) on a folder incorrectly triggered the pull-to-refresh animation, which matches the bug report.
+Screenshots: 34
+
+eenshot clearly shows the "arrow in a white circle" which is the visual indicator for the pull-to-refresh action. This animation was triggered by the `drag_and_drop` action, which simulated a long-press followed by a downward swipe. This happened even though the "Enable pull-to-refresh" setting was turned off. This exactly matches the "Actual Behavior" described in the bug report.
+
+The sequence of disabling the feature, entering selection mode, and then canceling it, successfully put the app into a state where a gesture that combines selection (long-press) and a downward motion (drag) incorrectly triggers the disabled refresh UI.
+
+Suggestion:[{'result': 'success', 'reason': 'After disabling pull-to-refresh, entering and then exiting selection mode, a drag-and-drop gesture (simulating a long-press and downward slip) on a folder incorrectly triggered the pull-to-refresh animation, which matches the bug report.', 'bugreport': 'Title: Pull-to-refresh gesture triggers even when disabled after entering and exiting selection mode.\n\nSteps to Reproduce:\n1. Launch the Fossify File Manager app and grant necessary file access permissions.\n2. Tap the \'More options\' (three dots) button in the top toolbar.\n3. Tap \'Settings\'.\n4. Scroll down and tap to uncheck \'Enable pull-to-refresh from the top\'.\n5. Press the \'Back\' button to return to the file list.\n6. Long-press any folder to enter selection mode.\n7. Tap the \'Done\' (back arrow) button to exit selection mode.\n8. Long-press on a folder and immediately drag your finger down a short distance.\n\nExpected Behavior:\nThe app should enter selection mode for the folder without any other visual effects.\n\nActual Behavior:\nThe app enters selection mode but also incorrectly displays the pull-to-refresh animation (a spinning arrow in a circle), even though the feature is disabled.'}]
+
+###############################################
+!!!xxx!!!. Execution time: 603.813701 seconds
+!!!Response Times: 17. Total Commands: 17
