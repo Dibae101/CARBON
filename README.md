@@ -1,4 +1,10 @@
-#  Comparison Report: CARBON vs ReBL vs ReActDroid vs AdbGPT
+# CARBON
+
+**Contextual Automated Reproduction of Bugs on Android**
+
+CARBON is an LLM-driven system for automatically reproducing Android bug reports. It connects to an Android emulator, captures annotated screenshots with color-coded bounding boxes, and uses Gemini 2.5 Pro to iteratively follow bug reproduction steps — including complex gestures like pinch-to-zoom, double-tap, edge swipes, and coordinate-based interactions that previous tools could not handle.
+
+##  Comparison Report: CARBON vs ReBL vs ReActDroid vs AdbGPT
 
 **Total Bugs Evaluated:** 100
 
