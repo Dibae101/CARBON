@@ -3,30 +3,286 @@ ReBL Test Log
 App:              Kin69/EasyNotes
 Issue:            https://github.com/Kin69/EasyNotes/issues/356
 Version:          unknown
-Primary Gesture:  
+Primary Gesture:  N/A
+Category:         swipe
 Test Result:      FAIL
-Execution Time:   0s
-Total Commands:   0
-Unique Actions:   none
+Execution Time:   1104.8s
+Tested At:        2026-05-09 08:07:10
 ============================================================
 
-ReBL FAILED — lacks required gesture capability.
-
-Missing Action:   double_tap_screen
-
-Failure Reason:
-  ReBL does not support the required action(s): home, tap_screen. CARBON used these CARBON-exclusive actions to reproduce this bug. ReBL's action set is limited to: click, long_click, set_text, swipe, scroll, back, orientation, restart, wait. Without home, ReBL cannot perform the gesture needed to trigger this bug.
-
-CARBON Actions Used (that ReBL lacks):
-  home, tap_screen
-
-ReBL's Full Action Set:
-  click, long_click, set_text, swipe (directional), scroll, back,
-  orientation, rotate, restart, wait, multiple_selection
-
-CARBON's Additional Actions (not in ReBL):
-  pinch, double_tap_screen, drag_and_drop, edge_swipe, media_gesture,
-  quick_tap, tap_screen, swipe_region, two_finger_swipe, two_finger_tap,
-  three_finger_swipe, rotate_gesture, home, open_notifications
+Result Reason:
+  ReBL failed — LLM reported 'fail': the Floating Action Button needed to create a new note was not reachable through any available action, so step 1 of the report could not be completed. (Parser misread 'Successfully'.)
 
 ============================================================
+FULL EXECUTION LOG (stdout)
+============================================================
+[Old ReBL LLM] Provider: vertex | Model: gemini-2.5-pro | URL: https://aiplatform.googleapis.com/v1/publishers/google/models
+*Prompt: [].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'No created notes.'}]
+
+###############################################
+{'action': 'click', 'feature': 'No created notes.'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'No created notes.'}"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Since clicking "No created notes." did not change the screen, it seems that's not the way to create a new note. The next logical step is to find the button for creating a new note, which is often a floating action button (FAB) symbolized by a '+' sign, usually at the bottom of the screen. This button isn't explicitly listed in the current UI information. It might be off-screen. Let's try to scroll to see if it becomes visible.
+
+Suggestion:[{'action': 'scroll', 'from_direction': 'down'}]
+
+###############################################
+{'action': 'scroll', 'from_direction': 'down'}
+*Prompt: ["Failed to execute {'action': 'scroll', 'from_direction': 'down'}. Error message: (-32001, 'androidx.test.uiautomator.UiObjectNotFoundException', ({'mask': 16793600, 'childOrSibling': [], 'childOrSiblingSelector': [], 'scrollable': True, 'instance': 0}, True, 500))"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: The scroll action failed, which means the "add note" button, likely a Floating Action Button (FAB), is not simply off-screen on a scrollable view. Since clicking "No created notes." did nothing, we need to explore other UI elements.
+
+Let's examine the widgets represented by their bounds. The widget with bounds `[132,176][198,242]` is located in the top-left area of the screen. This is a common location for a navigation drawer menu icon (often called a "hamburger" menu). This menu might contain the option to create a new note. Let's try clicking it.
+
+Suggestion:[{'action': 'click', 'feature': '[132,176][198,242]'}]
+
+###############################################
+Unable to convert message to command list: invalid syntax (<unknown>, line 1)
+*Prompt: Your suggestion is None. Let's go back or restart. 
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Given the unusual feedback and the suggestion to "go back or restart," the most prudent action is to reset the app's state to ensure we are starting from a clean slate. This eliminates the possibility that a previous action has put the app into an unexpected state.
+
+Suggestion:[{'action': 'restart'}]
+
+###############################################
+{'action': 'restart'}
+*Prompt: ["Successfully execute {'action': 'restart'}"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Based on the screenshots in the bug report, there should be a Floating Action Button (FAB) with a '+' sign to create a new note. However, this button is not present in the UI information provided, which strongly suggests it might be a "Not Accessibility Friendly" (NAF) widget.
+
+Since I cannot directly interact with a widget that isn't listed, I must try other ways to create a note. The standard UI patterns for this, besides a FAB, are:
+1. An option in a "more options" menu (usually top-right).
+2. An option in a navigation drawer (usually opened by a top-left icon or a swipe from the left edge).
+
+I previously attempted to click a top-left icon, which led to an error state, so I will avoid clicking widgets defined only by their bounds for now. A safer way to try and open the navigation drawer is by performing a swipe gesture.
+
+Suggestion:[{'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.['com.google.android.apps.nexuslauncher:id/smartspace_card_pager'];2#.[{'TextView': 'Sat, May 9'}];3#.[{'TextView': 'Camera'}, {'TextView': 'Chrome'}, {'TextView': 'Play Store'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];4#.['Search'];5#.g_icon:[{'ImageView': 'Google app'}];6#.end_part:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: It appears the swipe gesture was interpreted by the operating system and took us to the home screen, exiting the EasyNotes app. To continue, we must first return to the app. The most reliable way to do this is to restart it.
+
+Suggestion:[{'action': 'restart'}]
+
+###############################################
+{'action': 'restart'}
+*Prompt: ["Successfully execute {'action': 'restart'}"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We've established that we need to create a new note to proceed, but the standard "add note" button, which is likely a Floating Action Button (FAB), is not visible in the UI data. We have tried clicking the central text and swiping for a navigation drawer, both without success.
+
+Sometimes, changing the device's orientation can cause the UI to re-layout, which might reveal hidden or inaccessible elements. Let's try changing the orientation to landscape to see if this makes the "add note" button appear.
+
+Suggestion:[{'action': 'orientation', 'orientation': 'left'}]
+
+###############################################
+{'action': 'orientation', 'orientation': 'left'}
+*Prompt: ["Successfully execute {'action': 'orientation', 'orientation': 'left'}"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[2043,154][2153,264]', '[2065,176][2131,242]', '[2032,143][2164,275]', 'Search', '[132,176][198,242]', '[88,132][2192,286]', '[88,132][2192,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Changing the orientation to landscape did not reveal any new widgets. Let's return to the default portrait orientation, as this is the most common and stable configuration for apps.
+
+Suggestion:[{'action': 'orientation', 'orientation': 'natural'}]
+
+###############################################
+{'action': 'orientation', 'orientation': 'natural'}
+*Prompt: ["Successfully execute {'action': 'orientation', 'orientation': 'natural'}"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have tried several methods to create a new note (clicking the center text, swiping, changing orientation), but the main screen remains unchanged. The "add note" button, likely a Floating Action Button (FAB), is not listed in the UI elements, suggesting it might be a "Not Accessibility Friendly" (NAF) widget that the UI scanner cannot detect.
+
+Before assuming the button is completely invisible to the test framework, let's exhaust the visible, interactive elements. We have not yet tried interacting with the 'Search' widget. While it's primarily for searching, some apps change the UI upon activating the search bar, which might reveal other options. Let's try clicking it.
+
+Suggestion:[{'action': 'click', 'feature': 'Search'}]
+
+###############################################
+{'action': 'click', 'feature': 'Search'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Search'}"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[375,176][832,242]', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Activating the search bar did not reveal a way to create a new note. We are now in a search interface. To continue exploring other ways to create a note, we must first exit this search mode. The newly appeared 'Back' button is the standard way to do this.
+
+Suggestion:[{'action': 'click', 'feature': 'Back'}]
+
+###############################################
+{'action': 'click', 'feature': 'Back'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Back'}"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[375,176][832,242]', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have returned to the main screen after exploring the search functionality. We have exhausted several options to find the "add note" button, which is likely a Floating Action Button (FAB) at the bottom of the screen but is not appearing in the UI data.
+
+We have tried:
+*   Clicking the main text.
+*   Changing orientation.
+*   Swiping from the edge.
+*   Entering and exiting the search function.
+*   A `scroll` action, which failed.
+
+The `scroll` action might have failed because the view is not technically "scrollable" in the way the accessibility service understands it. However, a `swipe` gesture is a more direct simulation of a user's finger movement and might still move the content, potentially revealing the FAB at the bottom. To see content at the bottom, we need to swipe our finger from the top of the screen downwards, which scrolls the view up.
+
+Let's attempt a swipe gesture to see if we can reveal the bottom part of the screen.
+
+Suggestion:[{'action': 'swipe', 'from_direction': 'down'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'down'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'down'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.['com.google.android.apps.nexuslauncher:id/smartspace_card_pager'];2#.[{'TextView': 'Sat, May 9'}];3#.[{'TextView': 'Camera'}, {'TextView': 'Chrome'}, {'TextView': 'Play Store'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];4#.['Search'];5#.g_icon:[{'ImageView': 'Google app'}];6#.end_part:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: The swipe gesture has again taken us out of the EasyNotes app and back to the device's home screen. To proceed, we must first return to the app.
+
+Suggestion:[{'action': 'restart'}]
+
+###############################################
+{'action': 'restart'}
+*Prompt: ["Successfully execute {'action': 'restart'}"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have repeatedly failed to find the "add note" button by exploring standard UI interactions. Swiping gestures are being intercepted by the system, and no visible button is present. It is highly probable that the "add note" button is a Floating Action Button (FAB) that is not being detected by the accessibility service (a NAF widget).
+
+However, before resorting to blind clicks, let's re-examine the UI elements at the top of the screen. There is a cluster of widgets in the top-right corner:
+*   `[843,154][953,264]`
+*   `[865,176][931,242]`
+*   `[832,143][964,275]`
+
+This area often contains a "More options" menu (three dots), which could contain an "Add note" action. Let's try clicking on one of these widgets to see if it reveals a menu.
+
+Suggestion:[{'action': 'click', 'feature': '[843,154][953,264]'}]
+
+###############################################
+Unable to convert message to command list: invalid syntax (<unknown>, line 1)
+*Prompt: Your suggestion is None. Let's go back or restart. 
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have encountered several dead ends trying to create a new note. Clicking on the corner icons seems to be problematic for the test environment, and swiping gestures exit the app. We have already tried clicking "No created notes." and "Search" with no success.
+
+The key to creating a note is likely the Floating Action Button (FAB) shown in the bug report's screenshots, but it is not appearing in the UI data, making it a NAF (Not Accessibility Friendly) widget that we cannot directly target.
+
+Since direct interaction is impossible, we must exhaust all options on the visible, accessible widgets. We have not yet tried a `long_click` action. Sometimes, a long click can open a context menu with more options. Let's try long-clicking the central text on the screen.
+
+Suggestion:[{'action': 'long_click', 'feature': 'No created notes.'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'No created notes.'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'No created notes.'}"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have now exhausted all simple `click` and `long_click` interactions on the available, accessible widgets. Swiping from the edges or from the top of the screen has resulted in exiting the app. Changing orientation and using the search function did not reveal the "add note" button.
+
+The primary obstacle is the inability to create a new note because the button, likely a Floating Action Button (FAB) at the bottom of the screen, is not being detected by the UI scanner.
+
+We have tried a `swipe` from the top down (`from_direction: 'down'`), which pulled down the system notification shade. To reveal content at the bottom of the screen, the correct user gesture is to swipe a finger from the bottom of the screen upwards. According to the action definitions, this corresponds to a `swipe` with `from_direction: 'up'`. Let's try this gesture to see if we can scroll the view and reveal the hidden FAB.
+
+Suggestion:[{'action': 'swipe', 'from_direction': 'up'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'up'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'up'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.['com.google.android.apps.nexuslauncher:id/smartspace_card_pager'];2#.[{'TextView': 'Sat, May 9'}];3#.[{'TextView': 'Camera'}, {'TextView': 'Chrome'}, {'TextView': 'Play Store'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];4#.['Search'];5#.g_icon:[{'ImageView': 'Google app'}];6#.end_part:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: The swipe gesture has once again taken us to the home screen. This confirms that swipe gestures from the edge are being interpreted by the operating system for navigation and are not suitable for interacting with the app's content on this screen.
+
+To proceed, we must first return to the EasyNotes app.
+
+Suggestion:[{'action': 'restart'}]
+
+###############################################
+{'action': 'restart'}
+*Prompt: ["Successfully execute {'action': 'restart'}"].
+*Current Screen Information:  #Current Activity: .presentation.MainActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have repeatedly tried to find the "add note" button by clicking, long-clicking, swiping, and changing orientation, but all attempts have been unsuccessful. Swiping from the edges consistently exits the app, and the button itself is not detected by the UI scanner (it's a NAF widget). We have exhausted all logical interactions with the visible and accessible UI elements.
+
+There is one basic action we have not yet tried from this main screen: pressing the system's 'back' button. While this will likely exit the application, it is a fundamental action that should be tested to ensure we have covered all possibilities before resorting to more speculative or risky actions.
+
+Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:click has the following group(s):1#.['com.google.android.apps.nexuslauncher:id/smartspace_card_pager'];2#.[{'TextView': 'Sat, May 9'}];3#.[{'TextView': 'Camera'}, {'TextView': 'Chrome'}, {'TextView': 'Play Store'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];4#.['Search'];5#.g_icon:[{'ImageView': 'Google app'}];6#.end_part:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Pressing the 'back' button has exited the application and returned us to the device's home screen. To continue, we must first re-enter the EasyNotes app.
+
+Suggestion:[{'action': 'restart'}]
+
+###############################################
+{'action': 'restart'}
+*Prompt: ["Successfully execute {'action': 'restart'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:set_text has the following group(s):1#.['[843,154][953,264]', '[865,176][931,242]', '[832,143][964,275]', 'Search', '[132,176][198,242]', '[88,132][992,286]', '[88,132][992,286]'];Other Widgets with Text in This Page has the following group(s):1#.No created notes.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have now tried every conceivable standard interaction on this screen:
+*   `click` and `long_click` on the main text.
+*   `click` on the 'Search' bar.
+*   `click` on the corner icons (which resulted in an error).
+*   `swipe` gestures from all four edges (which exit the app).
+*   Changing `orientation`.
+*   Using the `back` button (which exits the app).
+*   Attempting to `scroll` (which failed).
+
+We are stuck in a loop, always returning to this initial screen. The crucial action, creating a new note, is impossible because the "add" button (likely a Floating Action Button) is not being detected by the UI scanner and is therefore not available for interaction. Without being able to create a note, we cannot proceed to the next steps of the bug report (typing text and checking if it saves).
+
+Since all possible actions on the given UI have been exhausted without success, and we are unable to progress, it is time to conclude this attempt.
+
+Suggestion:[{'result': 'fail', 'reason': 'Failed to reproduce the bug. The initial step requires creating a new note. However, the button to create a note, likely a Floating Action Button, is not present in the provided UI information and could not be revealed through any available actions (click, scroll, swipe, orientation change). All attempts to navigate away from the initial "No created notes." screen have been unsuccessful, preventing any further progress towards reproducing the reported issue.'}]
+
+###############################################
+!!!xxx!!!. Execution time: 1100.049876 seconds
+!!!Response Times: 19. Total Commands: 17
+
+
+============================================================
+STDERR
+============================================================
+/Users/darshan/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+

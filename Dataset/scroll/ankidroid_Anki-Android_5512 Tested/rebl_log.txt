@@ -4,29 +4,421 @@ App:              ankidroid/Anki-Android
 Issue:            https://github.com/ankidroid/Anki-Android/issues/5512
 Version:          2.9
 Primary Gesture:  scroll
+Category:         scroll
 Test Result:      FAIL
-Execution Time:   0s
-Total Commands:   0
-Unique Actions:   none
+Execution Time:   1500.7s
+Tested At:        2026-05-09 06:15:13
 ============================================================
 
-ReBL FAILED — lacks required gesture capability.
-
-Missing Action:   double_tap_screen
-
-Failure Reason:
-  ReBL does not support the required action(s): tap_screen. CARBON used these CARBON-exclusive actions to reproduce this bug. ReBL's action set is limited to: click, long_click, set_text, swipe, scroll, back, orientation, restart, wait. Without tap_screen, ReBL cannot perform the gesture needed to trigger this bug.
-
-CARBON Actions Used (that ReBL lacks):
-  tap_screen
-
-ReBL's Full Action Set:
-  click, long_click, set_text, swipe (directional), scroll, back,
-  orientation, rotate, restart, wait, multiple_selection
-
-CARBON's Additional Actions (not in ReBL):
-  pinch, double_tap_screen, drag_and_drop, edge_swipe, media_gesture,
-  quick_tap, tap_screen, swipe_region, two_finger_swipe, two_finger_tap,
-  three_finger_swipe, rotate_gesture, home, open_notifications
+Result Reason:
+  ReBL failed — LLM reported 'fail': AnkiDroid crashed repeatedly on launch and could not reach the 'Card browser font scaling' setting to reproduce the bug. (Parser misread 'successfully' as SUCCESS.)
 
 ============================================================
+FULL EXECUTION LOG (stdout)
+============================================================
+[Old ReBL LLM] Provider: vertex | Model: gemini-2.5-pro | URL: https://aiplatform.googleapis.com/v1/publishers/google/models
+*Prompt: [].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:click has the following group(s):1#.['Close app', 'App info'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid keeps stopping;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Close app'}]
+
+###############################################
+{'action': 'click', 'feature': 'Close app'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Close app'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'restart'}]
+
+###############################################
+{'action': 'restart'}
+*Prompt: ["Successfully execute {'action': 'restart'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:click has the following group(s):1#.['com.google.android.apps.nexuslauncher:id/smartspace_card_pager'];2#.[{'TextView': 'Sat, May 9'}];3#.[{'TextView': 'Messages'}];4#.[{'TextView': 'Camera'}, {'TextView': 'Chrome'}, {'TextView': 'Play Store'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];5#.['Search'];6#.g_icon:[{'ImageView': 'Google app'}];7#.end_part:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'swipe', 'from_direction': 'down', 'to_direction': 'up'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'down', 'to_direction': 'up'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'down', 'to_direction': 'up'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.wallpaper_carousel:[{'FrameLayout': 'White Sands, Sonoran Desert'}, {'FrameLayout': 'Light the Way, Schwyz'}, {'FrameLayout': 'Bird’s-Eye View, Zion National Park'}, {'FrameLayout': 'Wallpaper'}];2#.['Wallpaper & style'];3#.['Widgets'];4#.['Home settings'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'swipe', 'from_direction': 'down', 'to_direction': 'up'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'down', 'to_direction': 'up'}
+*Prompt: Just a reminder, we are repeating the following steps Repeating sequence detected: , [{'action': 'swipe', 'from_direction': 'down', 'to_direction': 'up'}]. If the bug report doesn' require repeated steps, it seems like we're trapped into a loop. If you belive we are in the right track, maybe try different text for set_text. If there are more other widgets, maybe try a different path. 
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.['com.google.android.apps.nexuslauncher:id/smartspace_card_pager'];2#.[{'TextView': 'Sat, May 9'}];3#.[{'TextView': 'Messages'}];4#.[{'TextView': 'Camera'}, {'TextView': 'Chrome'}, {'TextView': 'Play Store'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];5#.['Search'];6#.g_icon:[{'ImageView': 'Google app'}];7#.end_part:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Search'}]
+
+###############################################
+{'action': 'click', 'feature': 'Search'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Search'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.[{'TextView': 'A Time Tracker'}];4#.[{'TextView': 'Easy Notes'}];5#.[{'TextView': 'NotallyX'}];6#.[{'TextView': 'LibreTube'}];7#.[{'TextView': 'File Manager'}];8#.['eder rocha monkey rescue', 'eder rocha monkey rescue'];9#.['porsche macan gasoline production end', 'porsche macan gasoline production end'];10#.['josh hokit ufc', 'josh hokit ufc', 'Josh Hokit — American mixed martial artist'];11#.['cornell university b12 aging study', 'cornell university b12 aging study'];12#.['nyt connections hints', 'nyt connections hints'];13#.['sony bungie impairment loss', 'sony bungie impairment loss'];14#.['canvas hacked data breach', 'canvas hacked data breach'];15#.['texas roadhouse table service technology', 'texas roadhouse table service technology'];16#.['newborn vitamin k deficiency bleeding', 'newborn vitamin k deficiency bleeding'];17#.['ap physics 1 ap exam'];18#.g_icon:[{'ImageView': 'Google app'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'set_text', 'feature': 'com.google.android.apps.nexuslauncher:id/input', 'input_text': 'AnkiDroid'}]
+
+###############################################
+{'action': 'set_text', 'feature': 'com.google.android.apps.nexuslauncher:id/input', 'input_text': 'AnkiDroid'}
+*Prompt: ["Successfully execute {'action': 'set_text', 'feature': 'com.google.android.apps.nexuslauncher:id/input', 'input_text': 'AnkiDroid'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:set_text has the following group(s):1#.typeahead_input:['AnkiDroid', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.[{'TextView': 'AnkiDroid'}];4#.[{'ImageButton': 'Show predictions for ankidroid'}, 'ankidroid', 'ankidroid'];5#.[{'ImageButton': 'Show predictions for ankidroid flashcards'}, 'ankidroid flashcards', 'ankidroid flashcards'];6#.[{'ImageButton': 'Show predictions for ankidroid reset deck'}, 'ankidroid reset deck', 'ankidroid reset deck'];7#.[{'ImageButton': 'Show predictions for ankidroid for iphone'}, 'ankidroid for iphone', 'ankidroid for iphone'];8#.[{'ImageButton': 'Show predictions for ankidroid addons'}, 'ankidroid addons', 'ankidroid addons'];9#.[{'ImageButton': 'Show predictions for ankidroid decks'}, 'ankidroid decks', 'ankidroid decks'];10#.[{'ImageButton': 'Show predictions for ankidroid app'}, 'ankidroid app', 'ankidroid app'];11#.[{'ImageButton': 'Show predictions for ankidroid vs anki'}, 'ankidroid vs anki', 'ankidroid vs anki'];12#.[{'ImageButton': 'Show predictions for ankidroid ios'}, 'ankidroid ios', 'ankidroid ios'];13#.[{'ImageButton': 'Show predictions for ankidroid vs ankiweb'}, 'ankidroid vs ankiweb', 'ankidroid vs ankiweb'];14#.g_icon:[{'ImageView': 'Google app'}];15#.action_btn_container:[{'ImageButton': 'Clear search box'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'AnkiDroid', 'index': 0}]
+
+###############################################
+{'action': 'click', 'feature': 'AnkiDroid', 'index': 0}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'AnkiDroid', 'index': 0}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:set_text has the following group(s):1#.typeahead_input:['AnkiDroid', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.[{'TextView': 'AnkiDroid'}];4#.[{'ImageButton': 'Show predictions for ankidroid'}, 'ankidroid', 'ankidroid'];5#.[{'ImageButton': 'Show predictions for ankidroid flashcards'}, 'ankidroid flashcards', 'ankidroid flashcards'];6#.[{'ImageButton': 'Show predictions for ankidroid reset deck'}, 'ankidroid reset deck', 'ankidroid reset deck'];7#.[{'ImageButton': 'Show predictions for ankidroid for iphone'}, 'ankidroid for iphone', 'ankidroid for iphone'];8#.[{'ImageButton': 'Show predictions for ankidroid addons'}, 'ankidroid addons', 'ankidroid addons'];9#.[{'ImageButton': 'Show predictions for ankidroid decks'}, 'ankidroid decks', 'ankidroid decks'];10#.[{'ImageButton': 'Show predictions for ankidroid app'}, 'ankidroid app', 'ankidroid app'];11#.[{'ImageButton': 'Show predictions for ankidroid vs anki'}, 'ankidroid vs anki', 'ankidroid vs anki'];12#.[{'ImageButton': 'Show predictions for ankidroid ios'}, 'ankidroid ios', 'ankidroid ios'];13#.[{'ImageButton': 'Show predictions for ankidroid vs ankiweb'}, 'ankidroid vs ankiweb', 'ankidroid vs ankiweb'];14#.g_icon:[{'ImageView': 'Google app'}];15#.action_btn_container:[{'ImageButton': 'Clear search box'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Back'}]
+
+###############################################
+{'action': 'click', 'feature': 'Back'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Back'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:set_text has the following group(s):1#.typeahead_input:['AnkiDroid', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'TextView': 'AnkiDroid'}];2#.[{'ImageButton': 'Show predictions for ankidroid'}, 'ankidroid', 'ankidroid'];3#.[{'ImageButton': 'Show predictions for ankidroid flashcards'}, 'ankidroid flashcards', 'ankidroid flashcards'];4#.[{'ImageButton': 'Show predictions for ankidroid reset deck'}, 'ankidroid reset deck', 'ankidroid reset deck'];5#.[{'ImageButton': 'Show predictions for ankidroid for iphone'}, 'ankidroid for iphone', 'ankidroid for iphone'];6#.[{'ImageButton': 'Show predictions for ankidroid addons'}, 'ankidroid addons', 'ankidroid addons'];7#.[{'ImageButton': 'Show predictions for ankidroid decks'}, 'ankidroid decks', 'ankidroid decks'];8#.[{'ImageButton': 'Show predictions for ankidroid app'}, 'ankidroid app', 'ankidroid app'];9#.[{'ImageButton': 'Show predictions for ankidroid vs anki'}, 'ankidroid vs anki', 'ankidroid vs anki'];10#.[{'ImageButton': 'Show predictions for ankidroid ios'}, 'ankidroid ios', 'ankidroid ios'];11#.[{'ImageButton': 'Show predictions for ankidroid vs ankiweb'}, 'ankidroid vs ankiweb', 'ankidroid vs ankiweb'];12#.g_icon:[{'ImageView': 'Google app'}];13#.action_btn_container:[{'ImageButton': 'Clear search box'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'AnkiDroid'}]
+
+###############################################
+{'action': 'click', 'feature': 'AnkiDroid'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'AnkiDroid'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:set_text has the following group(s):1#.typeahead_input:['AnkiDroid', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'TextView': 'AnkiDroid'}];2#.[{'ImageButton': 'Show predictions for ankidroid'}, 'ankidroid', 'ankidroid'];3#.[{'ImageButton': 'Show predictions for ankidroid flashcards'}, 'ankidroid flashcards', 'ankidroid flashcards'];4#.[{'ImageButton': 'Show predictions for ankidroid reset deck'}, 'ankidroid reset deck', 'ankidroid reset deck'];5#.[{'ImageButton': 'Show predictions for ankidroid for iphone'}, 'ankidroid for iphone', 'ankidroid for iphone'];6#.[{'ImageButton': 'Show predictions for ankidroid addons'}, 'ankidroid addons', 'ankidroid addons'];7#.[{'ImageButton': 'Show predictions for ankidroid decks'}, 'ankidroid decks', 'ankidroid decks'];8#.[{'ImageButton': 'Show predictions for ankidroid app'}, 'ankidroid app', 'ankidroid app'];9#.[{'ImageButton': 'Show predictions for ankidroid vs anki'}, 'ankidroid vs anki', 'ankidroid vs anki'];10#.[{'ImageButton': 'Show predictions for ankidroid ios'}, 'ankidroid ios', 'ankidroid ios'];11#.[{'ImageButton': 'Show predictions for ankidroid vs ankiweb'}, 'ankidroid vs ankiweb', 'ankidroid vs ankiweb'];12#.['Search on Google', 'Search on Google'];13#.g_icon:[{'ImageView': 'Google app'}];14#.action_btn_container:[{'ImageButton': 'Clear search box'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:set_text has the following group(s):1#.typeahead_input:['AnkiDroid', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'TextView': 'AnkiDroid'}];2#.[{'ImageButton': 'Show predictions for ankidroid'}, 'ankidroid', 'ankidroid'];3#.[{'ImageButton': 'Show predictions for ankidroid flashcards'}, 'ankidroid flashcards', 'ankidroid flashcards'];4#.[{'ImageButton': 'Show predictions for ankidroid reset deck'}, 'ankidroid reset deck', 'ankidroid reset deck'];5#.[{'ImageButton': 'Show predictions for ankidroid for iphone'}, 'ankidroid for iphone', 'ankidroid for iphone'];6#.[{'ImageButton': 'Show predictions for ankidroid addons'}, 'ankidroid addons', 'ankidroid addons'];7#.[{'ImageButton': 'Show predictions for ankidroid decks'}, 'ankidroid decks', 'ankidroid decks'];8#.[{'ImageButton': 'Show predictions for ankidroid app'}, 'ankidroid app', 'ankidroid app'];9#.[{'ImageButton': 'Show predictions for ankidroid vs anki'}, 'ankidroid vs anki', 'ankidroid vs anki'];10#.[{'ImageButton': 'Show predictions for ankidroid ios'}, 'ankidroid ios', 'ankidroid ios'];11#.[{'ImageButton': 'Show predictions for ankidroid vs ankiweb'}, 'ankidroid vs ankiweb', 'ankidroid vs ankiweb'];12#.['Search on Google', 'Search on Google'];13#.g_icon:[{'ImageView': 'Google app'}];14#.action_btn_container:[{'ImageButton': 'Clear search box'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Clear search box'}]
+
+###############################################
+{'action': 'click', 'feature': 'Clear search box'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Clear search box'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.[{'TextView': 'AnkiDroid'}];4#.[{'TextView': 'Easy Notes'}];5#.[{'TextView': 'NotallyX'}];6#.[{'TextView': 'LibreTube'}];7#.[{'TextView': 'A Time Tracker'}];8#.['eder rocha monkey rescue', 'eder rocha monkey rescue'];9#.['porsche macan gasoline production end', 'porsche macan gasoline production end'];10#.['josh hokit ufc', 'josh hokit ufc', 'Josh Hokit — American mixed martial artist'];11#.['cornell university b12 aging study', 'cornell university b12 aging study'];12#.['nyt connections hints', 'nyt connections hints'];13#.['sony bungie impairment loss', 'sony bungie impairment loss'];14#.['canvas hacked data breach', 'canvas hacked data breach'];15#.['texas roadhouse table service technology', 'texas roadhouse table service technology'];16#.['newborn vitamin k deficiency bleeding', 'newborn vitamin k deficiency bleeding'];17#.['ap physics 1 ap exam'];18#.g_icon:[{'ImageView': 'Google app'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'AnkiDroid'}]
+
+###############################################
+{'action': 'click', 'feature': 'AnkiDroid'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'AnkiDroid'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.[{'TextView': 'AnkiDroid'}];4#.[{'TextView': 'Easy Notes'}];5#.[{'TextView': 'NotallyX'}];6#.[{'TextView': 'LibreTube'}];7#.[{'TextView': 'A Time Tracker'}];8#.['eder rocha monkey rescue', 'eder rocha monkey rescue'];9#.['porsche macan gasoline production end', 'porsche macan gasoline production end'];10#.['josh hokit ufc', 'josh hokit ufc', 'Josh Hokit — American mixed martial artist'];11#.['cornell university b12 aging study', 'cornell university b12 aging study'];12#.['nyt connections hints', 'nyt connections hints'];13#.['sony bungie impairment loss', 'sony bungie impairment loss'];14#.['canvas hacked data breach', 'canvas hacked data breach'];15#.['texas roadhouse table service technology', 'texas roadhouse table service technology'];16#.['newborn vitamin k deficiency bleeding', 'newborn vitamin k deficiency bleeding'];17#.['ap physics 1 ap exam'];18#.g_icon:[{'ImageView': 'Google app'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Back'}]
+
+###############################################
+{'action': 'click', 'feature': 'Back'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Back'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'TextView': 'AnkiDroid'}];2#.[{'TextView': 'Easy Notes'}];3#.[{'TextView': 'NotallyX'}];4#.[{'TextView': 'LibreTube'}];5#.[{'TextView': 'A Time Tracker'}];6#.['eder rocha monkey rescue', 'eder rocha monkey rescue'];7#.['porsche macan gasoline production end', 'porsche macan gasoline production end'];8#.['josh hokit ufc', 'josh hokit ufc', 'Josh Hokit — American mixed martial artist'];9#.['cornell university b12 aging study', 'cornell university b12 aging study'];10#.['nyt connections hints', 'nyt connections hints'];11#.['sony bungie impairment loss', 'sony bungie impairment loss'];12#.['canvas hacked data breach', 'canvas hacked data breach'];13#.['texas roadhouse table service technology', 'texas roadhouse table service technology'];14#.['newborn vitamin k deficiency bleeding', 'newborn vitamin k deficiency bleeding'];15#.['ap physics 1 ap exam'];16#.g_icon:[{'ImageView': 'Google app'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'AnkiDroid'}]
+
+###############################################
+{'action': 'click', 'feature': 'AnkiDroid'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'AnkiDroid'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'TextView': 'AnkiDroid'}];2#.[{'TextView': 'Easy Notes'}];3#.[{'TextView': 'NotallyX'}];4#.[{'TextView': 'LibreTube'}];5#.[{'TextView': 'A Time Tracker'}];6#.['eder rocha monkey rescue', 'eder rocha monkey rescue'];7#.['porsche macan gasoline production end', 'porsche macan gasoline production end'];8#.['josh hokit ufc', 'josh hokit ufc', 'Josh Hokit — American mixed martial artist'];9#.['cornell university b12 aging study', 'cornell university b12 aging study'];10#.['nyt connections hints', 'nyt connections hints'];11#.['sony bungie impairment loss', 'sony bungie impairment loss'];12#.['canvas hacked data breach', 'canvas hacked data breach'];13#.['texas roadhouse table service technology', 'texas roadhouse table service technology'];14#.['newborn vitamin k deficiency bleeding', 'newborn vitamin k deficiency bleeding'];15#.['ap physics 1 ap exam', 'ap physics 1 ap exam'];16#.g_icon:[{'ImageView': 'Google app'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.[{'TextView': 'AnkiDroid'}];2#.[{'TextView': 'Easy Notes'}];3#.[{'TextView': 'NotallyX'}];4#.[{'TextView': 'LibreTube'}];5#.[{'TextView': 'A Time Tracker'}];6#.['eder rocha monkey rescue', 'eder rocha monkey rescue'];7#.['porsche macan gasoline production end', 'porsche macan gasoline production end'];8#.['josh hokit ufc', 'josh hokit ufc', 'Josh Hokit — American mixed martial artist'];9#.['cornell university b12 aging study', 'cornell university b12 aging study'];10#.['nyt connections hints', 'nyt connections hints'];11#.['sony bungie impairment loss', 'sony bungie impairment loss'];12#.['canvas hacked data breach', 'canvas hacked data breach'];13#.['texas roadhouse table service technology', 'texas roadhouse table service technology'];14#.['newborn vitamin k deficiency bleeding', 'newborn vitamin k deficiency bleeding'];15#.['ap physics 1 ap exam', 'ap physics 1 ap exam'];16#.g_icon:[{'ImageView': 'Google app'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'long_click', 'feature': 'AnkiDroid'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'AnkiDroid'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'AnkiDroid'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'App info'];2#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'Pause app'];3#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'Widgets'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'App info'];2#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'Pause app'];3#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'Widgets'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'App info'}]
+
+###############################################
+{'action': 'click', 'feature': 'App info'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'App info'}"].
+*Current Screen Information:  #Current Activity: .applications.InstalledAppDetails.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '9 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Open'}]
+
+###############################################
+{'action': 'click', 'feature': 'Open'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Open'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '9 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Navigate up'}]
+
+###############################################
+{'action': 'click', 'feature': 'Navigate up'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Navigate up'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.['com.google.android.apps.nexuslauncher:id/smartspace_card_pager'];2#.[{'TextView': 'Sat, May 9'}];3#.[{'TextView': 'Messages'}];4#.[{'TextView': 'Camera'}, {'TextView': 'Chrome'}, {'TextView': 'Play Store'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];5#.['Search'];6#.g_icon:[{'ImageView': 'Google app'}];7#.end_part:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'swipe', 'from_direction': 'down', 'to_direction': 'up'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'down', 'to_direction': 'up'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'down', 'to_direction': 'up'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.apps_list_view:[{'TextView': 'YT Music'}, {'TextView': 'YouTube'}, {'TextView': 'TMoble'}, {'TextView': 'Settings'}, {'TextView': 'Play Store'}, {'TextView': 'Photos'}, {'TextView': 'Phone'}, {'TextView': 'Paperize'}, {'TextView': 'NotallyX'}, {'TextView': 'Messages'}, {'TextView': 'Messages'}, {'TextView': 'Maps'}, {'TextView': 'LibreTube'}, {'TextView': 'Google'}, {'TextView': 'Gmail'}, {'TextView': 'Files'}, {'TextView': 'File Manager'}, {'TextView': 'Easy Notes'}, {'TextView': 'Drive'}, {'TextView': 'Contacts'}, {'TextView': 'Clock'}, {'TextView': 'Chrome'}, {'TextView': 'Camera'}, {'TextView': 'Calendar'}, {'TextView': 'ATX'}, {'TextView': 'Appium Settings'}, {'TextView': 'AnkiDroid'}, {'TextView': 'A Time Tracker'}];2#.prediction_row:[{'TextView': 'A Time Tracker'}, {'TextView': 'LibreTube'}, {'TextView': 'NotallyX'}, {'TextView': 'Easy Notes'}, {'TextView': 'AnkiDroid'}];3#.g_icon:[{'ImageView': 'Google app'}];4#.end_icons:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'AnkiDroid', 'index': 0}]
+
+###############################################
+{'action': 'click', 'feature': 'AnkiDroid', 'index': 0}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'AnkiDroid', 'index': 0}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.apps_list_view:[{'TextView': 'YT Music'}, {'TextView': 'YouTube'}, {'TextView': 'TMoble'}, {'TextView': 'Settings'}, {'TextView': 'Play Store'}, {'TextView': 'Photos'}, {'TextView': 'Phone'}, {'TextView': 'Paperize'}, {'TextView': 'NotallyX'}, {'TextView': 'Messages'}, {'TextView': 'Messages'}, {'TextView': 'Maps'}, {'TextView': 'LibreTube'}, {'TextView': 'Google'}, {'TextView': 'Gmail'}, {'TextView': 'Files'}, {'TextView': 'File Manager'}, {'TextView': 'Easy Notes'}, {'TextView': 'Drive'}, {'TextView': 'Contacts'}, {'TextView': 'Clock'}, {'TextView': 'Chrome'}, {'TextView': 'Camera'}, {'TextView': 'Calendar'}, {'TextView': 'ATX'}, {'TextView': 'Appium Settings'}, {'TextView': 'AnkiDroid'}, {'TextView': 'A Time Tracker'}];2#.prediction_row:[{'TextView': 'A Time Tracker'}, {'TextView': 'LibreTube'}, {'TextView': 'NotallyX'}, {'TextView': 'Easy Notes'}, {'TextView': 'AnkiDroid'}];3#.g_icon:[{'ImageView': 'Google app'}];4#.end_icons:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'AnkiDroid', 'index': 1}]
+
+###############################################
+{'action': 'click', 'feature': 'AnkiDroid', 'index': 1}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'AnkiDroid', 'index': 1}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.apps_list_view:[{'TextView': 'YT Music'}, {'TextView': 'YouTube'}, {'TextView': 'TMoble'}, {'TextView': 'Settings'}, {'TextView': 'Play Store'}, {'TextView': 'Photos'}, {'TextView': 'Phone'}, {'TextView': 'Paperize'}, {'TextView': 'NotallyX'}, {'TextView': 'Messages'}, {'TextView': 'Messages'}, {'TextView': 'Maps'}, {'TextView': 'LibreTube'}, {'TextView': 'Google'}, {'TextView': 'Gmail'}, {'TextView': 'Files'}, {'TextView': 'File Manager'}, {'TextView': 'Easy Notes'}, {'TextView': 'Drive'}, {'TextView': 'Contacts'}, {'TextView': 'Clock'}, {'TextView': 'Chrome'}, {'TextView': 'Camera'}, {'TextView': 'Calendar'}, {'TextView': 'ATX'}, {'TextView': 'Appium Settings'}, {'TextView': 'AnkiDroid'}, {'TextView': 'A Time Tracker'}];2#.prediction_row:[{'TextView': 'A Time Tracker'}, {'TextView': 'LibreTube'}, {'TextView': 'NotallyX'}, {'TextView': 'Easy Notes'}, {'TextView': 'AnkiDroid'}];3#.g_icon:[{'ImageView': 'Google app'}];4#.end_icons:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'restart'}]
+
+###############################################
+{'action': 'restart'}
+*Prompt: ["Successfully execute {'action': 'restart'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.apps_list_view:[{'TextView': 'YT Music'}, {'TextView': 'YouTube'}, {'TextView': 'TMoble'}, {'TextView': 'Settings'}, {'TextView': 'Play Store'}, {'TextView': 'Photos'}, {'TextView': 'Phone'}, {'TextView': 'Paperize'}, {'TextView': 'NotallyX'}, {'TextView': 'Messages'}, {'TextView': 'Messages'}, {'TextView': 'Maps'}, {'TextView': 'LibreTube'}, {'TextView': 'Google'}, {'TextView': 'Gmail'}, {'TextView': 'Files'}, {'TextView': 'File Manager'}, {'TextView': 'Easy Notes'}, {'TextView': 'Drive'}, {'TextView': 'Contacts'}, {'TextView': 'Clock'}, {'TextView': 'Chrome'}, {'TextView': 'Camera'}, {'TextView': 'Calendar'}, {'TextView': 'ATX'}, {'TextView': 'Appium Settings'}, {'TextView': 'AnkiDroid'}, {'TextView': 'A Time Tracker'}];2#.prediction_row:[{'TextView': 'A Time Tracker'}, {'TextView': 'LibreTube'}, {'TextView': 'NotallyX'}, {'TextView': 'Easy Notes'}, {'TextView': 'AnkiDroid'}];3#.g_icon:[{'ImageView': 'Google app'}];4#.end_icons:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Play Store'}]
+
+###############################################
+{'action': 'click', 'feature': 'Play Store'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Play Store'}"].
+*Current Screen Information:  #Current Activity: com.google.android.finsky.unauthenticated.activity.UnauthenticatedMainActivity.  # UI Information:click has the following group(s):1#.0_resource_name_obfuscated:[{'ImageView': 'Options'}];2#.0_resource_name_obfuscated:['Sign in'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.apps_list_view:[{'TextView': 'YT Music'}, {'TextView': 'YouTube'}, {'TextView': 'TMoble'}, {'TextView': 'Settings'}, {'TextView': 'Play Store'}, {'TextView': 'Photos'}, {'TextView': 'Phone'}, {'TextView': 'Paperize'}, {'TextView': 'NotallyX'}, {'TextView': 'Messages'}, {'TextView': 'Messages'}, {'TextView': 'Maps'}, {'TextView': 'LibreTube'}, {'TextView': 'Google'}, {'TextView': 'Gmail'}, {'TextView': 'Files'}, {'TextView': 'File Manager'}, {'TextView': 'Easy Notes'}, {'TextView': 'Drive'}, {'TextView': 'Contacts'}, {'TextView': 'Clock'}, {'TextView': 'Chrome'}, {'TextView': 'Camera'}, {'TextView': 'Calendar'}, {'TextView': 'ATX'}, {'TextView': 'Appium Settings'}, {'TextView': 'AnkiDroid'}, {'TextView': 'A Time Tracker'}];2#.prediction_row:[{'TextView': 'Easy Notes'}, {'TextView': 'LibreTube'}, {'TextView': 'NotallyX'}, {'TextView': 'Play Store'}, {'TextView': 'AnkiDroid'}];3#.g_icon:[{'ImageView': 'Google app'}];4#.end_icons:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'long_click', 'feature': 'AnkiDroid', 'index': 0}]
+
+###############################################
+{'action': 'long_click', 'feature': 'AnkiDroid', 'index': 0}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'AnkiDroid', 'index': 0}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'App info'];2#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'Pause app'];3#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'Widgets'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Widgets'}]
+
+###############################################
+{'action': 'click', 'feature': 'Widgets'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Widgets'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.widget_preview_container:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/widget_preview_container'}];2#.widget_preview_container:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/widget_preview_container'}];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;2#.Add note;3#.1 × 1;4#.AnkiDroid small;5#.1 × 1;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.apps_list_view:[{'TextView': 'YT Music'}, {'TextView': 'YouTube'}, {'TextView': 'TMoble'}, {'TextView': 'Settings'}, {'TextView': 'Play Store'}, {'TextView': 'Photos'}, {'TextView': 'Phone'}, {'TextView': 'Paperize'}, {'TextView': 'NotallyX'}, {'TextView': 'Messages'}, {'TextView': 'Messages'}, {'TextView': 'Maps'}, {'TextView': 'LibreTube'}, {'TextView': 'Google'}, {'TextView': 'Gmail'}, {'TextView': 'Files'}, {'TextView': 'File Manager'}, {'TextView': 'Easy Notes'}, {'TextView': 'Drive'}, {'TextView': 'Contacts'}, {'TextView': 'Clock'}, {'TextView': 'Chrome'}, {'TextView': 'Camera'}, {'TextView': 'Calendar'}, {'TextView': 'ATX'}, {'TextView': 'Appium Settings'}, {'TextView': 'AnkiDroid'}, {'TextView': 'A Time Tracker'}];2#.prediction_row:[{'TextView': 'Easy Notes'}, {'TextView': 'LibreTube'}, {'TextView': 'NotallyX'}, {'TextView': 'Play Store'}, {'TextView': 'AnkiDroid'}];3#.g_icon:[{'ImageView': 'Google app'}];4#.end_icons:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'AnkiDroid', 'index': 0}]
+
+###############################################
+{'action': 'click', 'feature': 'AnkiDroid', 'index': 0}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'AnkiDroid', 'index': 0}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.apps_list_view:[{'TextView': 'YT Music'}, {'TextView': 'YouTube'}, {'TextView': 'TMoble'}, {'TextView': 'Settings'}, {'TextView': 'Play Store'}, {'TextView': 'Photos'}, {'TextView': 'Phone'}, {'TextView': 'Paperize'}, {'TextView': 'NotallyX'}, {'TextView': 'Messages'}, {'TextView': 'Messages'}, {'TextView': 'Maps'}, {'TextView': 'LibreTube'}, {'TextView': 'Google'}, {'TextView': 'Gmail'}, {'TextView': 'Files'}, {'TextView': 'File Manager'}, {'TextView': 'Easy Notes'}, {'TextView': 'Drive'}, {'TextView': 'Contacts'}, {'TextView': 'Clock'}, {'TextView': 'Chrome'}, {'TextView': 'Camera'}, {'TextView': 'Calendar'}, {'TextView': 'ATX'}, {'TextView': 'Appium Settings'}, {'TextView': 'AnkiDroid'}, {'TextView': 'A Time Tracker'}];2#.prediction_row:[{'TextView': 'Easy Notes'}, {'TextView': 'LibreTube'}, {'TextView': 'NotallyX'}, {'TextView': 'Play Store'}, {'TextView': 'AnkiDroid'}];3#.g_icon:[{'ImageView': 'Google app'}];4#.end_icons:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:set_text has the following group(s):1#.typeahead_input:['Search apps, web and more', {'EditText': 'com.google.android.apps.nexuslauncher:id/input'}];click has the following group(s):1#.apps_list_view:[{'TextView': 'YT Music'}, {'TextView': 'YouTube'}, {'TextView': 'TMoble'}, {'TextView': 'Settings'}, {'TextView': 'Play Store'}, {'TextView': 'Photos'}, {'TextView': 'Phone'}, {'TextView': 'Paperize'}, {'TextView': 'NotallyX'}, {'TextView': 'Messages'}, {'TextView': 'Messages'}, {'TextView': 'Maps'}, {'TextView': 'LibreTube'}, {'TextView': 'Google'}, {'TextView': 'Gmail'}, {'TextView': 'Files'}, {'TextView': 'File Manager'}, {'TextView': 'Easy Notes'}, {'TextView': 'Drive'}, {'TextView': 'Contacts'}, {'TextView': 'Clock'}, {'TextView': 'Chrome'}, {'TextView': 'Camera'}, {'TextView': 'Calendar'}, {'TextView': 'ATX'}, {'TextView': 'Appium Settings'}, {'TextView': 'AnkiDroid'}, {'TextView': 'A Time Tracker'}];2#.prediction_row:[{'TextView': 'Easy Notes'}, {'TextView': 'LibreTube'}, {'TextView': 'NotallyX'}, {'TextView': 'Play Store'}, {'TextView': 'AnkiDroid'}];3#.g_icon:[{'ImageView': 'Google app'}];4#.end_icons:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'long_click', 'feature': 'AnkiDroid', 'index': 0}]
+
+###############################################
+{'action': 'long_click', 'feature': 'AnkiDroid', 'index': 0}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'AnkiDroid', 'index': 0}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'App info'];2#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'Pause app'];3#.system_shortcut:[{'FrameLayout': 'com.google.android.apps.nexuslauncher:id/system_shortcut'}, 'Widgets'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'App info'}]
+
+###############################################
+{'action': 'click', 'feature': 'App info'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'App info'}"].
+*Current Screen Information:  #Current Activity: .applications.InstalledAppDetails.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '12 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Open'}]
+
+###############################################
+{'action': 'click', 'feature': 'Open'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Open'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '12 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Force stop'}]
+
+###############################################
+{'action': 'click', 'feature': 'Force stop'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Force stop'}"].
+*Current Screen Information:  #Current Activity: .applications.InstalledAppDetails.  # UI Information:click has the following group(s):1#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Force stop?;2#.If you force stop an app, it may misbehave.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'OK'}]
+
+###############################################
+{'action': 'click', 'feature': 'OK'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'OK'}"].
+*Current Screen Information:  #Current Activity: .applications.InstalledAppDetails.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '12 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Open'}]
+
+###############################################
+{'action': 'click', 'feature': 'Open'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Open'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '12 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Navigate up'}]
+
+###############################################
+{'action': 'click', 'feature': 'Navigate up'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Navigate up'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '12 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Storage & cache'}]
+
+###############################################
+{'action': 'click', 'feature': 'Storage & cache'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Storage & cache'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '12 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Navigate up'}]
+
+###############################################
+{'action': 'click', 'feature': 'Navigate up'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Navigate up'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '12 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Storage & cache'}]
+
+###############################################
+{'action': 'click', 'feature': 'Storage & cache'}
+*Prompt: Just a reminder, we are repeating the following steps Repeating sequence detected: , [{'action': 'click', 'feature': 'Navigate up'}, {'action': 'click', 'feature': 'Storage & cache'}]. If the bug report doesn' require repeated steps, it seems like we're trapped into a loop. If you belive we are in the right track, maybe try different text for set_text. If there are more other widgets, maybe try a different path. 
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '12 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Permissions'}]
+
+###############################################
+{'action': 'click', 'feature': 'Permissions'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Permissions'}"].
+*Current Screen Information:  #Current Activity: .applications.InstalledAppDetails.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '12 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'action': 'click', 'feature': 'Navigate up'}]
+
+###############################################
+{'action': 'click', 'feature': 'Navigate up'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Navigate up'}"].
+*Current Screen Information:  #Current Activity: .IntentHandler.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];2#.['Force stop', 'Uninstall', 'Open'];3#.['Notifications', 'About 0 notifications per week'];4#.['Permissions'];5#.['Storage & cache', '19.73 MB used in internal storage'];6#.['Mobile data & Wi‑Fi', 'No data used'];7#.['Screen time', '12 minutes today'];Other Widgets with Text in This Page has the following group(s):1#.AnkiDroid;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion: [{'result': 'fail', 'reason': "I have been unable to launch the AnkiDroid application successfully. All attempts to open the app, whether from the app drawer, the 'App info' screen, or after a force stop/restart, lead back to the Android system's 'App info' page for AnkiDroid. Furthermore, actions performed on the 'App info' screen (like clicking 'Storage & cache' or 'Permissions') do not result in a screen change, indicating a stuck state in the testing environment. Since I cannot access the app's main interface, I cannot navigate to the 'Card browser font scaling' settings to attempt to reproduce the bug."}]
+
+###############################################
+!!!xxx!!!. Execution time: 1493.062216 seconds
+!!!Response Times: 44. Total Commands: 44
+
+
+============================================================
+STDERR
+============================================================
+/Users/darshan/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+

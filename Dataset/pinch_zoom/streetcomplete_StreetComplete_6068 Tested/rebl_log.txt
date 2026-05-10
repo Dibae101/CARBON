@@ -4,29 +4,388 @@ App:              streetcomplete/StreetComplete
 Issue:            https://github.com/streetcomplete/StreetComplete/issues/6068
 Version:          59.0-alpha1
 Primary Gesture:  pinch_zoom
+Category:         pinch_zoom
 Test Result:      FAIL
-Execution Time:   0s
-Total Commands:   0
-Unique Actions:   none
+Execution Time:   726.2s
+Tested At:        2026-05-09 04:20:48
 ============================================================
 
-ReBL FAILED — lacks required gesture capability.
-
-Missing Action:   pinch
-
-Failure Reason:
-  ReBL does not support the required action(s): pinch. CARBON used these CARBON-exclusive actions to reproduce this bug. ReBL's action set is limited to: click, long_click, set_text, swipe, scroll, back, orientation, restart, wait. Without pinch, ReBL cannot perform the gesture needed to trigger this bug.
-
-CARBON Actions Used (that ReBL lacks):
-  pinch
-
-ReBL's Full Action Set:
-  click, long_click, set_text, swipe (directional), scroll, back,
-  orientation, rotate, restart, wait, multiple_selection
-
-CARBON's Additional Actions (not in ReBL):
-  pinch, double_tap_screen, drag_and_drop, edge_swipe, media_gesture,
-  quick_tap, tap_screen, swipe_region, two_finger_swipe, two_finger_tap,
-  three_finger_swipe, rotate_gesture, home, open_notifications
+Result Reason:
+  We have once again been taken to the home screen. This confirms that swiping from the edge of the screen is being interpreted as a system gesture to go back or home, rather than opening a navigation d
 
 ============================================================
+FULL EXECUTION LOG (stdout)
+============================================================
+[Old ReBL LLM] Provider: vertex | Model: gemini-2.5-pro | URL: https://aiplatform.googleapis.com/v1/publishers/google/models
+*Prompt: [].
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.[{'NAF': '[383,1920][444,2052]'}];2#.[{'NAF': '[444,1920][505,2052]'}];3#.[{'NAF': '[505,1920][566,2039]'}];4#.[{'NAF': '[566,1920][698,2052]'}];5#.['Next'];6#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.Welcome to OpenStreetMap;2#.the free wiki world map;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "Next"
+  }
+]
+```
+
+###############################################
+{'action': 'click', 'feature': 'Next'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Next'}"].
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.[{'NAF': '[383,1920][444,2052]'}];2#.[{'NAF': '[444,1920][505,2052]'}];3#.[{'NAF': '[505,1920][566,2039]'}];4#.[{'NAF': '[566,1920][698,2052]'}];5#.['Next'];6#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.StreetComplete makes it easy to contribute to OpenStreetMap.
+It automatically looks for missing details in your vicinity: bicycle lanes, house numbers, opening hours and much more…;2#.Location permission is needed to show your position on the map and download data in your vicinity.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "Next"
+  }
+]
+```
+
+###############################################
+{'action': 'click', 'feature': 'Next'}
+*Prompt: Just a reminder, we are repeating the following steps Repeating sequence detected: , [{'action': 'click', 'feature': 'Next'}]. If the bug report doesn' require repeated steps, it seems like we're trapped into a loop. If you belive we are in the right track, maybe try different text for set_text. If there are more other widgets, maybe try a different path. 
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.[{'NAF': '[383,1920][444,2052]'}];2#.[{'NAF': '[444,1920][505,2052]'}];3#.[{'NAF': '[505,1920][566,2039]'}];4#.[{'NAF': '[566,1920][698,2052]'}];5#.['Next'];6#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.Once found, the missing details will appear on your map as quests.
+
+You can start solving them right away and later login to publish your answers.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: You are right to point out the repetition. It seems we are in a multi-step onboarding or tutorial flow. To get to the main map screen where the bug occurs, we need to complete this process. Let's continue clicking "Next" to proceed.
+
+Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "Next"
+  }
+]
+```
+
+###############################################
+{'action': 'click', 'feature': 'Next'}
+*Prompt: Just a reminder, we are repeating the following steps Repeating sequence detected: , [{'action': 'click', 'feature': 'Next'}]. If the bug report doesn' require repeated steps, it seems like we're trapped into a loop. If you belive we are in the right track, maybe try different text for set_text. If there are more other widgets, maybe try a different path. 
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.[{'NAF': '[383,1920][444,2052]'}];2#.[{'NAF': '[444,1920][505,2039]'}];3#.[{'NAF': '[505,1920][566,2039]'}];4#.[{'NAF': '[566,1920][698,2052]'}];5#.['Let’s go!'];6#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.Whenever you are uncertain, you can always reply “Can’t Say” and leave a note.
+
+Finally, remember to stay safe: Be aware of your surroundings and don’t enter private property.;2#.Happy Mapping!;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: You are right, the button text has changed. This indicates we are at the end of the onboarding flow. Clicking "Let’s go!" should take us to the main map screen, where we can start reproducing the bug.
+
+Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "Let’s go!"
+  }
+]
+```
+
+###############################################
+{'action': 'click', 'feature': 'Let’s go!'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Let’s go!'}"].
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.['0'];2#.['© OpenStreetMap contributors'];3#.['© JawgMaps'];4#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.1;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We are now on the main map screen. According to the bug report, we need to perform three main steps:
+1.  Go to a well-mapped city (we are likely in a default location).
+2.  Zoom out as much as possible.
+3.  Manually download the data.
+
+The current UI is very minimal, and the "download" button is not visible. A common pattern in map applications is to long-press on the map to bring up a context menu with actions for that area, which might include downloading. Let's try this to see if we can find the download option.
+
+Suggestion:
+```json
+[
+  {
+    "action": "long_click",
+    "feature": "Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers."
+  }
+]
+```
+
+###############################################
+{'action': 'long_click', 'feature': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}"].
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.['Create new note'];2#.['Create new track recording'];3#.['Open location in another app'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: The long-press action brought up a context menu, but none of the options ('Create new note', 'Create new track recording', 'Open location in another app') are related to downloading map data. We should dismiss this menu and return to the main map screen to try a different approach.
+
+Suggestion:
+```json
+[
+  {
+    "action": "back"
+  }
+]
+```
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.['0'];2#.['© OpenStreetMap contributors'];3#.['© JawgMaps'];4#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.1;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We are back on the main map screen. We need to find the "download" button to proceed with the bug report steps.
+
+Looking at the current screen, there are no obvious buttons like "Download" or "Settings". The main interactive elements are the map itself and a clickable widget with the feature '0'. In the context of an app that finds "quests", this button could be the one to download quests for the current map area. The '0' might indicate that no quests are currently loaded.
+
+Let's try clicking this '0' button to see if it triggers the download process.
+
+Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "0"
+  }
+]
+```
+
+###############################################
+{'action': 'click', 'feature': '0'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': '0'}"].
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.['Last 7 days', '0'];2#.['© OpenStreetMap contributors'];3#.['© JawgMaps'];4#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.1;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: After clicking the '0' button, a new widget 'Last 7 days' appeared. This suggests the '0' button is related to fetching data or "quests", and 'Last 7 days' might be a filter for it. However, the core of the bug report involves zooming out to select a large area before downloading.
+
+The UI description explicitly states, "Zoom by pinching two fingers," but we don't have a "pinch" or "zoom" action available. We need to find an alternative way to change the map's view to be as zoomed-out as possible.
+
+Changing the device orientation can sometimes affect the layout and the map's viewport, potentially altering the zoom level or revealing different UI controls. Let's try changing the orientation to landscape to see if it helps us get closer to the state described in the bug report.
+
+Suggestion:
+```json
+[
+  {
+    "action": "orientation",
+    "orientation": "left"
+  }
+]
+```
+
+###############################################
+{'action': 'orientation', 'orientation': 'left'}
+*Prompt: ["Successfully execute {'action': 'orientation', 'orientation': 'left'}"].
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.['Last 7 days', '0'];2#.['© OpenStreetMap contributors'];3#.['© JawgMaps'];4#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.1;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Changing the orientation didn't alter the UI or the zoom level. We are still on the main map screen, and the primary challenge is to "zoom out as much as possible" without a direct pinch or zoom action.
+
+Map libraries often provide alternative ways to zoom, for example, using a scroll gesture, which on a desktop would be the mouse wheel. It's possible that the `scroll` action, when applied to the map widget, might control the zoom level. Let's test this hypothesis. We'll try to `scroll` with the direction 'up' on the map, which could be interpreted as zooming out (moving the map further away).
+
+Suggestion:
+```json
+[
+  {
+    "action": "scroll",
+    "feature": "Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.",
+    "direction": "up"
+  }
+]
+```
+
+###############################################
+{'action': 'scroll', 'feature': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.', 'direction': 'up'}
+*Prompt: ["Failed to execute {'action': 'scroll', 'feature': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.', 'direction': 'up'}. Error message: (-32001, 'androidx.test.uiautomator.UiObjectNotFoundException', ({'mask': 16793600, 'childOrSibling': [], 'childOrSiblingSelector': [], 'scrollable': True, 'instance': 0}, True, 500))"].
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.['Last 7 days', '0'];2#.['© OpenStreetMap contributors'];3#.['© JawgMaps'];4#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.1;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: The previous attempt to zoom out using the `scroll` action failed. This is because the map is a custom view and does not respond to standard scroll commands.
+
+Since we are unable to perform the "zoom out" step directly due to the lack of a `pinch` or `zoom` action, let's adjust our strategy. The bug report's core steps are: 1) zoom out, and 2) manually download.
+
+Let's focus on step 2 to confirm the download trigger. The widget group `['Last 7 days', '0']` is the most likely candidate for initiating the download. By clicking it now, we can test this hypothesis. We anticipate that this will download the data for the current, small map area, which should succeed without an OutOfMemoryError. This will help confirm the function of this button before we continue trying to find a way to zoom out.
+
+Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "Last 7 days"
+  }
+]
+```
+
+###############################################
+Unable to convert message to command list: invalid syntax (<unknown>, line 1)
+*Prompt: Your suggestion is None. Let's go back or restart. 
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.['Last 7 days', '0'];2#.['© OpenStreetMap contributors'];3#.['© JawgMaps'];4#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.1;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: You are right. My apologies. The previous suggestion was not fruitful. Since we are unable to perform the "zoom out" action directly and are stuck on the main map screen, let's take your advice and try a step back. Pressing the back button from the main screen might reveal a confirmation dialog to exit, or it could take us to a different state. It's a good way to explore without restarting the entire process.
+
+Suggestion:
+```json
+[
+  {
+    "action": "back"
+  }
+]
+```
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.['com.google.android.apps.nexuslauncher:id/smartspace_card_pager'];2#.[{'TextView': 'Sat, May 9'}];3#.[{'TextView': 'Messages'}];4#.[{'TextView': 'Camera'}, {'TextView': 'Chrome'}, {'TextView': 'Play Store'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];5#.['Search'];6#.g_icon:[{'ImageView': 'Google app'}];7#.end_part:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have exited the app and are now on the device's home screen. This means pressing 'back' on the main map screen closes the application. To continue, we need to restart the app.
+
+Suggestion:
+```json
+[
+  {
+    "action": "restart"
+  }
+]
+```
+
+###############################################
+{'action': 'restart'}
+*Prompt: ["Successfully execute {'action': 'restart'}"].
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.['0'];2#.['© OpenStreetMap contributors'];3#.['© JawgMaps'];4#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.1;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We are back on the main map screen. The primary obstacle is the "zoom out" step from the bug report, as we lack a direct `pinch` or `zoom` action.
+
+Let's try a different approach to interact with the map. While a `scroll` action failed, a `swipe` action might be interpreted differently by the map component. A vertical swipe is sometimes used as a non-standard zoom gesture in some applications. Let's try swiping up on the map to see if it has any effect, potentially zooming the map out.
+
+Suggestion:
+```json
+[
+  {
+    "action": "swipe",
+    "feature": "Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.",
+    "from_direction": "bottom",
+    "to_direction": "top"
+  }
+]
+```
+
+###############################################
+{'action': 'swipe', 'feature': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.', 'from_direction': 'bottom', 'to_direction': 'top'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'feature': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.', 'from_direction': 'bottom', 'to_direction': 'top'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .NexusLauncherActivity.  # UI Information:click has the following group(s):1#.['com.google.android.apps.nexuslauncher:id/smartspace_card_pager'];2#.[{'TextView': 'Sat, May 9'}];3#.[{'TextView': 'Messages'}];4#.[{'TextView': 'Camera'}, {'TextView': 'Chrome'}, {'TextView': 'Play Store'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];5#.['Search'];6#.g_icon:[{'ImageView': 'Google app'}];7#.end_part:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: The swipe action seems to have been interpreted as a system gesture, causing us to exit the app. We need to get back into the application to continue.
+
+Suggestion:
+```json
+[
+  {
+    "action": "restart"
+  }
+]
+```
+
+###############################################
+{'action': 'restart'}
+*Prompt: ["Successfully execute {'action': 'restart'}"].
+*Current Screen Information:  #Current Activity: .screens.main.MainActivity.  # UI Information:click has the following group(s):1#.['0'];2#.['© OpenStreetMap contributors'];3#.['© JawgMaps'];4#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.1;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We are back on the main map screen. We've established that interacting with the map directly via `swipe` or `scroll` is not working as intended, and the core challenge remains the "zoom out" step.
+
+Let's reconsider the download process itself.
+1.  We are on the main map with a clickable `['0']` widget.
+2.  We previously clicked `['0']`, which changed the widget to `['Last 7 days', '0']`. This appears to be the first step in initiating a download.
+3.  The next logical step would be to confirm the download. It's possible that clicking the same button again serves as this confirmation.
+
+Since we cannot zoom out to create a large download area, we will attempt to download the current, smaller area. This won't trigger the OutOfMemoryError, but it will help us confirm the download mechanism. Let's click the `['0']` widget again.
+
+Suggestion:
+```json
+[
+  {
+    "action": "click",
+    "feature": "0"
+  }
+]
+```
+
+###############################################
+Unable to convert message to command list: invalid syntax (<unknown>, line 1)
+*Prompt: Your suggestion is None. Let's go back or restart. 
+*Current Screen Information:  #Current Activity: .Settings$AvailableVirtualKeyboardActivity.  # UI Information:click has the following group(s):1#.['0'];2#.['© OpenStreetMap contributors'];3#.['© JawgMaps'];4#.map:[{'FrameLayout': 'Showing a Map created with MapLibre. Scroll by dragging two fingers. Zoom by pinching two fingers.'}];Other Widgets with Text in This Page has the following group(s):1#.1;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: It seems there's a discrepancy between the reported activity (`.Settings$AvailableVirtualKeyboardActivity`) and the UI elements, which are from the app's main map screen. I will proceed based on the visible UI elements, as they represent the current state of the application.
+
+We are still facing the challenge of being unable to "zoom out" as required by the bug report. We have exhausted direct interactions with the map. A common pattern in Android apps is to have a navigation drawer that slides out from the side, containing settings, account information, or other actions. Let's try to open this drawer by swiping from the left edge of the screen to the right. This might reveal hidden options, including a way to navigate to a different area or access download settings.
+
+Suggestion:
+```json
+[
+  {
+    "action": "swipe",
+    "from_direction": "left",
+    "to_direction": "right"
+  }
+]
+```
+
+###############################################
+{'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'left', 'to_direction': 'right'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .Settings$AvailableVirtualKeyboardActivity.  # UI Information:click has the following group(s):1#.['com.google.android.apps.nexuslauncher:id/smartspace_card_pager'];2#.[{'TextView': 'Sat, May 9'}];3#.[{'TextView': 'Messages'}];4#.[{'TextView': 'Camera'}, {'TextView': 'Chrome'}, {'TextView': 'Play Store'}, {'TextView': 'Messages'}, {'TextView': 'Phone'}];5#.['Search'];6#.g_icon:[{'ImageView': 'Google app'}];7#.end_part:[{'ImageButton': 'Google Lens'}, {'ImageView': 'Voice search'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have once again been taken to the home screen. This confirms that swiping from the edge of the screen is being interpreted as a system gesture to go back or home, rather than opening a navigation drawer within the app.
+
+We have now tried multiple ways to interact with the map to "zoom out" as required by the bug report:
+*   `scroll` on the map failed.
+*   `swipe` on the map exited the app.
+*   `swipe` from the edge of the screen exited the app.
+
+The bug report explicitly mentions "pinch_zoom" and "zoom out as much as possible." Our available actions do not include a `pinch` or `zoom` function, and all our attempts to simulate this behavior have failed. Without the ability to zoom out and select a large, dense area, we cannot create the conditions necessary to trigger the `OutOfMemoryError`.
+
+Given that this core prerequisite of the bug report cannot be fulfilled with the available actions, it is impossible to proceed further and reproduce the bug.
+
+Suggestion:
+```json
+[
+  {
+    "result": "fail",
+    "reason": "The bug report's primary step is to 'zoom out as much as possible' using a 'pinch_zoom' gesture. The available actions do not include a 'pinch' or 'zoom' function. Attempts to simulate zooming using 'scroll' and 'swipe' actions have been unsuccessful, either failing or causing the app to exit. Without the ability to zoom out and select a large area for download, the conditions for the OutOfMemoryError cannot be created, making it impossible to reproduce the bug."
+  }
+]
+```
+
+###############################################
+!!!xxx!!!. Execution time: 722.816583 seconds
+!!!Response Times: 17. Total Commands: 15
+
+
+============================================================
+STDERR
+============================================================
+/Users/darshan/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+

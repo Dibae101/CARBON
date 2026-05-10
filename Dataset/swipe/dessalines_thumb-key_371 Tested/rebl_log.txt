@@ -3,30 +3,296 @@ ReBL Test Log
 App:              dessalines/thumb-key
 Issue:            https://github.com/dessalines/thumb-key/issues/371
 Version:          unknown
-Primary Gesture:  
+Primary Gesture:  N/A
+Category:         swipe
 Test Result:      FAIL
-Execution Time:   0s
-Total Commands:   0
-Unique Actions:   none
+Execution Time:   1770.1s
+Tested At:        2026-05-09 09:03:29
 ============================================================
 
-ReBL FAILED — lacks required gesture capability.
-
-Missing Action:   media_gesture / swipe_region
-
-Failure Reason:
-  ReBL does not support the required action(s): swipe_region. CARBON used these CARBON-exclusive actions to reproduce this bug. ReBL's action set is limited to: click, long_click, set_text, swipe, scroll, back, orientation, restart, wait. Without swipe_region, ReBL cannot perform the gesture needed to trigger this bug.
-
-CARBON Actions Used (that ReBL lacks):
-  swipe_region
-
-ReBL's Full Action Set:
-  click, long_click, set_text, swipe (directional), scroll, back,
-  orientation, rotate, restart, wait, multiple_selection
-
-CARBON's Additional Actions (not in ReBL):
-  pinch, double_tap_screen, drag_and_drop, edge_swipe, media_gesture,
-  quick_tap, tap_screen, swipe_region, two_finger_swipe, two_finger_tap,
-  three_finger_swipe, rotate_gesture, home, open_notifications
+Result Reason:
+  The bug report describes a complex gesture involving starting a swipe on one key and then interacting with another key (like capitalize or a layout switch) before releasing the first key. The available actions do not support this level of granularity. Specifically, I cannot target individual keys on the keyboard as they are not present in the UI information, and I cannot perform the complex press-drag-release gesture across different logical areas. The generic swipe action is intercepted by the main app view, causing page navigation rather than interacting with the keyboard as intended. Therefore, the specific conditions to trigger this bug cannot be replicated with the current toolset.
 
 ============================================================
+FULL EXECUTION LOG (stdout)
+============================================================
+[Old ReBL LLM] Provider: vertex | Model: gemini-2.5-pro | URL: https://aiplatform.googleapis.com/v1/publishers/google/models
+*Prompt: [].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:click has the following group(s):1#.['OK', 'DETAILS', 'SOLUTION'];Other Widgets with Text in This Page has the following group(s):1#.Google has announced that, starting in 2026/2027, all apps on certified Android devices will require the developer to submit personal identity details directly to Google. Since the developers of this app do not agree to this requirement, this app will no longer work on certified Android devices after that time.;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'OK'}]
+
+###############################################
+{'action': 'click', 'feature': 'OK'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'OK'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:click has the following group(s):1#.['Enable Thumb-Key'];2#.['Select Thumb-Key'];3#.['Finish setup'];Other Widgets with Text in This Page has the following group(s):1#.Setup Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Enable Thumb-Key'}]
+
+###############################################
+{'action': 'click', 'feature': 'Enable Thumb-Key'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Enable Thumb-Key'}"].
+*Current Screen Information:  #Current Activity: .Settings$AvailableVirtualKeyboardActivity.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];switch_widget has the following group(s):1#.[{'Switch': 'Gboard'}, 'disabled', 'Gboard', 'Multilingual typing'];2#.[{'Switch': 'AdbKeyboard'}, 'AdbKeyboard'];3#.[{'Switch': 'Appium IME'}, 'Appium IME'];4#.[{'Switch': 'Empty IME'}, 'Empty IME'];5#.[{'Switch': 'Google Voice Typing'}, 'Google Voice Typing', 'Automatic'];6#.[{'Switch': 'Thumb-Key'}, 'Thumb-Key'];7#.[{'Switch': 'Unicode IME'}, 'Unicode IME'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Thumb-Key'}]
+
+###############################################
+{'action': 'click', 'feature': 'Thumb-Key'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Thumb-Key'}"].
+*Current Screen Information:  #Current Activity: .Settings$AvailableVirtualKeyboardActivity.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];switch_widget has the following group(s):1#.[{'Switch': 'Gboard'}, 'disabled', 'Gboard', 'Multilingual typing'];2#.[{'Switch': 'AdbKeyboard'}, 'AdbKeyboard'];3#.[{'Switch': 'Appium IME'}, 'Appium IME'];4#.[{'Switch': 'Empty IME'}, 'Empty IME'];5#.[{'Switch': 'Google Voice Typing'}, 'Google Voice Typing', 'Automatic'];6#.[{'Switch': 'Thumb-Key'}, 'Thumb-Key'];7#.[{'Switch': 'Unicode IME'}, 'Unicode IME'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:click has the following group(s):1#.['Enable Thumb-Key'];2#.['Select Thumb-Key'];3#.['Finish setup'];Other Widgets with Text in This Page has the following group(s):1#.Setup Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Select Thumb-Key'}]
+
+###############################################
+{'action': 'click', 'feature': 'Select Thumb-Key'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Select Thumb-Key'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:click has the following group(s):1#.['AdbKeyboard'];2#.['Gboard'];switch_widget has the following group(s):1#.hard_keyboard_switch:[{'Switch': 'android:id/hard_keyboard_switch'}];Other Widgets with Text in This Page has the following group(s):1#.Choose input method;2#.Show virtual keyboard;3#.Keep it on screen while physical keyboard is active;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'scroll', 'target_direction': 'down'}]
+
+###############################################
+{'action': 'scroll', 'target_direction': 'down'}
+*Prompt: ["Failed to execute {'action': 'scroll', 'target_direction': 'down'}. Error message: (-32001, 'androidx.test.uiautomator.UiObjectNotFoundException', ({'mask': 16793600, 'childOrSibling': [], 'childOrSiblingSelector': [], 'scrollable': True, 'instance': 0}, True))"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:click has the following group(s):1#.['AdbKeyboard'];2#.['Gboard'];switch_widget has the following group(s):1#.hard_keyboard_switch:[{'Switch': 'android:id/hard_keyboard_switch'}];Other Widgets with Text in This Page has the following group(s):1#.Choose input method;2#.Show virtual keyboard;3#.Keep it on screen while physical keyboard is active;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:click has the following group(s):1#.['Enable Thumb-Key'];2#.['Select Thumb-Key'];3#.['Finish setup'];Other Widgets with Text in This Page has the following group(s):1#.Setup Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Finish setup'}]
+
+###############################################
+{'action': 'click', 'feature': 'Finish setup'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Finish setup'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:set_text has the following group(s):1#.['Test out Thumb-Key', '[44,1907][460,2039]', '[44,1907][1036,2039]', '[0,1896][1080,2050]'];click has the following group(s):1#.['Setup'];2#.['Layouts', 'english thumb-key'];3#.['Look and feel'];4#.['Behavior'];5#.['Clipboard history'];6#.['Modify keys'];7#.['Backup and restore'];8#.['Other'];9#.['User guide'];10#.['About'];Other Widgets with Text in This Page has the following group(s):1#.Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Test out Thumb-Key'}]
+
+###############################################
+{'action': 'click', 'feature': 'Test out Thumb-Key'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Test out Thumb-Key'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:set_text has the following group(s):1#.['Test out Thumb-Key', '[44,1907][460,2039]', '[460,1940][1036,2006]', '[0,1896][1080,2050]'];click has the following group(s):1#.['Setup'];2#.['Layouts', 'english thumb-key'];3#.['Look and feel'];4#.['Behavior'];5#.['Clipboard history'];6#.['Modify keys'];7#.['Backup and restore'];8#.['Other'];9#.['User guide'];10#.['About'];11#.[{'ImageView': 'Back'}];12#.[{'ImageView': 'Switch input method'}];Other Widgets with Text in This Page has the following group(s):1#.Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'set_text', 'feature': 'Test out Thumb-Key', 'input_text': 'a'}]
+
+###############################################
+{'action': 'set_text', 'feature': 'Test out Thumb-Key', 'input_text': 'a'}
+*Prompt: ["Successfully execute {'action': 'set_text', 'feature': 'Test out Thumb-Key', 'input_text': 'a'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:set_text has the following group(s):1#.['Test out Thumb-Key', '[44,1907][460,2039]', '[460,1940][1036,2006]', '[0,1896][1080,2050]'];click has the following group(s):1#.['Setup'];2#.['Layouts', 'english thumb-key'];3#.['Look and feel'];4#.['Behavior'];5#.['Clipboard history'];6#.['Modify keys'];7#.['Backup and restore'];8#.['Other'];9#.['User guide'];10#.['About'];11#.[{'ImageView': 'Back'}];12#.[{'ImageView': 'Switch input method'}];Other Widgets with Text in This Page has the following group(s):1#.Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'swipe', 'from_direction': 'bottom', 'to_direction': 'top'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'bottom', 'to_direction': 'top'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'bottom', 'to_direction': 'top'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:set_text has the following group(s):1#.['Test out Thumb-Key', '[44,1907][460,2039]', '[460,1940][1036,2006]', '[0,1896][1080,2050]'];click has the following group(s):1#.['Setup'];2#.['Layouts', 'english thumb-key'];3#.['Look and feel'];4#.['Behavior'];5#.['Clipboard history'];6#.['Modify keys'];7#.['Backup and restore'];8#.['Other'];9#.['User guide'];10#.['About'];Other Widgets with Text in This Page has the following group(s):1#.Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Behavior'}]
+
+###############################################
+{'action': 'click', 'feature': 'Behavior'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Behavior'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:click has the following group(s):1#.['Auto-capitalize'];2#.['Spacebar multi-taps'];3#.['Slide gestures'];4#.['Cursor movement mode', 'Linear acceleration'];5#.['Drag-and-return'];Other Widgets with Text in This Page has the following group(s):1#.Minimum swipe length: 40;2#.40.0;3#.Slide sensitivity: 9;4#.9.0;5#.Behavior;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:set_text has the following group(s):1#.['Test out Thumb-Key', '[44,1907][460,2039]', '[44,1907][1036,2039]', '[0,1896][1080,2050]'];click has the following group(s):1#.['Setup'];2#.['Layouts', 'english thumb-key'];3#.['Look and feel'];4#.['Behavior'];5#.['Clipboard history'];6#.['Modify keys'];7#.['Backup and restore'];8#.['Other'];9#.['User guide'];10#.['About'];Other Widgets with Text in This Page has the following group(s):1#.Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'swipe', 'from_direction': 'right', 'to_direction': 'left'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'right', 'to_direction': 'left'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'right', 'to_direction': 'left'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:click has the following group(s):1#.['Enable Thumb-Key'];2#.['Select Thumb-Key'];3#.['Finish setup'];Other Widgets with Text in This Page has the following group(s):1#.Setup Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Enable Thumb-Key'}]
+
+###############################################
+{'action': 'click', 'feature': 'Enable Thumb-Key'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Enable Thumb-Key'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];switch_widget has the following group(s):1#.[{'Switch': 'Gboard'}, 'disabled', 'Gboard', 'Multilingual typing'];2#.[{'Switch': 'AdbKeyboard'}, 'AdbKeyboard'];3#.[{'Switch': 'Appium IME'}, 'Appium IME'];4#.[{'Switch': 'Empty IME'}, 'Empty IME'];5#.[{'Switch': 'Google Voice Typing'}, 'Google Voice Typing', 'Automatic'];6#.[{'Switch': 'Thumb-Key'}, 'Thumb-Key'];7#.[{'Switch': 'Unicode IME'}, 'Unicode IME'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Navigate up'}]
+
+###############################################
+{'action': 'click', 'feature': 'Navigate up'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Navigate up'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:click has the following group(s):1#.['Enable Thumb-Key'];2#.['Select Thumb-Key'];3#.['Finish setup'];Other Widgets with Text in This Page has the following group(s):1#.Setup Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Enable Thumb-Key'}]
+
+###############################################
+{'action': 'click', 'feature': 'Enable Thumb-Key'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Enable Thumb-Key'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];switch_widget has the following group(s):1#.[{'Switch': 'Gboard'}, 'disabled', 'Gboard', 'Multilingual typing'];2#.[{'Switch': 'AdbKeyboard'}, 'AdbKeyboard'];3#.[{'Switch': 'Appium IME'}, 'Appium IME'];4#.[{'Switch': 'Empty IME'}, 'Empty IME'];5#.[{'Switch': 'Google Voice Typing'}, 'Google Voice Typing', 'Automatic'];6#.[{'Switch': 'Thumb-Key'}, 'Thumb-Key'];7#.[{'Switch': 'Unicode IME'}, 'Unicode IME'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Select Thumb-Key'}]
+
+###############################################
+{'action': 'click', 'feature': 'Select Thumb-Key'}
+*Prompt: ["Failed to execute {'action': 'click', 'feature': 'Select Thumb-Key'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:click has the following group(s):1#.collapsing_toolbar:[{'ImageButton': 'Navigate up'}];switch_widget has the following group(s):1#.[{'Switch': 'Gboard'}, 'disabled', 'Gboard', 'Multilingual typing'];2#.[{'Switch': 'AdbKeyboard'}, 'AdbKeyboard'];3#.[{'Switch': 'Appium IME'}, 'Appium IME'];4#.[{'Switch': 'Empty IME'}, 'Empty IME'];5#.[{'Switch': 'Google Voice Typing'}, 'Google Voice Typing', 'Automatic'];6#.[{'Switch': 'Thumb-Key'}, 'Thumb-Key'];7#.[{'Switch': 'Unicode IME'}, 'Unicode IME'];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Navigate up'}]
+
+###############################################
+{'action': 'click', 'feature': 'Navigate up'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Navigate up'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:click has the following group(s):1#.['Enable Thumb-Key'];2#.['Select Thumb-Key'];3#.['Finish setup'];Other Widgets with Text in This Page has the following group(s):1#.Setup Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Select Thumb-Key'}]
+
+###############################################
+{'action': 'click', 'feature': 'Select Thumb-Key'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Select Thumb-Key'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:click has the following group(s):1#.['AdbKeyboard'];2#.['Gboard'];switch_widget has the following group(s):1#.hard_keyboard_switch:[{'Switch': 'android:id/hard_keyboard_switch'}];Other Widgets with Text in This Page has the following group(s):1#.Choose input method;2#.Show virtual keyboard;3#.Keep it on screen while physical keyboard is active;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:click has the following group(s):1#.['Enable Thumb-Key'];2#.['Select Thumb-Key'];3#.['Finish setup'];Other Widgets with Text in This Page has the following group(s):1#.Setup Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Finish setup'}]
+
+###############################################
+{'action': 'click', 'feature': 'Finish setup'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Finish setup'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:set_text has the following group(s):1#.['Test out Thumb-Key', '[44,1907][460,2039]', '[44,1907][1036,2039]', '[0,1896][1080,2050]'];click has the following group(s):1#.['Setup'];2#.['Layouts', 'english thumb-key'];3#.['Look and feel'];4#.['Behavior'];5#.['Clipboard history'];6#.['Modify keys'];7#.['Backup and restore'];8#.['Other'];9#.['User guide'];10#.['About'];Other Widgets with Text in This Page has the following group(s):1#.Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Test out Thumb-Key'}]
+
+###############################################
+{'action': 'click', 'feature': 'Test out Thumb-Key'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Test out Thumb-Key'}"].
+*Current Screen Information:  #Current Activity: .ui.ConversationListActivity.  # UI Information:set_text has the following group(s):1#.['Test out Thumb-Key', '[44,1907][460,2039]', '[460,1940][1036,2006]', '[0,1896][1080,2050]'];click has the following group(s):1#.['Setup'];2#.['Layouts', 'english thumb-key'];3#.['Look and feel'];4#.['Behavior'];5#.['Clipboard history'];6#.['Modify keys'];7#.['Backup and restore'];8#.['Other'];9#.['User guide'];10#.['About'];11#.[{'ImageView': 'Back'}];12#.[{'ImageView': 'Switch input method'}];Other Widgets with Text in This Page has the following group(s):1#.Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Modify keys'}]
+
+###############################################
+{'action': 'click', 'feature': 'Modify keys'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Modify keys'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:set_text has the following group(s):1#.['Enter YAML', '[44,407][286,539]', '[44,407][937,539]', '[0,396][1080,550]'];2#.['Test out Thumb-Key', '[44,620][460,752]', '[44,620][1036,752]', '[0,609][1080,763]'];click has the following group(s):1#.['How to modify keys'];Other Widgets with Text in This Page has the following group(s):1#.Modify keys;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:set_text has the following group(s):1#.['Test out Thumb-Key', '[44,1907][460,2039]', '[44,1907][1036,2039]', '[0,1896][1080,2050]'];click has the following group(s):1#.['Setup'];2#.['Layouts', 'english thumb-key'];3#.['Look and feel'];4#.['Behavior'];5#.['Clipboard history'];6#.['Modify keys'];7#.['Backup and restore'];8#.['Other'];9#.['User guide'];10#.['About'];Other Widgets with Text in This Page has the following group(s):1#.Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Layouts'}]
+
+###############################################
+{'action': 'click', 'feature': 'Layouts'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Layouts'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:click has the following group(s):1#.['Cancel'];2#.['OK'];check_box has the following group(s):1#.['status:unchecked', 'T9'];2#.['status:unchecked', 'bahasa indonesia thumb-key symbols v1'];3#.['status:unchecked', 'bahasa indonesia thumb-key symbols v2'];4#.['status:unchecked', 'bahasa indonesia thumb-key symbols-numbers v1'];5#.['status:unchecked', 'brezhoneg français thumb-key'];6#.['status:unchecked', 'brezhoneg français thumb-key compose'];7#.['status:unchecked', 'brezhoneg français thumb-key v3'];8#.['status:unchecked', 'bulgarian messagease phonetic symbols'];9#.['status:unchecked', 'canadian aboriginal syllabic thumb-key'];10#.['status:unchecked', 'dansk thumb-key'];11#.['status:unchecked', 'dansk thumb-key'];Other Widgets with Text in This Page has the following group(s):1#.Layouts;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Cancel'}]
+
+###############################################
+{'action': 'click', 'feature': 'Cancel'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Cancel'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:set_text has the following group(s):1#.['Test out Thumb-Key', '[44,1907][460,2039]', '[44,1907][1036,2039]', '[0,1896][1080,2050]'];click has the following group(s):1#.['Setup'];2#.['Layouts', 'english thumb-key'];3#.['Look and feel'];4#.['Behavior'];5#.['Clipboard history'];6#.['Modify keys'];7#.['Backup and restore'];8#.['Other'];9#.['User guide'];10#.['About'];Other Widgets with Text in This Page has the following group(s):1#.Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Setup'}]
+
+###############################################
+{'action': 'click', 'feature': 'Setup'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Setup'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:click has the following group(s):1#.['Enable Thumb-Key'];2#.['Select Thumb-Key'];3#.['Finish setup'];Other Widgets with Text in This Page has the following group(s):1#.Setup Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Finish setup'}]
+
+###############################################
+{'action': 'click', 'feature': 'Finish setup'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Finish setup'}"].
+*Current Screen Information:  #Current Activity: .MainActivity.  # UI Information:set_text has the following group(s):1#.['Test out Thumb-Key', '[44,1907][460,2039]', '[44,1907][1036,2039]', '[0,1896][1080,2050]'];click has the following group(s):1#.['Setup'];2#.['Layouts', 'english thumb-key'];3#.['Look and feel'];4#.['Behavior'];5#.['Clipboard history'];6#.['Modify keys'];7#.['Backup and restore'];8#.['Other'];9#.['User guide'];10#.['About'];Other Widgets with Text in This Page has the following group(s):1#.Thumb-Key;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'result': 'fail', 'reason': 'The bug report describes a complex gesture involving starting a swipe on one key and then interacting with another key (like capitalize or a layout switch) before releasing the first key. The available actions do not support this level of granularity. Specifically, I cannot target individual keys on the keyboard as they are not present in the UI information, and I cannot perform the complex press-drag-release gesture across different logical areas. The generic swipe action is intercepted by the main app view, causing page navigation rather than interacting with the keyboard as intended. Therefore, the specific conditions to trigger this bug cannot be replicated with the current toolset.'}]
+
+###############################################
+!!!xxx!!!. Execution time: 1767.013576 seconds
+!!!Response Times: 30. Total Commands: 30
+
+
+============================================================
+STDERR
+============================================================
+/Users/darshan/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+

@@ -1,0 +1,135 @@
+ReBL Test Log
+============================================================
+App:              yairm210/Unciv
+Issue:            https://github.com/yairm210/Unciv/issues/13517
+Version:          4.16.0
+Primary Gesture:  N/A
+Category:         double_tap
+Test Result:      FAIL
+Execution Time:   274.1s
+Tested At:        2026-05-08 22:37:34
+============================================================
+
+Result Reason:
+  The application fails to launch properly. After multiple attempts including restarting the app, changing orientation, and performing various gestures (click, long_click, swipe), the screen remains blank with no detectable UI elements. This prevents any further interaction with the app, making it impossible to navigate to the map editor and reproduce the reported bug.
+
+============================================================
+FULL EXECUTION LOG (stdout)
+============================================================
+[Old ReBL LLM] Provider: vertex | Model: gemini-2.5-pro | URL: https://aiplatform.googleapis.com/v1/publishers/google/models
+*Prompt: [].
+*Current Screen Information:  #Current Activity: .AndroidLauncher.  # UI Information:.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Based on the bug report, there are multiple issues listed. The most specific and reproducible one appears to be: "in the map editor the 'partially generate' commands do not work at all". I will focus on reproducing this bug.
+
+My first goal is to navigate to the "Map editor". Since I don't have the UI details for the current screen, I will start by exploring the page to find a button or link that leads to the editor. A swipe action is a good way to reveal any elements that might be off-screen.
+
+Suggestion:[{'action': 'swipe', 'from_direction': 'bottom', 'to_direction': 'top'}]
+
+###############################################
+{'action': 'swipe', 'from_direction': 'bottom', 'to_direction': 'top'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'from_direction': 'bottom', 'to_direction': 'top'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .AndroidLauncher.  # UI Information:.
+gemini-2.5-pro
+###############################################
+
+*GPT message: I see. The UI information is still empty after the swipe. This could mean a few things: the screen is a splash screen, it's still loading, or the interactive elements are not being detected.
+
+Since a swipe didn't reveal anything, I'll try a different approach. A single click in the center of the screen is a common way to dismiss introductory screens or move to the main menu. I'll try that.
+
+Suggestion:[{'action': 'click', 'feature': '[0,0][1080,2280]'}]
+
+###############################################
+{'action': 'click', 'feature': '[0,0][1080,2280]'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': '[0,0][1080,2280]'}"].
+*Current Screen Information:  #Current Activity: .AndroidLauncher.  # UI Information:.
+gemini-2.5-pro
+###############################################
+
+*GPT message: It seems the app is not responding to standard swipes or clicks on this initial screen. The UI information is still empty, which is unusual. This could indicate a loading screen that hasn't finished, a rendering issue, or that the app is designed for a different screen orientation.
+
+Many games are designed to be played in landscape mode. Let's try changing the device orientation to see if that reveals the main menu or any other UI elements.
+
+Suggestion:[{'action': 'orientation', 'orientation_direction': 'left'}]
+
+###############################################
+{'action': 'orientation', 'orientation_direction': 'left'}
+*Prompt: ["Successfully execute {'action': 'orientation', 'orientation_direction': 'left'}"].
+*Current Screen Information:  #Current Activity: .AndroidLauncher.  # UI Information:.
+gemini-2.5-pro
+###############################################
+
+*GPT message: The app is still on the initial screen, and changing the orientation to landscape hasn't revealed any UI elements. This is unusual behavior.
+
+Given that simple clicks and swipes haven't worked, and considering the file path for this test includes the term "double_tap", it's a strong possibility that a double-tap is required to proceed. I will simulate a double-tap by suggesting two consecutive clicks on the screen.
+
+Suggestion:[{'action': 'click', 'feature': '[0,0][1080,2280]'}, {'action': 'click', 'feature': '[0,0][1080,2280]'}]
+
+###############################################
+{'action': 'click', 'feature': '[0,0][1080,2280]'}
+{'action': 'click', 'feature': '[0,0][1080,2280]'}
+*Prompt: Just a reminder, we are repeating the following steps Repeating sequence detected: , [{'action': 'click', 'feature': '[0,0][1080,2280]'}]. If the bug report doesn' require repeated steps, it seems like we're trapped into a loop. If you belive we are in the right track, maybe try different text for set_text. If there are more other widgets, maybe try a different path. 
+*Current Screen Information:  #Current Activity: .AndroidLauncher.  # UI Information:.
+gemini-2.5-pro
+###############################################
+
+*GPT message: You are right to point out the loop. My apologies. Repeating the same action without any change in the UI is not productive. The fact that the screen remains completely empty after swipes, clicks, and orientation changes suggests the app might be in a frozen or unresponsive state.
+
+The most sensible action to take when an app is unresponsive is to restart it. This will give us a fresh start and hopefully land us on a screen with interactive elements.
+
+Suggestion:[{'action': 'restart'}]
+
+###############################################
+{'action': 'restart'}
+*Prompt: ["Successfully execute {'action': 'restart'}"].
+*Current Screen Information:  #Current Activity: .AndroidLauncher.  # UI Information:.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We are back to the initial blank screen after the restart. It seems the app consistently fails to display any UI elements on launch. Repeating the previous actions (swipe, click, orientation change) will likely result in the same outcome.
+
+This could be an overlay screen or a non-responsive state. Pressing the 'back' button is a standard way to dismiss overlays or navigate back from an unresponsive screen. Let's try that.
+
+Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .AndroidLauncher.  # UI Information:.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We are consistently stuck on a non-responsive screen. Restarting and pressing 'back' have not worked. Standard clicks and swipes have also failed. The UI remains completely empty.
+
+There is one basic interaction I haven't tried yet: a `long_click`. This can sometimes trigger context menus or alternative actions on a screen. Given that nothing else has worked, it's worth a try.
+
+Suggestion:[{'action': 'long_click', 'feature': '[0,0][1080,2280]'}]
+
+###############################################
+{'action': 'long_click', 'feature': '[0,0][1080,2280]'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': '[0,0][1080,2280]'}"].
+*Current Screen Information:  #Current Activity: .AndroidLauncher.  # UI Information:.
+gemini-2.5-pro
+###############################################
+
+*GPT message: We have now tried a `click`, `long_click`, `swipe`, `orientation` change, `restart`, and `back` action. Every single attempt has resulted in the same outcome: a blank screen with no detectable UI elements. The application is consistently failing to launch or render its initial interface.
+
+At this point, it is not productive to continue suggesting basic interactions on a screen that is clearly unresponsive. A more severe bug is preventing the app from starting at all, which makes it impossible to navigate to the "map editor" to test the bug mentioned in the report.
+
+Therefore, I am concluding this attempt as a failure to reproduce the target bug, due to a more critical, blocking bug at launch.
+
+Suggestion:[{'result': 'fail', 'reason': 'The application fails to launch properly. After multiple attempts including restarting the app, changing orientation, and performing various gestures (click, long_click, swipe), the screen remains blank with no detectable UI elements. This prevents any further interaction with the app, making it impossible to navigate to the map editor and reproduce the reported bug.'}]
+
+###############################################
+!!!xxx!!!. Execution time: 265.218546 seconds
+!!!Response Times: 8. Total Commands: 9
+
+
+============================================================
+STDERR
+============================================================
+/Users/darshan/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
