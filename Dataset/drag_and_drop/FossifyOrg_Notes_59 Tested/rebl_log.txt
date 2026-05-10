@@ -4,29 +4,328 @@ App:              FossifyOrg/Notes
 Issue:            https://github.com/FossifyOrg/Notes/issues/59
 Version:          1.1.0
 Primary Gesture:  drag_and_drop
+Category:         drag_and_drop
 Test Result:      FAIL
-Execution Time:   0s
-Total Commands:   0
-Unique Actions:   none
+Execution Time:   969.5s
+Tested At:        2026-05-08 22:54:05
 ============================================================
 
-ReBL FAILED — lacks required gesture capability.
-
-Missing Action:   drag_and_drop
-
-Failure Reason:
-  ReBL does not support the required action(s): drag_and_drop. CARBON used these CARBON-exclusive actions to reproduce this bug. ReBL's action set is limited to: click, long_click, set_text, swipe, scroll, back, orientation, restart, wait. Without drag_and_drop, ReBL cannot perform the gesture needed to trigger this bug.
-
-CARBON Actions Used (that ReBL lacks):
-  drag_and_drop
-
-ReBL's Full Action Set:
-  click, long_click, set_text, swipe (directional), scroll, back,
-  orientation, rotate, restart, wait, multiple_selection
-
-CARBON's Additional Actions (not in ReBL):
-  pinch, double_tap_screen, drag_and_drop, edge_swipe, media_gesture,
-  quick_tap, tap_screen, swipe_region, two_finger_swipe, two_finger_tap,
-  three_finger_swipe, rotate_gesture, home, open_notifications
+Result Reason:
+  The testing framework is unable to correctly simulate the drag-and-drop gesture required to trigger the bug. The `long_click` action consistently enters a selection mode instead of initiating a drag, preventing any reordering of the checklist items.
 
 ============================================================
+FULL EXECUTION LOG (stdout)
+============================================================
+[Old ReBL LLM] Provider: vertex | Model: gemini-2.5-pro | URL: https://aiplatform.googleapis.com/v1/publishers/google/models
+*Prompt: [].
+*Current Screen Information:  #Current Activity: .activities.MainActivity.  # UI Information:set_text has the following group(s):1#.notes_relative_layout:['Insert text here', {'EditText': 'org.fossify.notes:id/text_note_view'}];click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Search'}];2#.[{'ImageView': 'Back'}];3#.[{'ImageView': 'Switch input method'}];.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Create a new note'}]
+
+###############################################
+{'action': 'click', 'feature': 'Create a new note'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Create a new note'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity.  # UI Information:set_text has the following group(s):1#.['Label', {'EditText': 'org.fossify.notes:id/locked_note_title'}];click has the following group(s):1#.new_note_type:['Checklist', 'Text note'];2#.['OK', 'Cancel'];3#.[{'ImageView': 'Back'}];4#.[{'ImageView': 'Switch input method'}];Other Widgets with Text in This Page has the following group(s):1#.Add a new note;2#.New note type:;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Checklist'}]
+
+###############################################
+{'action': 'click', 'feature': 'Checklist'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Checklist'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity.  # UI Information:set_text has the following group(s):1#.['Label', {'EditText': 'org.fossify.notes:id/locked_note_title'}];click has the following group(s):1#.new_note_type:['Checklist', 'Text note'];2#.['OK', 'Cancel'];3#.[{'ImageView': 'Back'}];4#.[{'ImageView': 'Switch input method'}];Other Widgets with Text in This Page has the following group(s):1#.Add a new note;2#.New note type:;.
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'OK'}]
+
+###############################################
+{'action': 'click', 'feature': 'OK'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'OK'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.['Label', {'EditText': 'org.fossify.notes:id/locked_note_title'}];click has the following group(s):1#.new_note_type:['Checklist', 'Text note'];2#.['OK', 'Cancel'];3#.[{'ImageView': 'Back'}];4#.[{'ImageView': 'Switch input method'}];Other Widgets with Text in This Page has the following group(s):1#.Add a new note;2#.New note type:;.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'set_text', 'feature': 'org.fossify.notes:id/locked_note_title', 'input_text': 'Test Checklist'}]
+
+###############################################
+{'action': 'set_text', 'feature': 'org.fossify.notes:id/locked_note_title', 'input_text': 'Test Checklist'}
+*Prompt: ["Successfully execute {'action': 'set_text', 'feature': 'org.fossify.notes:id/locked_note_title', 'input_text': 'Test Checklist'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.['Test Checklist', {'EditText': 'org.fossify.notes:id/locked_note_title'}];click has the following group(s):1#.new_note_type:['Checklist', 'Text note'];2#.['OK', 'Cancel'];3#.[{'ImageView': 'Back'}];4#.[{'ImageView': 'Switch input method'}];Other Widgets with Text in This Page has the following group(s):1#.Add a new note;2#.New note type:;.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'OK'}]
+
+###############################################
+{'action': 'click', 'feature': 'OK'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'OK'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checklist_content_holder:['Add new checklist items', 'The checklist is empty'];4#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Add new checklist items'}]
+
+###############################################
+{'action': 'click', 'feature': 'Add new checklist items'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Add new checklist items'}"].There are a UI quickly disappear(less than 0.5s) after ["Successfully execute {'action': 'click', 'feature': 'Add new checklist items'}"]. The UI information of the page is {info_1}. If the next action related to the quick diappear page, Please provide a seris of actions to tigger the quick disappear UI then execute actions on the relevant transient widget in one go. Current page is 
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:[{'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];4#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please name your note, Notes.  It the quick diappear UI is not related, we can ignore it and proceeed based on the state of current page
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 1'}]
+
+###############################################
+{'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 1'}
+*Prompt: ["Successfully execute {'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 1'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:['Item 1', {'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];4#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'OK'}]
+
+###############################################
+{'action': 'click', 'feature': 'OK'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'OK'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 1'];.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}]
+
+###############################################
+{'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}"].There are a UI quickly disappear(less than 0.5s) after ["Successfully execute {'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}"]. The UI information of the page is {info_1}. If the next action related to the quick diappear page, Please provide a seris of actions to tigger the quick disappear UI then execute actions on the relevant transient widget in one go. Current page is 
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:[{'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];4#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please name your note, Notes.  It the quick diappear UI is not related, we can ignore it and proceeed based on the state of current page
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 2'}]
+
+###############################################
+{'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 2'}
+*Prompt: ["Successfully execute {'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 2'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:['Item 2', {'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];4#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'OK'}]
+
+###############################################
+{'action': 'click', 'feature': 'OK'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'OK'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 1'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}]
+
+###############################################
+{'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}"].There are a UI quickly disappear(less than 0.5s) after ["Successfully execute {'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}"]. The UI information of the page is {info_1}. If the next action related to the quick diappear page, Please provide a seris of actions to tigger the quick disappear UI then execute actions on the relevant transient widget in one go. Current page is 
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:[{'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];4#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please name your note, Notes.  It the quick diappear UI is not related, we can ignore it and proceeed based on the state of current page
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 3'}]
+
+###############################################
+{'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 3'}
+*Prompt: ["Successfully execute {'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 3'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:['Item 3', {'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.[{'ImageView': 'Back'}];2#.[{'ImageView': 'Switch input method'}];3#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];4#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'OK'}]
+
+###############################################
+{'action': 'click', 'feature': 'OK'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'OK'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 1'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];3#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 3'];.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Item 1', 'target_status': 'checked', 'current_status': 'unchecked'}]
+
+###############################################
+{'action': 'click', 'feature': 'Item 1', 'target_status': 'checked', 'current_status': 'unchecked'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Item 1', 'target_status': 'checked', 'current_status': 'unchecked'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checked_items_holder:[{'ViewGroup': 'org.fossify.notes:id/checked_items_holder'}, '1 checked items'];4#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 3'];.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'More options'}]
+
+###############################################
+{'action': 'click', 'feature': 'More options'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'More options'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.['Rename note'];2#.['Delete checked items'];3#.['Sort by'];4#.['Share'];5#.['Create shortcut'];6#.['Lock note'];7#.['Open file'];8#.['Export as file'];9#.['Print'];10#.['Delete note'];11#.['Settings'];12#.['About'];.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Sort by'}]
+
+###############################################
+{'action': 'click', 'feature': 'Sort by'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Sort by'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.sorting_dialog_radio_sorting:['Custom', 'Date created', 'Title'];2#.sorting_dialog_radio_order:['Descending', 'Ascending'];3#.['OK', 'Cancel'];check_box has the following group(s):1#.settings_move_undone_checklist_items_holder:[{'RelativeLayout': 'org.fossify.notes:id/settings_move_undone_checklist_items_holder'}, 'status:checked'];Other Widgets with Text in This Page has the following group(s):1#.Sort by;.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'OK'}]
+
+###############################################
+{'action': 'click', 'feature': 'OK'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'OK'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checked_items_holder:[{'ViewGroup': 'org.fossify.notes:id/checked_items_holder'}, '1 checked items'];4#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 3'];.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'long_click', 'feature': 'Item 3'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'Item 3'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'Item 3'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checked_items_holder:[{'ViewGroup': 'org.fossify.notes:id/checked_items_holder'}, '1 checked items'];4#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];5#.action_mode_close_button:[{'ImageView': 'Done'}];6#.actionbar_title:['1 / 1'];7#.[{'Button': 'Delete'}, {'Button': 'Rename'}, {'Button': 'Move to the bottom'}, {'Button': 'Move to the top'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 3'];.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'swipe', 'feature': 'Item 3', 'direction': 'up'}]
+
+###############################################
+{'action': 'swipe', 'feature': 'Item 3', 'direction': 'up'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'feature': 'Item 3', 'direction': 'up'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checked_items_holder:[{'ViewGroup': 'org.fossify.notes:id/checked_items_holder'}, '1 checked items'];4#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 3'];.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}]
+
+###############################################
+{'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}"].There are a UI quickly disappear(less than 0.5s) after ["Successfully execute {'action': 'click', 'feature': 'org.fossify.notes:id/checklist_fab'}"]. The UI information of the page is {info_1}. If the next action related to the quick diappear page, Please provide a seris of actions to tigger the quick disappear UI then execute actions on the relevant transient widget in one go. Current page is 
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:[{'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];2#.['OK', 'Cancel'];3#.[{'ImageView': 'Back'}];4#.[{'ImageView': 'Switch input method'}];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please name your note, Notes.  It the quick diappear UI is not related, we can ignore it and proceeed based on the state of current page
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'Cancel'}]
+
+###############################################
+{'action': 'click', 'feature': 'Cancel'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'Cancel'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:[{'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];2#.['OK', 'Cancel'];3#.[{'ImageView': 'Back'}];4#.[{'ImageView': 'Switch input method'}];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'back'}]
+
+###############################################
+{'action': 'back'}
+*Prompt: ["Successfully execute {'action': 'back'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:[{'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];2#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please name your note, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'OK'}]
+
+###############################################
+{'action': 'click', 'feature': 'OK'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'OK'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:[{'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];2#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please enter a name, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 4'}]
+
+###############################################
+{'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 4'}
+*Prompt: ["Successfully execute {'action': 'set_text', 'feature': 'org.fossify.notes:id/title_edit_text', 'input_text': 'Item 4'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:set_text has the following group(s):1#.checklist_holder:['Item 4', {'EditText': 'org.fossify.notes:id/title_edit_text'}];click has the following group(s):1#.add_item:[{'ImageView': 'org.fossify.notes:id/add_item'}];2#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Add new checklist items;.Toast message on the page: Please enter a name, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'click', 'feature': 'OK'}]
+
+###############################################
+{'action': 'click', 'feature': 'OK'}
+*Prompt: ["Successfully execute {'action': 'click', 'feature': 'OK'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checked_items_holder:[{'ViewGroup': 'org.fossify.notes:id/checked_items_holder'}, '1 checked items'];4#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 3'];3#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 4'];.Toast message on the page: Please enter a name, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'long_click', 'feature': 'Item 4'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'Item 4'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'Item 4'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checked_items_holder:[{'ViewGroup': 'org.fossify.notes:id/checked_items_holder'}, '1 checked items'];4#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];5#.action_mode_close_button:[{'ImageView': 'Done'}];6#.actionbar_title:['1 / 1'];7#.[{'Button': 'Delete'}, {'Button': 'Rename'}, {'Button': 'Move to the bottom'}, {'Button': 'Move to the top'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 3'];3#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 4'];.Toast message on the page: Please enter a name, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Suggestion:[{'action': 'swipe', 'feature': 'Item 4', 'direction': 'up'}]
+
+###############################################
+{'action': 'swipe', 'feature': 'Item 4', 'direction': 'up'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'feature': 'Item 4', 'direction': 'up'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checked_items_holder:[{'ViewGroup': 'org.fossify.notes:id/checked_items_holder'}, '1 checked items'];4#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 3'];3#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 4'];.Toast message on the page: Please enter a name, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: Based on the video of the bug report, the drag-and-drop action is initiated by a long press that does not bring up a selection action bar. However, the `long_click` action in our environment brings up a selection action bar. This might be a key difference.
+
+Let's try to perform the drag gesture in two steps, which might be interpreted correctly by the test environment:
+1.  A `long_click` to "pick up" the item.
+2.  A `swipe` action to "drag" the picked-up item.
+
+My previous attempt to swipe the specific feature might have failed. Let's try a more general swipe after the long click.
+
+First, let's select the item at the bottom of the unchecked list to drag upwards, as described in the bug report.
+
+Suggestion:[{'action': 'long_click', 'feature': 'Item 4'}]
+
+###############################################
+{'action': 'long_click', 'feature': 'Item 4'}
+*Prompt: ["Successfully execute {'action': 'long_click', 'feature': 'Item 4'}"].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checked_items_holder:[{'ViewGroup': 'org.fossify.notes:id/checked_items_holder'}, '1 checked items'];4#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];5#.action_mode_close_button:[{'ImageView': 'Done'}];6#.actionbar_title:['1 / 1'];7#.[{'Button': 'Delete'}, {'Button': 'Rename'}, {'Button': 'Move to the bottom'}, {'Button': 'Move to the top'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 3'];3#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 4'];.Toast message on the page: Please enter a name, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: I see. The `long_click` action is putting the app into a selection mode with a contextual action bar, which is likely not the intended mode for drag-and-drop reordering. The drag gesture itself seems to be the part that's failing.
+
+The bug report states the item "jumps to a different position," which means a reorder action is successfully initiated, but its result is incorrect. My previous attempts did not result in any reordering at all.
+
+The issue might be how the `swipe` action is being interpreted after the `long_click`. When an item is selected (as 'Item 4' is now), a generic swipe on the screen might be what's needed to move the selected item, rather than a swipe on the item's feature itself.
+
+Let's try a general swipe upwards, which might be interpreted as "drag the currently selected item up".
+
+Suggestion:[{'action': 'swipe', 'direction': 'up'}]
+
+###############################################
+{'action': 'swipe', 'direction': 'up'}
+*Prompt: ["Successfully execute {'action': 'swipe', 'direction': 'up'} but please make sure you swipe to the correct location, if not either keep swiping or change the from_direction and to_direction. And keep in mind that swiping betwwen multi-page layout, one swipe is just going to the next layout "].
+*Current Screen Information:  #Current Activity: .activities.MainActivity. # UI Information:click has the following group(s):1#.main_toolbar:[{'ImageView': 'More options'}, {'Button': 'Create a new note'}, {'Button': 'Open note'}];2#.pager_tab_strip:['General note', 'Test Checklist'];3#.checked_items_holder:[{'ViewGroup': 'org.fossify.notes:id/checked_items_holder'}, '1 checked items'];4#.checklist_fab:[{'ImageButton': 'org.fossify.notes:id/checklist_fab'}];check_box has the following group(s):1#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 2'];2#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 3'];3#.checklist_holder:[{'ViewGroup': 'org.fossify.notes:id/checklist_holder'}, 'status:unchecked', 'Item 4'];.Toast message on the page: Please enter a name, Notes
+gemini-2.5-pro
+###############################################
+
+*GPT message: I have tried to simulate the drag-and-drop gesture by using a `long_click` followed by a `swipe`. However, this sequence consistently puts the app into a selection mode with a contextual action bar, rather than initiating a drag. This prevents me from performing the reordering action described in the bug report. The core of the bug is what happens *after* a drag-and-drop, but I am unable to successfully perform the drag-and-drop itself.
+
+My attempts to drag "Item 4" upwards have not resulted in any change to the list order (2, 3, 4). The bug describes the item "jumping" to an incorrect position, which implies a reorder happens. Since I cannot trigger any reorder at all, I am unable to verify the buggy behavior.
+
+It seems there is a fundamental mismatch between the test environment's simulation of `long_click` + `swipe` and the app's expected `drag_and_drop` gesture. Given that I have followed the setup steps correctly and am now blocked on performing the primary gesture, I will conclude this attempt as a failure. It's possible the testing tools lack the fidelity to reproduce this specific type of drag gesture.
+
+Suggestion:[{'result': 'fail', 'reason': 'The testing framework is unable to correctly simulate the drag-and-drop gesture required to trigger the bug. The `long_click` action consistently enters a selection mode instead of initiating a drag, preventing any reordering of the checklist items.'}]
+
+###############################################
+!!!xxx!!!. Execution time: 954.889041 seconds
+!!!Response Times: 31. Total Commands: 31
+
+
+============================================================
+STDERR
+============================================================
+/Users/darshan/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+

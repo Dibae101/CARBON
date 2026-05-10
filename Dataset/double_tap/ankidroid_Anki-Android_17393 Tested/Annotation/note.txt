@@ -1,43 +1,21 @@
 Bug: ankidroid/Anki-Android #17393
-Title: IO Cards Go to the Wrong Deck
+Title: [BUG]: IO Cards Go to the Wrong Deck
 Category: Double Tap
-Gesture Required: double-click on + (FAB) button to open Add screen
-
-Screenshot: Shows the deck picker screen with the + (FAB) button that needs to be double-clicked.
+Gesture Required: double_tap
 
 ---
 
 CARBON (✅ SUCCESS)
-  Key action: Two consecutive click on FAB button (com.ichi2.anki:id/fab_main)
-  CARBON navigated through Settings > General > Deck for new cards > selected "use current deck",
-  then went back to deck picker, selected a deck, and double-clicked the + button to open Add screen.
-  It then selected IO note type, changed deck, and created a card — verifying the bug.
-  Total: 28 steps using click, set_text, back actions.
+  Key gesture: click
+  Actions used: click(68x), back(9x), set_text(8x)
+  Coordinates: (943,845)
+  Reason: I followed the steps to reproduce the bug. I set the "Deck for new cards" setting to "Use current deck", selected "Default" as the current deck, then opened the Add screen and changed the deck to "New
 
-ReBL (❌ FAIL)
-  ReBL attempted 52 steps with click, set_text, back, scroll.
-  It navigated through AnkiDroid but could not complete the full reproduction sequence.
-  The bug requires precise multi-step navigation through settings and deck selection.
+ReBL (✅)
+  Reproduced with basic actions
 
-AdbGPT (❌ FAIL)
-  AdbGPT extracted 22 steps but completed 0 — could not match any step to UI elements.
-  20 MISSING flags. Never navigated past the first screen.
+AdbGPT (❌)
+  0/22 steps, 20 MISSING
 
-ReActDroid (❌ FAIL)
-  ReActDroid explored 18 steps navigating through settings but got stuck.
-  Could not complete the full reproduction path. Crash-only oracle cannot detect this logic bug.
-
----
-
-Annotation: Draw double-tap marker on the + (FAB) button (bottom-right of screen).
-The FAB is typically at coordinates approximately (940, 2100) on a 1080x2340 screen.
-
-Why CARBON succeeded:
-  1. Navigated complex multi-step path (Settings > General > Deck for new cards)
-  2. Performed double-click on FAB button to open Add screen
-  3. LLM oracle verified the card went to wrong deck (logic bug, not crash)
-
-Why others failed:
-  - Could not complete the 7-step reproduction path (ReBL, ReActDroid)
-  - Could not match UI elements (AdbGPT)
-  - No oracle for logic bugs (ReActDroid)
+ReActDroid (❌)
+  ReActDroid completed 30 steps without triggering the expected crash.

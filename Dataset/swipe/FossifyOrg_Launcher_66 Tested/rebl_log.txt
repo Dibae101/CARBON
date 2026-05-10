@@ -4,7 +4,26 @@ App:              FossifyOrg/Launcher
 Issue:            https://github.com/FossifyOrg/Launcher/issues/66
 Version:          1.0.0
 Primary Gesture:  swipe
-Test Result:      UNKNOWN
+Category:         swipe
+Test Result:      FAIL
+Execution Time:   2331.8s
+Tested At:        2026-04-22 (legacy)
+============================================================
+
+Result Reason:
+  ReBL crashed internally with AttributeError: 'Device' object has no attribute 'healthcheck'. The run produced 125 commands but never reached a final reproduction verdict. Counts as FAIL.
+
+============================================================
+FULL EXECUTION LOG (stdout)
+============================================================
+
+ReBL Test Log
+============================================================
+App:              FossifyOrg/Launcher
+Issue:            https://github.com/FossifyOrg/Launcher/issues/66
+Version:          1.0.0
+Primary Gesture:  swipe
+Test Result [original]:      UNKNOWN
 Execution Time:   2331.8s
 Total Commands:   125
 Unique Actions:   swipe, long_click, back, orientation, scroll, restart, click, set_text
@@ -412,7 +431,7 @@ Suggestion: [{'action': 'set_text', 'feature': 'org.fossify.home:id/rename_item_
 {'action': 'set_text', 'feature': 'org.fossify.home:id/rename_item_edittext', 'input_text': 'Phone'}
 *Prompt: ["Successfully execute {'action': 'set_text', 'feature': 'org.fossify.home:id/rename_item_edittext', 'input_text': 'Phone'}"].
 *Current Screen Information:  #Current Activity: .activities.MainActivity.  # UI Information:set_text has the following group(s):1#.['Phone', {'EditText': 'org.fossify.home:id/rename_item_edittext'}];click has the following group(s):1#.['Open features menu'];2#.['Phone'];3#.['Phones'];4#.['.. emoji'];5#.['.. emoji'];6#.['Use voice typing'];7#.D01:[{'FrameLayout': 'q'}, '1'];8#.D02:[{'FrameLayout': 'w'}, '2'];9#.D03:[{'FrameLayout': 'e'}, '3'];10#.D04:[{'FrameLayout': 'r'}, '4'];11#.D05:[{'FrameLayout': 't'}, '5'];12#.D06:[{'FrameLayout': 'y'}, '6'];13#.D07:[{'FrameLayout': 'u'}, '7'];14#.D08:[{'FrameLayout': 'i'}, '8'];15#.D09:[{'FrameLayout': 'o'}, '9'];16#.D10:[{'FrameLayout': 'p'}, '0'];17#.['a'];18#.C02:[{'FrameLayout': 's'}];19#.C03:[{'FrameLayout': 'd'}];20#.C04:[{'FrameLayout': 'f'}];21#.C05:[{'FrameLayout': 'g'}];22#.C06:[{'FrameLayout': 'h'}];23#.C07:[{'FrameLayout': 'j'}];24#.C08:[{'FrameLayout': 'k'}];25#.['l'];26#.key_pos_shift:[{'FrameLayout': 'Shift'}];27#.B01:[{'FrameLayout': 'z'}];28#.B02:[{'FrameLayout': 'x'}];29#.B03:[{'FrameLayout': 'c'}];30#.B04:[{'FrameLayout': 'v'}];31#.B05:[{'FrameLayout': 'b'}];32#.B06:[{'FrameLayout': 'n'}];33#.B07:[{'FrameLayout': 'm'}];34#.key_pos_del:[{'FrameLayout': 'Delete'}];35#.key_pos_switch_to_symbol:[{'FrameLayout': 'Symbol keyboard'}];36#.[','];37#.key_pos_switch_to_next_language:[{'FrameLayout': 'Next language'}];38#.['Space'];39#.A08:[{'FrameLayout': '.'}];40#.['Done'];41#.['OK', 'Cancel'];Other Widgets with Text in This Page has the following group(s):1#.Rename;.
-Attempt 1 failed with error: 429 Client Error: Too Many Requests for url: https://aiplatform.googleapis.com/v1/publishers/google/models/gemini-2.5-pro:generateContent?key=[REDACTED]
+Attempt 1 failed with error: 429 Client Error: Too Many Requests for url: https://aiplatform.googleapis.com/v1/publishers/google/models/gemini-2.5-pro:generateContent?key=[REDACTED_API_KEY]
 
 ============================================================
 STDERR (if any)
@@ -434,7 +453,7 @@ Traceback (most recent call last):
     r.raise_for_status()
   File "/Users/darshan/Desktop/ReBL/env/lib/python3.9/site-packages/requests/models.py", line 1026, in raise_for_status
     raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://aiplatform.googleapis.com/v1/publishers/google/models/gemini-2.5-pro:generateContent?key=[REDACTED]
+requests.exceptions.HTTPError: 429 Client Error: Too Many Requests for url: https://aiplatform.googleapis.com/v1/publishers/google/models/gemini-2.5-pro:generateContent?key=[REDACTED_API_KEY]
 
 During handling of the above exception, another exception occurred:
 
@@ -450,4 +469,3 @@ Traceback (most recent call last):
   File "/Users/darshan/Desktop/Papers/ReBL/REBL/Automation/my_gpt.py", line 207, in save_chat_history
     with open(file_name, 'w') as file:
 FileNotFoundError: [Errno 2] No such file or directory: './chat_history/org.fossify.home_chat_2026-04-26 07-02-24.json'
-
