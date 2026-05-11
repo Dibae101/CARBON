@@ -1,0 +1,58 @@
+Bug in app calendar which leads app to crash.
+
+App: alexstyl/Memento-Calendar
+Issue: https://github.com/alexstyl/Memento-Calendar/issues/169
+Type: crash
+ReBL shortname: Memento#169
+Why ReBL failed: ReBL paper (§5.1.1): 'the limitation of ReBL's underlying testing framework, UI Automator2... fails to extract custom views from the hierarchy, preventing ReBL from accessing the necessary UI widgets.' The calendar date-picker dial is a custom view UIAutomator2 cannot see.
+Note: ReBL applied summarization and still failed (see ReBL README).
+
+Steps to Reproduce:
+- Create a new contact by click the '+'.
+- Click the birthday and disabled 'include year'
+- Slide the month to March and slide the day to 31 but don't click the set.
+- Then slide the month to February.
+- Click the set.
+
+--- Full Issue Body ---
+#### Expected behaviour
+While creating a contact in app, app gives option to select birth date of contact. When selecting birth date from date picker, app needs to show 28 days in February month because 2018 is not a leap year.
+
+#### Actual behaviour
+While selecting birth date from date picker, the date picker showing me 30 Feb 2018 as a date. When i set 30 Feb 2018 as birthday of contact, the app got crashed.
+![Screenshot_20180228-163225.png](https://res.cloudinary.com/hpiynhbhq/image/upload/v1519815934/b11xddgz2esuoqflijnk.png)
+
+
+#### How to reproduce
+To reproduce the bug follow the following steps :-
+- Create a new contact from app.
+- Click on birthday field and set 30 Feb 2018 as birthday date.
+- App crashed immediately.
+- For better understanding see recording of bug.
+
+<pre><code>
+* Device:  Samsung J7 Prime
+* Operating system: Android 7.0 Nougatt
+* App Version: v11.2
+</code></pre>
+
+#### Recording Of The Bug
+#### watch video till end.
+https://youtu.be/BN-NH2l4sAg
+    
+
+<br /><hr/><em>Posted on <a href="https://utopian.io/utopian-io/@iamankit/bug-in-app-calendar-which-leads-app-to-crash">Utopian.io -  Rewarding Open Source Contributors</a></em><hr/>
+
+--- Comments ---
+Comment #1:
+I tried it and it happened.
+My steps:
+Create a new contact by click the '+'.
+Click the birthday and disabled 'include year'
+Slide the month to March and slide the day to 31 but don't click the set.
+Then slide the month to February.
+Click the set.
+
+Comment #2:
+Fixed by @madlymad in #180
+

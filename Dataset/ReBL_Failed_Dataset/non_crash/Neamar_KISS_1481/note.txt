@@ -1,0 +1,19 @@
+Bug:       KISS#1481
+Type:      non_crash
+Title:     Favorites bar fails to appear when hide-initially is on
+Verdict:   REPRODUCED
+
+CARBON actions:
+  - Enabled 'Show favorites above search bar'
+  - Enabled 'Minimalistic UI' + 'Hide favorites bar initially'
+  - Added Maps as favorite, returned to home, tapped empty area
+
+Evidence:  Toast 'Maps added to favorites' + no favorites bar visible after tap
+ReBL failed because: ReBL paper: generic non-crash reason (4 interdependent settings)
+CARBON edge: Multi-step state management + negative-state (absence) oracle
+
+Run stats:
+  APK:        ?
+  Time:       ?
+  LLM turns:  15
+  Commands:   15

@@ -1,0 +1,18 @@
+Bug:       Qksms#1155
+Type:      non_crash
+Title:     Partial typed text remains after selecting a contact
+Verdict:   REPRODUCED
+
+CARBON actions:
+  - Started new conversation, typed 'Joh' in recipient field
+  - Tapped the 'John' contact suggestion
+
+Evidence:  Hierarchy shows EditText text='Joh' persisting next to John chip
+ReBL failed because: ReBL paper: generic non-crash reason (subtle residual-state symptom)
+CARBON edge: Widget-level text content comparison catches residual-state bugs
+
+Run stats:
+  APK:        QKSMS-v3.2.0.apk
+  Time:       1021.2s
+  LLM turns:  43
+  Commands:   43
