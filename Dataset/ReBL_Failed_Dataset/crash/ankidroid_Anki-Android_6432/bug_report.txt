@@ -1,0 +1,59 @@
+Crash in Card Browser, the multi-select mode: Edit => change the card type
+
+App: ankidroid/Anki-Android
+Issue: https://github.com/ankidroid/Anki-Android/issues/6432
+Type: crash
+ReBL shortname: Anki#6432
+Why ReBL failed: ReBL paper (§5.1.1): 'a severe lack of information significantly impedes accurate bug reproduction... the bug report omitted 20 out of the 26 required steps.' ReBL struggles when the BR omits most reproduction steps.
+Note: ReBL applied summarization and still failed (see ReBL README).
+
+Steps to Reproduce:
+1. Create any type and clone it (to keep things simple, I've just used basic, calling the types "Basic 1" & "Basic 2").
+2. Add two cards to the first type.
+3. Browser → select the two new cards → Edit → try to change the type (in my case, "Basic 1" → "Basic 2").
+
+--- Full Issue Body ---
+###### Reproduction Steps
+
+1. Create any type and clone it (to keep things simple, I've just used basic, calling the types "Basic 1" & "Basic 2").
+2. Add two cards to the first type.
+3. Browser → select the two new cards → Edit → try to change the type (in my case, "Basic 1" → "Basic 2"). 
+
+
+###### Expected Result
+If you could allow there some sort of batch type reassignment via the default field mapping, that would be perfect!
+
+
+###### Actual Result
+
+It crashes, only the first card is affected by the change.
+
+
+###### Debug info
+Refer to the [support page](https://ankidroid.org/docs/help.html) if you are unsure where to get the "debug info".
+
+###### Research
+*Enter an [x] character to confirm the points below:*
+
+--- I've reported it via the play.google.com, your representative there suggested that I report it here.
+
+
+- [ ] I have read the [support page](https://ankidroid.org/docs/help.html) and am reporting a bug or enhancement request specific to AnkiDroid
+- [ ] I have checked the [manual](https://ankidroid.org/docs/manual.html) and the [FAQ](https://github.com/ankidroid/Anki-Android/wiki/FAQ) and could not find a solution to my issue
+- [ ] I have searched for similar existing issues here and on the user forum
+- [ ] (Optional) I have confirmed the issue is not resolved in the latest alpha release ([instructions](https://docs.ankidroid.org/manual.html#betaTesting))
+
+--- Comments ---
+Comment #1:
+Hello! 👋 Thanks for logging this issue. Please remember we are all volunteers here, so some patience may be required before we can get to the issue. Also remember that the fastest way to get resolution on an issue is to propose a change directly, https://github.com/ankidroid/Anki-Android/wiki/Contributing
+
+Comment #2:
+Guys, your program is great! The issue is, obviously, not pressing at all: my main goal has been to contribute a tiny bit via reporting this. Thank you!
+
+Comment #3:
+Hey @dymky - thanks for logging this! I think this is an unexpected side-effect of #6243 - the idea with that one was that even in multi-select mode we could enable edit note but just have it affect the first card. That use case should not crash at minimum, but if it gives people the impression they can change the card type and it will affect multiple notes, that's not correct
+
+Then at the same time, changing multiple card types at once is a popular feature (and something I'd love myself)
+
+I think #6243 might need a revert now that I think about it - there may be other note-related things that would confuse people if they thought it would apply to all the selected notes but it really just affects one, and the feature of changing note type for multiple notes at once is still on the wish list
+

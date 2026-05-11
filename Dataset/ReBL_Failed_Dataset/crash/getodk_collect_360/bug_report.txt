@@ -1,0 +1,95 @@
+Collect 1.4.13 crash when selecting My Drive to fetch form
+
+App: getodk/collect
+Issue: https://github.com/getodk/collect/issues/360
+Type: crash
+ReBL shortname: ODK#360
+Why ReBL failed: ReBL paper (§5.1.1): 'ReBL lacks the capability to navigate between different apps, which limits its effectiveness... where interaction with Google Drive is essential.' Requires cross-app OAuth flow.
+Note: ReBL applied summarization and still failed (see ReBL README).
+
+Steps to Reproduce:
+1. Load Collect 1.4.13 from Google Play
+2. Specify platform (Google Drive0
+3. Specify Google account.
+4. Get Blank Form (enters search GUI)
+5. Select My Drive
+6. Crash reported
+7. Settings file attached
+
+--- Full Issue Body ---
+#### Software and hardware versions 
+Collect v1.4.13, Android v5.1.1, device used Samsung Galaxy J1 Mini and J1
+
+#### Problem description
+ODK Collect crashes when we try to fetch an xml form from Google Drive.
+#### Steps to reproduce the problem
+1. Load Collect 1.4.13 from Google Play
+2. Specify platform (Google Drive0
+3. Specify Google account.
+4. Get Blank Form (enters search GUI)
+5. Select My Drive
+6. Crash reported
+7. Settings file attached
+[collect.settings.txt](https://github.com/opendatakit/collect/files/729998/collect.settings.txt)
+
+#### Expected behavior
+Goto xml files in My Drive or Shared With Me and select relevant
+
+#### Other information 
+Tried on three makes of phone with 3 different versions
+Samsung J1 4.44
+Huawei P8 Lite 5.0
+Samsung J1 Mini 5.1.1
+Reverted to 1.4.12 APK and all works fine
+
+--- Comments ---
+Comment #1:
+Looks like it's the same issue https://github.com/opendatakit/collect/issues/289 but now it occurs when we use the apk from Google Play.
+
+Comment #2:
+The stack traces don't appear to have any useful info. Listing from the drive:
+```
+java.lang.RuntimeException: An error occurred while executing doInBackground()
+	at android.os.AsyncTask$3.done(AsyncTask.java:309)
+	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:354)
+	at java.util.concurrent.FutureTask.setException(FutureTask.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:242)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+	at java.lang.Thread.run(Thread.java:818)
+Caused by: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.Object com.google.a.b.a.a$b$b.e()' on a null object reference
+	at org.odk.collect.android.activities.GoogleDriveActivity$b.a(Unknown Source)
+	at org.odk.collect.android.activities.GoogleDriveActivity$b.doInBackground(Unknown Source)
+	at android.os.AsyncTask$2.call(AsyncTask.java:295)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	... 3 more
+```
+
+Publishing a previously loaded form:
+```
+java.lang.RuntimeException: An error occurred while executing doInBackground()
+	at android.os.AsyncTask$3.done(AsyncTask.java:309)
+	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:354)
+	at java.util.concurrent.FutureTask.setException(FutureTask.java:223)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:242)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+	at java.lang.Thread.run(Thread.java:818)
+Caused by: java.lang.NoSuchMethodError: No static method newPullParser()Lorg/g/a/a; in class Landroid/util/Xml; or its super classes (declaration of 'android.util.Xml' appears in /system/framework/framework.jar:classes2.dex)
+	at org.odk.collect.android.h.g.a(Unknown Source)
+	at org.odk.collect.android.h.g.a(Unknown Source)
+	at org.odk.collect.android.h.g.a(Unknown Source)
+	at org.odk.collect.android.activities.GoogleSheetsUploaderActivity$a.a(Unknown Source)
+	at org.odk.collect.android.activities.GoogleSheetsUploaderActivity$a.doInBackground(Unknown Source)
+	at android.os.AsyncTask$2.call(AsyncTask.java:295)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+	... 3 more
+```
+
+@grzesiek2010 is probably correct that it's some kind of API auth issue like in #289 (the stack traces are also similar). @yanokwa and @mitchellsundt are working on it.
+
+Comment #3:
+Realized it couldn't be an API config issue since 1.4.12 and 1.4.13 are signed with the same key. It turns out it's a minification issue. Hints were that I couldn't generate a signed apk that worked when checking out 1.4.12 (minification was disabled for the release build but that code wasn't checked in) and the strange identifiers such as `org.odk.collect.android.h.g.a`. I'm going to turn minification off, add a comment saying why and check that change in.
+
+@mapland thank you so much for reporting this immediately and providing details on what you tried.
+

@@ -1,0 +1,19 @@
+Bug:       LrkFM#34
+Type:      non_crash
+Title:     Move/paste silently fails when pasting into a different folder
+Verdict:   REPRODUCED
+
+CARBON actions:
+  - Selected .storageLocationMarker file, chose Move from context menu
+  - Navigated INTO Alarms/ subfolder (key choice)
+  - Tapped the paste FAB
+
+Evidence:  App jumped back to parent, target folder remained empty
+ReBL failed because: ReBL paper: 'ReBL pastes within the same folder' (false positive)
+CARBON edge: Semantic target selection - moved to a different folder before paste
+
+Run stats:
+  APK:        lrkFM-v2.2.1.apk
+  Time:       153.4s
+  LLM turns:  6
+  Commands:   6

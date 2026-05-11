@@ -1,0 +1,42 @@
+Validator preferences causes crashing of app
+
+App: MarcusWolschon/osmeditor4android
+Issue: https://github.com/MarcusWolschon/osmeditor4android/issues/637
+Type: crash
+ReBL shortname: Osmeditor#637
+Why ReBL failed: ReBL paper (§5.1.1): 'the framework's limited ability to execute certain actions. For example, in osmeditor-637, the framework struggled with set_text, leading to a failure in the reproduction.' UIAutomator2's set_text implementation is unreliable on this app's text fields.
+Note: ReBL applied summarization and still failed (see ReBL README).
+
+--- Full Issue Body ---
+## Vespucci Version
+Vespucci 0.9.10b1324
+
+## Device (Manufacturer and Model)
+Samsung Galaxy A3 (SM-A300FU)
+
+## Android Version 
+Android 6.0.1
+
+## Behaviour/Symptoms/Expected Behaviour/How to recreate
+1. Remove all entries from Validator preferences except one re-survey entry
+2. Set key "shop" and value to "*", max. age to "0" 
+3. Press DONE and go back to the main screen.
+3. The app immediately crashes when there are already downloaded data. If not, try to download view and the app crashes.
+
+Next time, just visit Validator preferences and leave it without saving, just go back to the map and it crashes as well. Even removing of the entry doesn't solve the problem, you have to reset the app after that.
+
+## Crash dump submitted (no or yes + date)
+12.12.2017 (19:30 UTC+1) 2 reports containig email adress xxxxxxx
+## Any other potentially relevant information
+Language: cs_CZ
+
+--- Comments ---
+Comment #1:
+Yes there is an issue when either of the lists is empty. Workaround: leave a dummy entry in both (one that wont match).
+
+Comment #2:
+Fixed in https://github.com/MarcusWolschon/osmeditor4android/commit/9276e28407a54ef831dc9e0f61015a7f0cde6a83 Leaving the issue open till the next beta relase.
+
+Comment #3:
+The build signed with my debug key here https://drive.google.com/drive/folders/0B9pKLmh8s1h8bFI5bGd4VnhYWkk?usp=sharing has both crashing issues you reported fixed (wou will need to deinstall the version from the playstore).
+

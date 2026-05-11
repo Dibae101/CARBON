@@ -1,0 +1,20 @@
+Bug:       Memento#169
+Type:      crash
+Title:     Date-picker crashes when setting an invalid date like Feb 31
+Verdict:   REPRODUCED
+
+CARBON actions:
+  - Added new event, opened birthday picker, disabled 'Include year'
+  - Used swipe_region on the custom NumberPicker widget (UIAutomator2-invisible)
+  - Scrolled day wheel to 31, then scrolled month wheel to February
+  - Tapped SET
+
+Evidence:  'Memento Calendar has stopped' dialog + FATAL EXCEPTION in logcat
+ReBL failed because: ReBL paper: 'UI Automator2 fails to extract custom views from the hierarchy'
+CARBON edge: Vision + swipe_region reaches custom picker widgets hierarchy can't see
+
+Run stats:
+  APK:        android_mobile-release-11.2.apk
+  Time:       750.4s
+  LLM turns:  22
+  Commands:   31

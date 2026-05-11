@@ -1,0 +1,51 @@
+Favorites bar doesn't appear under specific UI settings
+
+App: Neamar/KISS
+Issue: https://github.com/Neamar/KISS/issues/1481
+Type: non_crash
+ReBL shortname: KISS#1481
+Why ReBL failed: ReBL paper (§5.1.1, generic reason for non-crash failures): 'subtler symptoms... false conclusions that a bug has been triggered.' Not named individually. 4 interdependent settings toggles make state-building hard.
+Note: ReBL applied summarization and still failed (see ReBL README).
+
+Steps to Reproduce:
+1. Set an app as a favorite.
+2. Enable "Show favorites above search bar" under Favorites settings.
+3. Enable Minimalistic UI under User experience.
+4. Enable "Hide favorites bar initially" under Minimalistic UI.
+5. Check home screen to see there is no favorites bar, even after tapping the screen.
+
+--- Full Issue Body ---
+**Describe the bug**
+After updating to a newer version of KISS launcher, I am no longer able to make the shortcut bar appear. The cause seems to be the "Hide favorites bar initially" setting. When enabled, the favorites bar will not appear when I try to tap on the screen. When disabled, the favorites bar will stay present and not disappear until the search bar or the KISS button is pressed.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Set an app as a favorite.
+2. Enable "Show favorites above search bar" under Favorites settings.
+3. Enable Minimalistic UI under User experience.
+4. Enable "Hide favorites bar initially" under Minimalistic UI.
+5. Check home screen to see there is no favorites bar, even after tapping the screen.
+
+**Expected behavior**
+Previously, I had set up KISS launcher to display my favorites bar when I tapped anywhere on the main screen. Now, I can't make the favorites bar appear at all without changing my settings. 
+
+**Additional information**
+ - App version: 3.13.5
+ - App installed via: F-Droid
+
+--- Comments ---
+Comment #1:
+Can reproduce, show history on touch _needs to be disabled_, otherwise it works correctly?
+
+I'm not sure if this was changed recently?
+
+Comment #2:
+Yes, this was changed recently, to fix an issue when displaying all apps.
+
+The "hide favorites bar initially" is actually dependent on "Show history on touch", so you can hide it from the main view but to display it on touch you also need to display history.
+
+At least for now. Changing it is fairly hard, I'll see what I can do, but no promise.
+
+Comment #3:
+Sent a fix ;)
+

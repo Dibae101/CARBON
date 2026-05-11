@@ -1,0 +1,19 @@
+Bug:       Osmeditor#637
+Type:      crash
+Title:     Crash on returning to map with modified validator preferences
+Verdict:   NOT REPRODUCED
+
+CARBON actions:
+  - Configured validator with single re-survey entry (set_text worked)
+  - Pressed DONE, returned to map, attempted tile download
+  - Tried 4 scenarios including empty-list and re-visit without save
+
+Evidence:  App never crashed; bug requires pre-downloaded OSM data present
+ReBL failed because: ReBL paper: 'the framework struggled with set_text'
+CARBON edge: set_text worked fine; different blocker (data-state precondition)
+
+Run stats:
+  APK:        vespucci-0.9.10b1324-unsigned.apk.aligned.apk
+  Time:       1506.9s
+  LLM turns:  48
+  Commands:   48

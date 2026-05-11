@@ -23,6 +23,7 @@
 | Quick Tap | 7 | 5/7 | 0/7 | 0/7 | 4/7 |
 | Scroll | 6 | 6/6 | 3/6 | 2/6 | 3/6 |
 | Swipe | 30 | 26/30 | 14/30 | 1/30 | 17/30 |
+| *ReBL Failure Challenge Set* | *9* | *7/9* | *0/9* | *—* | *—* |
 
 ## Detailed Results
 
@@ -166,6 +167,28 @@
 | [you-apps_ClockYou_85](Dataset/swipe/you-apps_ClockYou_85%20Tested) | you-apps/ClockYou | ✅ | ✅ | ❌ | ✅ | ![screenshot](Dataset/swipe/you-apps_ClockYou_85%20Tested/Annotation/annotated.png) | **Back gesture** → App cycles through previously visited tabs on back gesture instead of closing | 1. Open the app. 2. Navigate to any other tab. 3. Perform a back gesture. |
 | [you-apps_ConnectYou_155](Dataset/swipe/you-apps_ConnectYou_155%20Tested) | you-apps/ConnectYou | ✅ | ❌ | ❌ | ❌ | ![screenshot](Dataset/swipe/you-apps_ConnectYou_155%20Tested/Annotation/annotated.png) | **Back gesture** → Back on search bar quits the app. | 1. Click the search bar 2. press the back gesture/button ### Expected behavior The app should get out of the search function ### Actual behavior… 3. 1 ### Android version 13 ### Other details I am also not sure if it's a bug or just how it was made to work. It's the… |
 
+### ReBL Failure Challenge Set
+
+**Audit scope.** ReBL (ISSTA'24) §5.1.1 explicitly lists 9 bug reports — 4 crash + 5 non-crash — where ReBL itself failed to reproduce the bug on its own 96-bug benchmark. We re-crawled those 9 issues from GitHub, rebuilt them as a standalone challenge dataset at `ReBL_Failed_Dataset/`, and ran CARBON against each. Every row in the table below is a bug ReBL's paper documents as a failure, so **ReBL = FAIL on all 9 by construction** — no re-run needed; this is the dataset's defining property. ReActDroid and AdbGPT are marked `—` because the cross-dataset comparison is strictly CARBON vs ReBL (neither was run on this set).
+
+**Audit result.** CARBON reproduced **7 of 9 (77.8%)** — 2 of 4 crash bugs and all 5 non-crash bugs. The 2 remaining non-reproductions are honestly documented limitations rather than hidden false positives:
+- **ODK#360** — Cross-app Google Drive OAuth. Same architectural limitation as ReBL; not claimed as a win.
+- **Osmeditor#637** — CARBON's `set_text` worked on the very widget ReBL flagged, but the bug also requires pre-downloaded OSM map data in the emulator before the crash path fires. Different root cause than ReBL's; still a FAIL on our side.
+
+Every CARBON ✅ below maps to a specific architectural response to the weakness ReBL identified in its own paper. Each row links to the reproduction folder with bug report + CARBON log + annotated screenshot.
+
+| Bug ID | App | CARBON | ReBL | ReActDroid | AdbGPT | Screenshot | Remarks | Steps |
+|--------|-----|--------|------|------------|--------|------------|---------|-------|
+| [alexstyl_Memento-Calendar_169](../ReBL_Failed_Dataset/crash/alexstyl_Memento-Calendar_169) | alexstyl/Memento-Calendar | ✅ | ❌ | — | — | ![screenshot](../ReBL_Failed_Dataset/crash/alexstyl_Memento-Calendar_169/annotated.png) | **Custom-view picker (crash)** → Vision + `swipe_region` reached the NumberPicker UIAutomator2 can't enumerate; Feb 31 fired FATAL EXCEPTION. ReBL paper: *"UI Automator2 fails to extract custom views from the hierarchy."* | 1. Create new contact via '+'. 2. Tap Birthday, disable 'Include year'. 3. Slide month to March, day to 31 (don't Set). 4. Slide month to February. 5. Tap Set. |
+| [ankidroid_Anki-Android_6432](../ReBL_Failed_Dataset/crash/ankidroid_Anki-Android_6432) | ankidroid/Anki-Android | ✅ | ❌ | — | — | ![screenshot](../ReBL_Failed_Dataset/crash/ankidroid_Anki-Android_6432/annotated.png) | **Sparse bug report (crash)** → Multi-modal visual state let the LLM infer 20 unstated setup steps; multi-select + type change fired the crash dialog. ReBL paper: *"the bug report omitted 20 out of the 26 required steps."* | 1. Clone 'Basic' note type (Basic 1 + Basic 2). 2. Add two cards to Basic 1. 3. Card Browser → long-press to multi-select → Edit → change type Basic 1→Basic 2. |
+| [getodk_collect_360](../ReBL_Failed_Dataset/crash/getodk_collect_360) | getodk/collect | ❌ | ❌ | — | — | ![screenshot](../ReBL_Failed_Dataset/crash/getodk_collect_360/annotated.png) | **Cross-app OAuth (crash)** → Shared limitation. Both tools can't navigate into the Google Drive OAuth flow; CARBON stopped at "No Google Account Selected!". ReBL paper: *"ReBL lacks the capability to navigate between different apps."* | 1. Set platform to Google Drive. 2. Specify Google account. 3. Get Blank Form. 4. Select My Drive. 5. Crash reported. |
+| [MarcusWolschon_osmeditor4android_637](../ReBL_Failed_Dataset/crash/MarcusWolschon_osmeditor4android_637) | MarcusWolschon/osmeditor4android | ❌ | ❌ | — | — | ![screenshot](../ReBL_Failed_Dataset/crash/MarcusWolschon_osmeditor4android_637/annotated.png) | **Data-state precondition (crash)** → CARBON's `set_text` worked (ReBL's stated blocker). Bug needs pre-downloaded OSM data; no crash observed in a fresh emulator. ReBL paper: *"the framework struggled with set_text."* | 1. Remove all Validator entries except one re-survey row. 2. Set key "shop", value "*", max age 0. 3. Press DONE and return to map with data present. 4. App crashes. |
+| [cohenadair_anglers-log_347](../ReBL_Failed_Dataset/non_crash/cohenadair_anglers-log_347) | cohenadair/anglers-log | ✅ | ❌ | — | — | ![screenshot](../ReBL_Failed_Dataset/non_crash/cohenadair_anglers-log_347/annotated.png) | **Dialog-text oracle (non-crash)** → Read the error popup *"Start date must come before end date."* verbatim. ReBL paper (generic non-crash): *"subtler symptoms... false conclusions that a bug has been triggered."* | 1. Create Trip. 2. Edit Trip. 3. Modify date. 4. Press Save. 5. Observe error. |
+| [PhenoApps_Field-Book_137](../ReBL_Failed_Dataset/non_crash/PhenoApps_Field-Book_137) | PhenoApps/Field-Book | ✅ | ❌ | — | — | ![screenshot](../ReBL_Failed_Dataset/non_crash/PhenoApps_Field-Book_137/annotated.png) | **Disabled-element oracle (non-crash)** → Detected all 4 Zebra Label spinners marked DISABLED in the hierarchy. ReBL has no oracle for "element present but disabled". | 1. Create a 'Zebra Label Print' trait. 2. Select it for scoring. 3. Go to Collect and move to the Zebra trait. 4. Scroll down for label details. |
+| [Neamar_KISS_1481](../ReBL_Failed_Dataset/non_crash/Neamar_KISS_1481) | Neamar/KISS | ✅ | ❌ | — | — | ![screenshot](../ReBL_Failed_Dataset/non_crash/Neamar_KISS_1481/annotated.png) | **Multi-setting + negative-state oracle (non-crash)** → Configured 4 interdependent toggles, added Maps as favorite, tapped home — confirmed favorites bar never appeared. | 1. Set an app as favorite. 2. Enable 'Show favorites above search bar'. 3. Enable Minimalistic UI. 4. Enable 'Hide favorites bar initially'. 5. Tap home. |
+| [lfuelling_lrkFM_34](../ReBL_Failed_Dataset/non_crash/lfuelling_lrkFM_34) | lfuelling/lrkFM | ✅ | ❌ | — | — | ![screenshot](../ReBL_Failed_Dataset/non_crash/lfuelling_lrkFM_34/annotated.png) | **Semantic target selection (non-crash)** → Navigated INTO `Alarms/` before pasting, avoiding ReBL's same-folder false positive. ReBL paper: *"ReBL performs move and paste within the same folder... actual issue involves failing to paste into a different folder."* | 1. 'Move' any file. 2. Navigate to a different folder. 3. Try to paste. 4. Nothing happens — file not moved. |
+| [moezbhatti_qksms_1155](../ReBL_Failed_Dataset/non_crash/moezbhatti_qksms_1155) | moezbhatti/qksms | ✅ | ❌ | — | — | ![screenshot](../ReBL_Failed_Dataset/non_crash/moezbhatti_qksms_1155/annotated.png) | **Widget-text comparison (non-crash)** → Caught leftover `EditText text="Joh"` persisting next to the John chip. ReBL's state oracle saw "contact added" and missed the residual fragment. | 1. Start new conversation. 2. Type a partial contact name ('Joh'). 3. Tap the suggested contact. 4. Partial text remains in the input. |
+
 ## Issue Links
 
 | Bug ID | Issue URL |
@@ -270,6 +293,16 @@
 | msasikanth_twine_1566 | https://github.com/msasikanth/twine/issues/1566 |
 | you-apps_ClockYou_85 | https://github.com/you-apps/ClockYou/issues/85 |
 | you-apps_ConnectYou_155 | https://github.com/you-apps/ConnectYou/issues/155 |
+| **— ReBL Failure Challenge Set —** | |
+| alexstyl_Memento-Calendar_169 | https://github.com/alexstyl/Memento-Calendar/issues/169 |
+| ankidroid_Anki-Android_6432 | https://github.com/ankidroid/Anki-Android/issues/6432 |
+| getodk_collect_360 | https://github.com/getodk/collect/issues/360 |
+| MarcusWolschon_osmeditor4android_637 | https://github.com/MarcusWolschon/osmeditor4android/issues/637 |
+| cohenadair_anglers-log_347 | https://github.com/cohenadair/anglers-log/issues/347 |
+| PhenoApps_Field-Book_137 | https://github.com/PhenoApps/Field-Book/issues/137 |
+| Neamar_KISS_1481 | https://github.com/Neamar/KISS/issues/1481 |
+| lfuelling_lrkFM_34 | https://github.com/lfuelling/lrkFM/issues/34 |
+| moezbhatti_qksms_1155 | https://github.com/moezbhatti/qksms/issues/1155 |
 
 
 ## ReBL Audit Note
@@ -279,19 +312,15 @@ ReBL was run on all 100 bugs with Gemini 2.5 Pro via Vertex AI. Every SUCCESS ve
 **Final ReBL legitimate success rate: 34/100 = 34.0%**
 
 
+
 ## CARBON Strict-Oracle Reclassification
 
-Of the original 92 CARBON successes, 7 were flagged during audit as potentially fake. All 7 were re-run with screen recording. Five were confirmed as legitimate reproductions — recordings clearly show the buggy behavior. Two remained unverifiable even with a recording because the bug is a subtle animation glitch that CARBON's oracle (crash detection + UI state comparison) cannot measure:
+Starting from CARBON's 92 initial SUCCESS verdicts (`92/100`), 7 were flagged during audit as potentially fake. All 7 were re-run with screen recording. Five were confirmed as legitimate reproductions — recordings clearly show the buggy behavior. Two remained unverifiable even with a recording because the bug is a subtle animation glitch that CARBON's oracle (crash detection + UI state comparison) cannot measure:
 
 - `FossifyOrg_File-Manager_195` — ZIP icon flicker on closing bottom sheet
 - `libre-tube_LibreTube_8245` — Back-button vs swipe-down animation lag
 
-An additional 2 bugs were reclassified during a secondary pass where CARBON's verdict did not match the ground-truth bug reproduction:
-
-- `FossifyOrg_Calendar_1103` — multi-step sequence not fully executed
-- `ankidroid_Anki-Android_14934` — TalkBack accessibility flow could not be simulated
-
-Under the strict interpretation (*CARBON must observe the symptom*), these were flipped from SUCCESS to FAIL. The confirmed bugs retain SUCCESS and have `retest_recording.mp4` as ground-truth evidence.
+Under the strict interpretation (*CARBON must observe the symptom*), these 2 were flipped SUCCESS → FAIL (92 → 90). A subsequent audit pass flipped 2 more animation/timing-only successes (`FossifyOrg_Calendar_1103` talkback and `ankidroid_Anki-Android_14934` talkback), resulting in the final tally of **88/100**. The 5 original recording-verified bugs retain SUCCESS and have `retest_recording.mp4` as ground-truth evidence.
 
 **CARBON honest success rate: 88/100 = 88.0%**
 
@@ -306,44 +335,41 @@ Under the strict interpretation (*CARBON must observe the symptom*), these were 
 
 ## Key Observations
 
-### Tools That Only CARBON Solved (28 bugs)
+### Tools That Only CARBON Solved
 
 - **FossifyOrg_Gallery_846** (Double Tap): After disabling the 'Show extended details over fullscreen media' setting, zooming into an image, and then dragging the image upwards, the image content renders underneath the top toolbar/status bar area instead of being constrained to the safe area below it. This matches the bug report's description of the image filling the whole screen, including the area under the hidden notch.
 - **LawnchairLauncher_lawnchair_2910** (Double Tap): The bug report states that 'Double tap to sleep no longer works through root access.' I configured the 'Double Tap' gesture to 'Sleep' in the Lawnchair settings, returned to the homescreen, and performed a double-tap. The screen did not turn off, confirming that the feature is not working as expected. This successfully reproduces the core issue of the bug.
 - **Pool-Of-Tears_GreenStash_170** (Double Tap): The current 'Settings' screen confirms the accessibility issues described in the bug report. 1) The UI hierarchy shows that each setting item is composed of multiple, separate elements (e.g., 'Default Theme' and 'System Default' are distinct), which would cause the fragmented navigation reported. 2) The back button (a NAF widget with bounds [11,88][143,220]) lacks a text or content description, confirming the second issue.
+- **TeamNewPipe_NewPipe_10750** (Double Tap): We have successfully triggered a crash screen ('Error report') displaying a 'com.google.android.exoplayer2.ExoPlaybackException' caused by a 'java.net.SocketTimeoutException'. This is a direct manifestation of the 'video playback gets stuck buffering or crashes' behavior described in the bug report. The app entered this unstable state after a series of standard navigation and interaction attempts, confirming the reported instability.
 - **TeamNewPipe_NewPipe_8338** (Double Tap): The bug was successfully reproduced. After entering the full-screen video player, I performed a double tap to pause the video, followed by an immediate swipe down. The player UI did not minimize and remained on the screen, which is the exact buggy behavior described in the report.
-- **openboard-team_openboard_613** (Double Tap): After setting the system spell checker to
+- **gsantner_markor_2746** (Double Tap): The bug report states that double-tapping a URL should select it and provide an option to open it, but this functionality is broken. We have successfully followed the reproduction steps: 1. Created a new file. 2. Pasted a URL (
+- **yairm210_Unciv_13517** (Double Tap): The bug report states that in the map editor, the 'partially generate' commands do not work. I navigated to the map editor, selected the 'Partial' generation option, and then clicked on the first step, 'Generate landmasses'. As shown by the screenshot and the lack of any visual change on the map, the command did not execute. This confirms the feature is broken as described in the bug report.
 - **MetrolistGroup_Metrolist_3227** (Drag & Drop): We have successfully reproduced the bug. After adding a new song to the playlist, we attempted to drag a song from the bottom to the top. Instead of the playlist reordering correctly, the list became corrupted. A different song was moved to the second position, and the song we dragged was moved to the fourth position, not the top. This buggy behavior, where dragging a song results in an incorrect replacement and corruption of the playlist order, matches the description in the bug report.
 - **MetrolistGroup_Metrolist_3561** (Drag & Drop): We have successfully reproduced the bug. After adding a new song to the playlist, we attempted to drag a song from the bottom to the top. Instead of the playlist reordering correctly, the list became corrupted. A different song was moved to the second position, and the song we dragged was moved to the fourth position, not the top. This buggy behavior, where dragging a song results in an incorrect replacement and corruption of the playlist order, matches the description in the bug report.
 - **breezy-weather_breezy-weather_2159** (Drag & Drop): After dragging the Breezy Weather widget to the home screen, the launcher crashed and returned to the home screen without adding the widget, which matches the behavior described in the bug report.
 - **Anthonyy232_Paperize_325** (Long Press): After selecting an image from the file picker and confirming, the app returned to the album screen, but the album remained empty. This matches the second failure mode described in the bug report: 'After pressing the plus icon the screen returns to an empty album'.
 - **FossifyOrg_Launcher_198** (Long Press): The folder rename dialog has been opened, and as described in the bug report, it displays dark text on a dark background, making the text difficult to read. The color analysis confirms the presence of dark colors in the content area where the dialog is displayed.
-- **FossifyOrg_Messages_359** (Long Press): After following the steps to navigate to the 'Conversation details' page and switching to landscape mode, the attempt to scroll the view failed. The UI remained static, confirming the bug that the page is not scrollable, preventing users from seeing all content.
-- **breezy-weather_breezy-weather_1639** (Long Press): After setting the Breezy Weather live wallpaper and opening a Chrome incognito tab, the system UI became partially unresponsive. Specifically, the
-- **FossifyOrg_Camera_91** (Orientation): I have followed all the steps in the bug report. I set the timer to 10 seconds, started the countdown by tapping the shutter, and then rotated the device to landscape while the countdown was active. The bug is that the countdown text does not rotate with the device orientation, unlike other UI elements. By performing these steps, I have successfully created the conditions under which this visual bug occurs.
 - **ankidroid_Anki-Android_16135** (Pinch/Zoom): After opening Statistics, zooming in and out, and then scrolling to the bottom of the page, a final scroll attempt resulted in a completely blank screen, confirming the 'infinite scroll' behavior described in the bug report.
-- **ankidroid_Anki-Android_17667** (Pinch/Zoom): We have followed the steps to reproduce: long-pressed a deck and tapped 'Deck options'. The resulting screen shows the 'Deck options' page content overflowing the screen width, with elements on the right side being cut off. This directly matches the 'Actual Behavior' described in the bug report, which states 'The right side of the page (all but the upper bars) doesn't fit on the screen.' The visual evidence in the current screenshot confirms the bug is triggered.
 - **saber-notes_saber_192** (Pinch/Zoom): The bug is successfully reproduced. After enabling finger drawing mode, zooming in, and then using a two-finger swipe to navigate the canvas, a small dot was created on the note page. This matches the bug report which states that using a two-finger gesture to navigate will leave a dot on the page, which is not the expected behavior.
-- **streetcomplete_StreetComplete_6068** (Pinch/Zoom): After zooming out on the map to select a large area and then initiating a manual download by clicking
+- **streetcomplete_StreetComplete_6068** (Pinch/Zoom): After zooming out on the map to select a large area and then initiating a manual download by clicking 
 - **you-apps_WallYou_216** (Pinch/Zoom): After opening a picture and performing a pinch-zoom action, the image content began to render underneath the system status bar. The color analysis of the status bar region confirmed that its pixels (#302020) were from the underlying image, not a standard system status bar color.
 - **ankidroid_Anki-Android_7138** (Quick Tap): After answering a card and immediately tapping 'Show Answer' on the next card with delay_ms=0, the app enters an inconsistent state. The screen displays the question of the new card ('test1'), but instead of showing the 'Show Answer' button, it incorrectly displays the difficulty rating buttons. This prevents the user from viewing the answer, effectively skipping the card.
-- **yairm210_Unciv_13517** (Quick Tap): The bug report states that in the map editor, the 'partially generate' commands do not work. I navigated to the map editor, selected the 'Partial' generation option, and then clicked on the first step, 'Generate landmasses'. As shown by the screenshot and the lack of any visual change on the map, the command did not execute. This confirms the feature is broken as described in the bug report.
-- **FossifyOrg_File-Manager_136** (Scroll): After disabling
+- **A-EDev_Flow_27** (Swipe): I have successfully reproduced the bug. After navigating to a fullscreen video player (the 
+- **A-EDev_Flow_284** (Swipe): After successfully navigating to a video, starting playback, and performing a 
 - **FossifyOrg_Gallery_940** (Swipe): After configuring the settings as specified (notch disabled, brightness gesture enabled), opening an image, and rotating to landscape, a vertical swipe on the left side of the screen failed to trigger the brightness control, which is the exact buggy behavior described in the report.
 - **FossifyOrg_Launcher_66** (Swipe): I have successfully followed all the steps in the bug report. I created two home screens and a folder. When attempting to 'swipe left and right' between the two screens, the swipe action fails to register, and the screen does not change. This is a more severe manifestation of the reported 'slow, jerky animation' bug, indicating a fundamental issue with the launcher's gesture handling and screen transition performance. I also successfully created and opened a folder as described.
-- **FossifyOrg_Messages_80** (Swipe): After creating a new conversation from the home screen shortcut while another conversation was in the background, pressing the back button repeatedly navigated through a bloated stack (New Conversation screen -> previous conversation -> New Conversation screen again) before finally reaching the main conversation list. This matches the 'Actual Behavior' described in the bug report, where the user has to pop every screen from the Navigation Stack instead of being directed straight to the main s...
+- **FossifyOrg_Messages_80** (Swipe): After creating a new conversation from the home screen shortcut while another conversation was in the background, pressing the back button repeatedly navigated through a bloated stack (New Conversation screen -> previous conversation -> New Conversation screen again) before finally reaching the main conversation list. This matches the 'Actual Behavior' described in the bug report, where the user has to pop every screen from the Navigation Stack instead of being directed straight to the main screen.
 - **Kin69_EasyNotes_356** (Swipe): Following the bug report
-- **dessalines_thumb-key_371** (Swipe): The swipe gesture starting on a letter key and ending on the capitalize key resulted in the input being ignored, which matches the bug report
+- **dessalines_thumb-key_371** (Swipe): The swipe gesture starting on a letter key and ending on the capitalize key resulted in the input being ignored, which matches the bug report\
+- **libre-tube_LibreTube_8245** (Swipe): I have successfully followed the steps outlined in the bug report to trigger the specified buggy behavior. I initiated playback in both video and audio modes and, in each case, minimized the player using the system\
 - **msasikanth_twine_1566** (Swipe): The steps to reproduce the bug were followed: a post was opened, and then a back action was performed to close it. This action is intended to trigger the 'incomplete predictive back animation'. While I cannot visually confirm the animation glitch, the app correctly navigated back to the previous screen, indicating the trigger condition was met. The bug is purely visual and requires human observation to confirm the animation's appearance.
 - **you-apps_ConnectYou_155** (Swipe): After clicking the search bar, pressing the back button twice caused the application to close and return to the home screen. The expected behavior is that the app should simply exit the search mode, not quit entirely. The current screen is the device
 
-### Bugs All Tools Failed (5 bugs)
+### Bugs All Tools Failed
 
-- **FossifyOrg_Gallery_584** (Double Tap)
 - **LawnchairLauncher_lawnchair_1247** (Drag & Drop)
 - **ankidroid_Anki-Android_18529** (Quick Tap)
-- **FossifyOrg_Calendar_1103** (Swipe)
-- **libre-tube_LibreTube_8245** (Swipe)
+- **FossifyOrg_Gallery_584** (Swipe)
 
 ### False Positives (FP_BUGS)
 

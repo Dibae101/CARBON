@@ -198,6 +198,86 @@ def swipe_region(device, start_x, start_y, end_x, end_y, duration=0.5):
         return True
     return 'Error: swipe_region requires start_x, start_y, end_x, end_y coordinates'
 
+
+def picker_scroll(device, x=None, y=None, bounds=None,
+                  direction='up', steps=1, width=None, height=None):
+    """Scroll an Android NumberPicker (or spinner dial) by exactly `steps` ticks.
+
+    Android NumberPicker widgets (used in DatePickerDialog, TimePickerDialog,
+    and custom pickers like Memento Calendar's birthday dialog) consume a
+    fling gesture differently from ordinary swipes:
+
+      * A short swipe of about one cell height advances the picker by 1 value
+      * The swipe must be slow enough for the animation to "catch" the gesture
+      * Each tick must wait for the snap-into-place animation (~200 ms)
+      * `set_text` on the inner EditText can jump to a value but bypasses the
+        transient invalid-state window that some bugs require (e.g. setting
+        day=31 while month=March, then scrolling month to February to hold
+        day=31 in an invalid state)
+
+    For those bugs, the scroll-gesture path is the ONLY way to reproduce the
+    crash — `set_text` short-circuits the invalid-state window because the
+    picker validates on setValue().
+
+    Parameters:
+      x, y      : center coordinate of the picker (from the annotated
+                  screenshot). If `bounds` is given these are ignored.
+      bounds    : [left, top, right, bottom] of the picker widget
+                  (from the UIAutomator hierarchy).
+      direction : 'up' moves the picker's value up (next); 'down' moves down
+                  (previous). Visually: 'up' drags the cell from bottom to top.
+      steps     : how many ticks to scroll. 1 = advance by one value.
+      width     : picker width in pixels. Inferred from bounds if omitted.
+      height    : picker height in pixels. Inferred from bounds if omitted.
+
+    Example usage (JSON command):
+      {"action": "picker_scroll", "bounds": [335,825,511,1320],
+       "direction": "up", "steps": 2}          # advances picker by 2 values
+    """
+    import time as _time
+
+    # Resolve center from bounds if provided
+    if bounds is not None and len(bounds) == 4:
+        left, top, right, bot = map(int, bounds)
+        cx = (left + right) // 2
+        cy = (top + bot) // 2
+        h = bot - top
+    elif x is not None and y is not None:
+        cx, cy = int(x), int(y)
+        h = int(height) if height else 300
+    else:
+        return ('Error: picker_scroll requires either bounds=[l,t,r,b] '
+                'or (x, y)')
+
+    # One tick ≈ one cell height. A NumberPicker typically shows 3 cells
+    # in its visible area, so each cell is h // 3 tall. Use 60% of cell
+    # height for the swipe magnitude — enough to trigger a tick, short
+    # enough to avoid a multi-cell fling.
+    cell = max(60, h // 3)
+    swipe_dist = int(cell * 0.6)
+
+    # Total ticks to scroll. direction 'up' advances the value (drag content
+    # from bottom up → center shows the next value); 'down' reverses.
+    steps = max(1, int(steps))
+
+    for i in range(steps):
+        if direction == 'up':
+            sx, sy = cx, cy + swipe_dist // 2
+            ex, ey = cx, cy - swipe_dist // 2
+        elif direction == 'down':
+            sx, sy = cx, cy - swipe_dist // 2
+            ex, ey = cx, cy + swipe_dist // 2
+        else:
+            return (f"Error: picker_scroll direction must be 'up' or 'down', "
+                    f"got '{direction}'")
+
+        # Slow enough (0.35 s) for the picker to register as a drag, not a
+        # fling that overshoots. Fast enough to complete before the next tick.
+        device.swipe(sx, sy, ex, ey, duration=0.35)
+        _time.sleep(0.25)  # let the snap-into-place animation finish
+
+    return True
+
 def media_gesture(device, gesture_type):
     """Perform a region-specific media player gesture.
 
@@ -695,6 +775,16 @@ def handle_command(command, device, attribute_to_element_map, package_name):
         'open_notifications': lambda: open_notifications(device),
         'tap_screen': lambda: tap_screen(device, command.get('x'), command.get('y')),
         'swipe_region': lambda: swipe_region(device, command.get('start_x'), command.get('start_y'), command.get('end_x'), command.get('end_y'), command.get('duration', 0.5)),
+        'picker_scroll': lambda: picker_scroll(
+            device,
+            x=command.get('x'),
+            y=command.get('y'),
+            bounds=command.get('bounds'),
+            direction=command.get('to_direction', command.get('direction', 'up')),
+            steps=command.get('steps', 1),
+            width=command.get('width'),
+            height=command.get('height'),
+        ),
         'media_gesture': lambda: media_gesture(device, command.get('gesture_type')),
         'double_tap_screen': lambda: double_tap_screen(device, command.get('x'), command.get('y')),
         'edge_swipe': lambda: edge_swipe(device, command.get('edge'), command.get('to_direction')),
@@ -726,7 +816,6 @@ def handle_command(command, device, attribute_to_element_map, package_name):
             return warning
 
    
-
 
 
 

@@ -1,0 +1,43 @@
+[BUG] Unable to change label size when printing to Zebra printer
+
+App: PhenoApps/Field-Book
+Issue: https://github.com/PhenoApps/Field-Book/issues/137
+Type: non_crash
+ReBL shortname: FieldBook#137
+Why ReBL failed: ReBL paper (§5.1.1, generic reason for non-crash failures): 'subtler symptoms... false conclusions that a bug has been triggered.' Not named individually. Bug is a missing dropdown — ReBL has no oracle for 'UI element absent'.
+Note: ReBL applied summarization and still failed (see ReBL README).
+
+Steps to Reproduce:
+1. Create a trait with the "Zebra Label Print" format
+2. Select "Zebra Label Print" trait for scoring
+3. Go to "Collect" and move to "Zebra Label Print" trait
+4. Scroll down for label details
+
+--- Full Issue Body ---
+After adding a trait in the "Zebra Label Print" format we are unable to change the label size. When collecting data, the drop-down menus for Text, Barcode and Copies are also not available.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Create a trait with the "Zebra Label Print" format
+2. Select "Zebra Label Print" trait for scoring
+3. Go to "Collect" and move to "Zebra Label Print" trait
+4. Scroll down for label details
+
+**Expected behavior**
+A dropdown menu should appear with multiple label size options or it should be possible to enter the label size manually.
+
+**Device Info (please complete the following information):**
+ - Model: [Zebra MC3300]
+ - OS: [e.g. Android 7.1.2]
+ - Field Book Version [4.3.3]
+
+We are able to print on labels of 10 cm by 5 cm using the standard size of "3" x 2" simple".
+
+--- Comments ---
+Comment #1:
+We're looking into this now. Thanks for bringing it to our attention.
+
+Comment #2:
+Fixed in 3b1c2d330310352ae88d95ae5f8552ab68437dec
+Released in v4.4
+
